@@ -1290,6 +1290,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c7ef0091b25ed44c8c5ec2b0d6e2ba0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputSound: event:/FootstepsConcrete
+  walkSpeed: 0.7
 --- !u!1 &899399986
 GameObject:
   m_ObjectHideFlags: 3

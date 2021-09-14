@@ -242,7 +242,7 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 0
     m_Colors:
-    - ColorMul: {r: 9.781132, g: 32, b: 23.413994, a: 0}
+    - ColorMul: {r: 9.884814, g: 21.888796, b: 31.999996, a: 0}
     - Dir1: {r: 1, g: 1, b: 0, a: 0}
     - Dir2: {r: -1, g: 1, b: 0, a: 0}
     - Tiling: {r: 0.5, g: 0.5, b: 0, a: 0}

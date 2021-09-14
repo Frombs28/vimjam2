@@ -15,10 +15,10 @@ MonoBehaviour:
   Path: Fmod/Pool/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637672424455472953
+  lastModified: 637672437402242964
   FileSizes:
   - Name: Desktop
-    Value: 21888
+    Value: 21632
   Exists: 1
 --- !u!114 &-1176820207590087294
 MonoBehaviour:
@@ -35,7 +35,7 @@ MonoBehaviour:
   Path: Fmod/Pool/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637672424455542765
+  lastModified: 637672437402302800
   FileSizes:
   - Name: Desktop
     Value: 754
@@ -62,7 +62,7 @@ MonoBehaviour:
   - {fileID: -2760417424982226588}
   StringsBanks:
   - {fileID: -1176820207590087294}
-  stringsBankWriteTime: 637672424455542765
+  stringsBankWriteTime: 637672437402302800
   cacheVersion: 8
 --- !u!114 &5355866996061693856
 MonoBehaviour:
@@ -81,9 +81,9 @@ MonoBehaviour:
   Banks:
   - {fileID: -2760417424982226588}
   IsStream: 0
-  Is3D: 1
+  Is3D: 0
   IsOneShot: 1
   Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
+  MinDistance: 0
+  MaxDistance: 0
   Length: 0
