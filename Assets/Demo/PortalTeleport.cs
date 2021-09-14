@@ -22,7 +22,7 @@ public class PortalTeleport : MonoBehaviour
         {
             Vector3 portalToPlayer = player.position - transform.position;
             float dot = Vector3.Dot(transform.up, portalToPlayer);
-            Debug.Log("Dot product: " + )
+            Debug.Log("Dot product: " + dot);
             if(dot < 0)
             {
                 // Teleport
