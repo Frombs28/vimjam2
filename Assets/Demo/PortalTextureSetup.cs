@@ -4,18 +4,28 @@ using UnityEngine;
 
 public class PortalTextureSetup : MonoBehaviour
 {
-    public Camera camera_two;
-    public Material cameraMat_two;
+    public List<Camera> cameras;
+    public List<Material> materials;
     
     // Start is called before the first frame update
     void Start()
     {
-        if(camera_two.targetTexture != null)
+        if(cameras.Count != materials.Count)
         {
-            camera_two.targetTexture.Release();
+            Debug.LogError("Cameras and material counts do not match!");
         }
-        camera_two.targetTexture = new RenderTexture(Screen.width,Screen.height,24);
-        cameraMat_two.mainTexture = camera_two.targetTexture;
+        for(int i = 0; i < cameras.Count; i++)
+        {
+            Camera cam = cameras[i];
+            Material mat = materials[i];
+            if (cam.targetTexture != null)
+            {
+                cam.targetTexture.Release();
+            }
+            cam.targetTexture = new RenderTexture(Screen.width, Screen.height, 24);
+            mat.mainTexture = cam.targetTexture;
+        }
+        
     }
 
     // Update is called once per frame
