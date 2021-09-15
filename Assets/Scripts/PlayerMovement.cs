@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public float groundCheckDistance = 0.4f;
     public LayerMask groundMask;
     public bool canMove = true;
+    public Light flashlight;
 
     private CharacterController controller;
     private Vector3 velocity;
@@ -23,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         trueSpeed = speed;
+        flashlight.enabled = false;
     }
 
     // Update is called once per frame
@@ -52,6 +54,11 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetButtonDown("Jump") && grounded)
             {
                 velocity.y = Mathf.Sqrt(jumpHeight * -2.0f * gravity);
+            }
+
+            if (Input.GetMouseButtonDown(1))
+            {
+                flashlight.enabled = !flashlight.enabled;
             }
         }
         velocity.y += gravity * Time.deltaTime;
