@@ -1,5 +1,48 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7286733349642260377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/FootstepsConcrete
+  m_EditorClassIdentifier: 
+  Path: event:/FootstepsConcrete
+  guid: 1c4c15f191d7d14289930c8532708c24
+  Banks:
+  - {fileID: -742437047328134333}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 0
+--- !u!114 &-3336210210555066344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: Fmod/Pool/Build/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 637673066372324124
+  FileSizes:
+  - Name: Desktop
+    Value: 840
+  Exists: 1
 --- !u!114 &-2760417424982226588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40,6 +83,26 @@ MonoBehaviour:
   - Name: Desktop
     Value: 754
   Exists: 1
+--- !u!114 &-742437047328134333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Fmod/Pool/Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 637673066372264284
+  FileSizes:
+  - Name: Desktop
+    Value: 23904
+  Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53,17 +116,41 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: -1176820207590087294}
-  - {fileID: -2760417424982226588}
+  - {fileID: -3336210210555066344}
+  - {fileID: -742437047328134333}
   EditorEvents:
-  - {fileID: 5355866996061693856}
+  - {fileID: -7286733349642260377}
+  - {fileID: 1519459968305781369}
   EditorParameters: []
   MasterBanks:
-  - {fileID: -2760417424982226588}
+  - {fileID: -742437047328134333}
   StringsBanks:
-  - {fileID: -1176820207590087294}
-  stringsBankWriteTime: 637672437402302800
+  - {fileID: -3336210210555066344}
+  stringsBankWriteTime: 637673066372324124
   cacheVersion: 8
+--- !u!114 &1519459968305781369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: snapshot:/PoolReverb
+  m_EditorClassIdentifier: 
+  Path: snapshot:/PoolReverb
+  guid: b3ca30ae1e21b947adc7e2017bfcc549
+  Banks:
+  - {fileID: -742437047328134333}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 0
 --- !u!114 &5355866996061693856
 MonoBehaviour:
   m_ObjectHideFlags: 0
