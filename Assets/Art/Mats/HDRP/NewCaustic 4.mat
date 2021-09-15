@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-3148110361646720024
+--- !u!114 &-541194777547250911
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: FloorCaustic
+  m_Name: NewCaustic 4
   m_Shader: {fileID: -6465566751694194690, guid: eb4524930dadaf94f8304b49c8754888, type: 3}
   m_ShaderKeywords: _ENABLE_FOG_ON_TRANSPARENT _SURFACE_TYPE_TRANSPARENT
   m_LightmapFlags: 4
@@ -39,10 +39,6 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - Normals:
-        m_Texture: {fileID: 2800000, guid: 911718d7d4032dd4b832a69ed4d253bd, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _AnisotropyMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -145,14 +141,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - Alpha: 0.2
-    - AlphaOffset: 0
-    - Intensity: 0.1
-    - NoiseSize: 5
-    - NormalTile: 1
+    - AlphaOffset: 0.8
     - Speed: 0.025
-    - Thickness: 0.2
-    - WaveSpeed: 0.1
     - _AORemapMax: 1
     - _AORemapMin: 0
     - _ATDistance: 1
@@ -265,12 +255,10 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 0
     m_Colors:
-    - ColorMul: {r: 1.4142135, g: 1.4142135, b: 1.4142135, a: 0}
-    - Dir1: {r: 1, g: 1, b: 0, a: 0}
-    - Dir2: {r: -1, g: 1, b: 0, a: 0}
-    - Tiling: {r: 2, g: 2, b: 0, a: 0}
-    - WaterColorA: {r: 0, g: 0.62056595, b: 1, a: 0}
-    - WaterColorB: {r: 0, g: 0.084128834, b: 1, a: 0}
+    - ColorMul: {r: 1.6558532, g: 11.756557, b: 15.813397, a: 0}
+    - Dir1: {r: -1, g: 1, b: 0, a: 0}
+    - Dir2: {r: -1, g: -1, b: 0, a: 0}
+    - Tiling: {r: 0.5, g: 0.5, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
