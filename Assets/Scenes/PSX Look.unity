@@ -23636,7 +23636,7 @@ MonoBehaviour:
   taaAntiHistoryRinging: 0
   physicalParameters:
     m_Iso: 200
-    m_ShutterSpeed: 0.005
+    m_ShutterSpeed: 0.041666668
     m_Aperture: 16
     m_BladeCount: 5
     m_Curvature: {x: 2, y: 11}
@@ -29651,6 +29651,7 @@ GameObject:
   - component: {fileID: 1726291693}
   - component: {fileID: 1726291692}
   - component: {fileID: 1726291697}
+  - component: {fileID: 1726291700}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -30036,6 +30037,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1726291700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1726291691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44f7747bfcd8a3b44a4e6222985ccb58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fps: 30
 --- !u!850595691 &1729910394
 LightingSettings:
   m_ObjectHideFlags: 0
