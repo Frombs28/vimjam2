@@ -7,11 +7,15 @@ public class PlayerInteract : MonoBehaviour
     public PlayerMovement player;
     public GameObject hand;
     public Camera mainCamera;
+    public Animator anim;
 
+    private bool readyForDoor = false;
     private bool readyToInteract = false;
     private bool currentlyInteracting = false;
     private bool holdingSomething = false;
     private GameObject objectBeingHeld;
+    private InteractableTask currentTask;
+    private DoorScript currentDoor;
     [SerializeField]
     private List<GameObject> objectsInRange;
     // Start is called before the first frame update
@@ -31,6 +35,11 @@ public class PlayerInteract : MonoBehaviour
         {
             // Interact; lock player movement, begin interactable animation.
             BeginInteracting();
+        }
+        if(readyForDoor && Input.GetKeyDown(KeyCode.E))
+        {
+            // Open door
+            currentDoor.OpenDoor(player.transform.position);
         }
         if (Input.GetMouseButtonDown(0))
         {
@@ -95,6 +104,12 @@ public class PlayerInteract : MonoBehaviour
         if(other.tag == "Interactable")
         {
             readyToInteract = true;
+            currentTask = other.gameObject.GetComponent<InteractableTask>();
+        }
+        if(other.tag == "Door")
+        {
+            currentDoor = other.gameObject.GetComponent<DoorScript>();
+            readyForDoor = true;
         }
     }
 
@@ -108,6 +123,11 @@ public class PlayerInteract : MonoBehaviour
         {
             readyToInteract = false;
         }
+        if (other.tag == "Door")
+        {
+            readyForDoor = false;
+            currentDoor = null;
+        }
     }
 
     void BeginInteracting()
@@ -115,14 +135,17 @@ public class PlayerInteract : MonoBehaviour
         player.canMove = false;
         readyToInteract = false;
         currentlyInteracting = true;
+        string animName = currentTask.animationName;
+        anim.Play(animName);
         // Play anim
     }
 
     public void StopInteracting()
     {
+        // Either call from anim or call from coroutine after anim length
         player.canMove = true;
         currentlyInteracting = false;
-        // Either call from anim or call from coroutine after anim length
+        currentTask = null;
     }
 
 }
