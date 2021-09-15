@@ -325,7 +325,7 @@ MonoBehaviour:
     showEyeDropper: 1
   balance:
     m_OverrideState: 1
-    m_Value: -37
+    m_Value: 5
     min: -100
     max: 100
 --- !u!114 &-1784658879416218386
@@ -422,13 +422,13 @@ MonoBehaviour:
   m_AdvancedMode: 0
   lift:
     m_OverrideState: 0
-    m_Value: {x: 0.9837675, y: 0.9478893, z: 1, w: 0}
+    m_Value: {x: 0.9841667, y: 0.95, z: 1, w: 0}
   gamma:
     m_OverrideState: 1
-    m_Value: {x: 0.98157585, y: 0.9896545, z: 1, w: 0}
+    m_Value: {x: 0.98, y: 0.98866665, z: 1, w: 0}
   gain:
     m_OverrideState: 1
-    m_Value: {x: 0.92669076, y: 0.924554, z: 1, w: 0}
+    m_Value: {x: 0.92266667, y: 0.92, z: 1, w: 0}
 --- !u!114 &1244173067742474615
 MonoBehaviour:
   m_ObjectHideFlags: 3
