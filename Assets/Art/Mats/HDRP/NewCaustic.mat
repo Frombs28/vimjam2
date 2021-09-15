@@ -128,7 +128,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - AlphaOffset: 0
+    - AlphaOffset: 1
     - Speed: 0.025
     - _AORemapMax: 1
     - _AORemapMin: 0
@@ -242,9 +242,9 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 0
     m_Colors:
-    - ColorMul: {r: 9.884814, g: 21.888796, b: 31.999996, a: 0}
+    - ColorMul: {r: 3.0117648, g: 21.709805, b: 29.239216, a: 0}
     - Dir1: {r: 1, g: 1, b: 0, a: 0}
-    - Dir2: {r: -1, g: 1, b: 0, a: 0}
+    - Dir2: {r: 1, g: -1, b: 0, a: 0}
     - Tiling: {r: 0.5, g: 0.5, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
