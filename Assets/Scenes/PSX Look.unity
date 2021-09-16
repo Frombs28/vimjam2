@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.00028896378, g: 0.00028896378, b: 0.00028896378, a: 1}
+  m_IndirectSpecularColor: {r: 0.0002939701, g: 0.0002939701, b: 0.0002939701, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -44463,10 +44463,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1488927393, guid: ed7529c951fc7464cab0a92e81a1902a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 15963739269942175, guid: ed7529c951fc7464cab0a92e81a1902a, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -44514,42 +44510,6 @@ PrefabInstance:
     - target: {fileID: 5537839584045552517, guid: ed7529c951fc7464cab0a92e81a1902a, type: 3}
       propertyPath: m_Name
       value: Player cam prefab
-      objectReference: {fileID: 0}
-    - target: {fileID: 7505820179959707660, guid: ed7529c951fc7464cab0a92e81a1902a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 4.95
-      objectReference: {fileID: 0}
-    - target: {fileID: 7505820179959707661, guid: ed7529c951fc7464cab0a92e81a1902a, type: 3}
-      propertyPath: field of view
-      value: 80
-      objectReference: {fileID: 0}
-    - target: {fileID: 7505820179959707667, guid: ed7529c951fc7464cab0a92e81a1902a, type: 3}
-      propertyPath: clearColorMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7505820180616649036, guid: ed7529c951fc7464cab0a92e81a1902a, type: 3}
-      propertyPath: m_Intensity
-      value: 37.323204
-      objectReference: {fileID: 0}
-    - target: {fileID: 7505820180616649036, guid: ed7529c951fc7464cab0a92e81a1902a, type: 3}
-      propertyPath: m_SpotAngle
-      value: 110
-      objectReference: {fileID: 0}
-    - target: {fileID: 7505820180616649036, guid: ed7529c951fc7464cab0a92e81a1902a, type: 3}
-      propertyPath: m_InnerSpotAngle
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7505820180616649037, guid: ed7529c951fc7464cab0a92e81a1902a, type: 3}
-      propertyPath: m_CustomSpotLightShadowCone
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7505820180889795422, guid: ed7529c951fc7464cab0a92e81a1902a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 4.95
-      objectReference: {fileID: 0}
-    - target: {fileID: 7505820180889795423, guid: ed7529c951fc7464cab0a92e81a1902a, type: 3}
-      propertyPath: m_Lens.FieldOfView
-      value: 80
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed7529c951fc7464cab0a92e81a1902a, type: 3}
