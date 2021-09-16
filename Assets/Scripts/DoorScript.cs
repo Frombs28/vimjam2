@@ -25,12 +25,12 @@ public class DoorScript : MonoBehaviour
         float angleBetween = Vector3.Angle(transform.forward, doorToPlayer);
         if (angleBetween > 90.0f)
         {
-            // Open "forwards" (right door knob swings back on single doors)
+            // Open "forwards" (left door knob swings back on single doors)
             anim.SetBool("OpenFor", true);
         }
         else
         {
-            // Open "backwards" (left door knob swings back on single doors)
+            // Open "backwards" (right door knob swings back on single doors)
             anim.SetBool("OpenBack", true);
         }
         box.enabled = false;

@@ -92,6 +92,7 @@ public class PlayerInteract : MonoBehaviour
         objectBeingHeld.transform.rotation = hand.transform.rotation;
         objectBeingHeld.transform.parent = hand.transform;
         objectBeingHeld.layer = 9;
+        objectBeingHeld.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
     }
 
     void Drop(bool deleteItem)
@@ -100,6 +101,7 @@ public class PlayerInteract : MonoBehaviour
         objectBeingHeld.transform.parent = null;
         objectBeingHeld.layer = 11;
         objectBeingHeld.transform.eulerAngles = Vector3.zero;
+        objectBeingHeld.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
         if (deleteItem)
         {
             objectBeingHeld.SetActive(false);
@@ -118,7 +120,7 @@ public class PlayerInteract : MonoBehaviour
                 objectsInRange.Add(other.gameObject);
             }
         }
-        if(other.tag == "Task")
+        if(other.tag == "Task" && !currentlyInteracting)
         {
             readyToInteract = true;
             currentTask = other.gameObject.GetComponent<InteractableTask>();
@@ -136,7 +138,7 @@ public class PlayerInteract : MonoBehaviour
         {
             objectsInRange.Remove(other.gameObject);
         }
-        if (other.tag == "Task")
+        if (other.tag == "Task" && !currentlyInteracting)
         {
             readyToInteract = false;
             currentTask = null;
