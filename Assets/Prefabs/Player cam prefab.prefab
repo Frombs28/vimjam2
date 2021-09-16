@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clearColorMode: 0
-  backgroundColorHDR: {r: 0.025, g: 0.07, b: 0.19, a: 0}
+  backgroundColorHDR: {r: 0, g: 0, b: 0, a: 0}
   clearDepth: 1
   volumeLayerMask:
     serializedVersion: 2
@@ -739,13 +739,13 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 0.9749326, b: 0.82452834, a: 1}
-  m_Intensity: 209.0829
+  m_Intensity: 54.338894
   m_Range: 100
-  m_SpotAngle: 45
+  m_SpotAngle: 90
   m_InnerSpotAngle: 4
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 1
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -770,7 +770,7 @@ Light:
       e32: 0
       e33: 1
     m_UseCullingMatrixOverride: 0
-  m_Cookie: {fileID: 2800000, guid: 17a7192be100e104baffb12c9b474a68, type: 3}
+  m_Cookie: {fileID: 2800000, guid: d055d2e4a668b0843b0f07c89d8f4cf8, type: 3}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
   m_RenderMode: 0
@@ -787,7 +787,7 @@ Light:
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
-  m_ShadowRadius: 0
+  m_ShadowRadius: 0.25
   m_ShadowAngle: 0
 --- !u!114 &7505820180616649037
 MonoBehaviour:
@@ -804,7 +804,7 @@ MonoBehaviour:
   m_Intensity: 100
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
-  m_InnerSpotPercent: 15
+  m_InnerSpotPercent: 65.4
   m_SpotIESCutoffPercent: 100
   m_LightDimmer: 1
   m_VolumetricDimmer: 1
@@ -817,7 +817,7 @@ MonoBehaviour:
   m_ShapeWidth: 0.5
   m_ShapeHeight: 0.5
   m_AspectRatio: 1
-  m_ShapeRadius: 0.025
+  m_ShapeRadius: 0.25
   m_SoftnessScale: 1
   m_UseCustomSpotLightShadowCone: 0
   m_CustomSpotLightShadowCone: 4
@@ -863,13 +863,13 @@ MonoBehaviour:
   m_ShadowResolution:
     m_Override: 512
     m_UseOverride: 0
-    m_Level: 0
+    m_Level: 3
   m_ShadowDimmer: 1
   m_VolumetricShadowDimmer: 1
   m_ShadowFadeDistance: 10000
   m_UseContactShadow:
     m_Override: 0
-    m_UseOverride: 1
+    m_UseOverride: 0
     m_Level: 0
   m_RayTracedContactShadow: 0
   m_ShadowTint: {r: 0, g: 0, b: 0, a: 1}
@@ -900,7 +900,7 @@ MonoBehaviour:
   useOldInspector: 0
   useVolumetric: 1
   featuresFoldout: 1
-  showAdditionalSettings: 0
+  showAdditionalSettings: 1
   m_AreaLightEmissiveMeshShadowCastingMode: 0
   m_AreaLightEmissiveMeshMotionVectorGenerationMode: 0
   m_AreaLightEmissiveMeshLayer: -1
@@ -1192,6 +1192,21 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_ApplyBeforeBody: 0
+--- !u!114 &2143107811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7505820181229346174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c7ef0091b25ed44c8c5ec2b0d6e2ba0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputSound: event:/FootstepsConcrete
+  walkSpeed: 0.65
+  runSpeed: 0.3
 --- !u!1001 &7665986857620334852
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1263,7 +1278,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 164673589120332927, guid: 8ce72ffaa1004e24096e843e50510742, type: 3}
   m_PrefabInstance: {fileID: 7665986857620334852}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 7505820181229346174}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 39f54ba120aa9b94c90452a403522e94, type: 3}
@@ -1272,5 +1287,10 @@ MonoBehaviour:
 --- !u!4 &7665986858203899418 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1028362014, guid: 8ce72ffaa1004e24096e843e50510742, type: 3}
+  m_PrefabInstance: {fileID: 7665986857620334852}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7505820181229346174 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 164673589120332922, guid: 8ce72ffaa1004e24096e843e50510742, type: 3}
   m_PrefabInstance: {fileID: 7665986857620334852}
   m_PrefabAsset: {fileID: 0}

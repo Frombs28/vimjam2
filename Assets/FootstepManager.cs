@@ -7,12 +7,13 @@ public class FootstepManager : MonoBehaviour
     [FMODUnity.EventRef]
     public string inputSound;
     public float walkSpeed = 1f;
+    public float runSpeed = 0.3f;
 
     private bool isMoving = false;
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("PlayFootsteps", 0, walkSpeed);
+        StartCoroutine(PlayFootsteps());
     }
 
     // Update is called once per frame
@@ -28,11 +29,16 @@ public class FootstepManager : MonoBehaviour
         }
     }
 
-    private void PlayFootsteps()
+    IEnumerator PlayFootsteps()
     {
-        if (isMoving)
+        while (true)
         {
-            FMODUnity.RuntimeManager.PlayOneShot(inputSound, transform.position);
+            if (isMoving)
+            {
+                FMODUnity.RuntimeManager.PlayOneShot(inputSound, transform.position);
+            }
+            if (Input.GetKey(KeyCode.LeftShift)) yield return new WaitForSeconds(runSpeed);
+            else yield return new WaitForSeconds(walkSpeed);
         }
     }
 
