@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerInteract : MonoBehaviour
 {
     public PlayerMovement player;
+    //public Cinemachine.CinemachineVirtualCamera virtualCam;
     public GameObject hand;
     public Camera mainCamera;
     public Animator anim;
@@ -16,6 +17,8 @@ public class PlayerInteract : MonoBehaviour
     private GameObject objectBeingHeld;
     private InteractableTask currentTask;
     private DoorScript currentDoor;
+    private Coroutine taskCoroutine;
+    private float taskDuration;
     [SerializeField]
     private List<GameObject> objectsInRange;
     // Start is called before the first frame update
@@ -29,9 +32,19 @@ public class PlayerInteract : MonoBehaviour
     {
         if (currentlyInteracting)
         {
+            if (Input.GetMouseButtonDown(0))
+            {
+                currentTask.anim.SetBool("DoTask", true);
+                taskCoroutine = StartCoroutine(WaitForInteraction(taskDuration));
+            }
+            else if(Input.GetMouseButtonUp(0))
+            {
+                currentTask.anim.SetBool("DoTask", false);
+                StopCoroutine(taskCoroutine);
+            }
             return;
         }
-        if(readyToInteract && Input.GetKeyDown(KeyCode.E))
+        if (readyToInteract && Input.GetKeyDown(KeyCode.E) && (currentTask.requiredItem == "" || (objectBeingHeld != null && currentTask.requiredItem == objectBeingHeld.name)))
         {
             // Interact; lock player movement, begin interactable animation.
             BeginInteracting();
@@ -45,7 +58,7 @@ public class PlayerInteract : MonoBehaviour
         {
             if (holdingSomething)
             {
-                Drop();
+                Drop(false);
             }
             else
             {
@@ -81,12 +94,16 @@ public class PlayerInteract : MonoBehaviour
         objectBeingHeld.layer = 9;
     }
 
-    void Drop()
+    void Drop(bool deleteItem)
     {
         holdingSomething = false;
         objectBeingHeld.transform.parent = null;
         objectBeingHeld.layer = 11;
         objectBeingHeld.transform.eulerAngles = Vector3.zero;
+        if (deleteItem)
+        {
+            objectBeingHeld.SetActive(false);
+        }
         objectBeingHeld = null;
         hand.GetComponent<MeshRenderer>().enabled = true;
     }
@@ -101,7 +118,7 @@ public class PlayerInteract : MonoBehaviour
                 objectsInRange.Add(other.gameObject);
             }
         }
-        if(other.tag == "Interactable")
+        if(other.tag == "Task")
         {
             readyToInteract = true;
             currentTask = other.gameObject.GetComponent<InteractableTask>();
@@ -119,9 +136,10 @@ public class PlayerInteract : MonoBehaviour
         {
             objectsInRange.Remove(other.gameObject);
         }
-        if (other.tag == "Interactable")
+        if (other.tag == "Task")
         {
             readyToInteract = false;
+            currentTask = null;
         }
         if (other.tag == "Door")
         {
@@ -133,19 +151,33 @@ public class PlayerInteract : MonoBehaviour
     void BeginInteracting()
     {
         player.canMove = false;
+        //virtualCam.enabled = false;
         readyToInteract = false;
+        taskDuration = currentTask.duration;
         currentlyInteracting = true;
-        string animName = currentTask.animationName;
-        anim.Play(animName);
-        // Play anim
+        currentTask.anim.Play("TaskStart");
+        if(currentTask.requiredItem != "")
+        {
+            Drop(true);
+        }
+        //anim.Play(animName);
+        //StartCoroutine(WaitForInteraction(duration));
     }
 
     public void StopInteracting()
     {
         // Either call from anim or call from coroutine after anim length
+        //virtualCam.enabled = true;
         player.canMove = true;
         currentlyInteracting = false;
         currentTask = null;
+        //anim.Play("Main");
+    }
+
+    IEnumerator WaitForInteraction(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        StopInteracting();
     }
 
 }

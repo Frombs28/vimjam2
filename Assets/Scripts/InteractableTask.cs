@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class InteractableTask : MonoBehaviour
 {
-    public string animationName = "";
+    public float duration = 10.0f;
+    public string requiredItem = "";
+    public Animator anim;
     // Start is called before the first frame update
     void Start()
     {
