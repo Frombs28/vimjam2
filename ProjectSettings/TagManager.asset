@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Grabbable
   - Door
+  - Task
   layers:
   - Default
   - TransparentFX
