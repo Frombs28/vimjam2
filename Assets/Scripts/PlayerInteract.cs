@@ -103,6 +103,9 @@ public class PlayerInteract : MonoBehaviour
         {
             Equip(5);
         }
+
+        //anim stuff
+        anim.SetFloat("Speed",player.animSpeed);
     }
 
     void PickUp()

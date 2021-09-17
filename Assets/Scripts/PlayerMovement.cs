@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public bool canMove = true;
     public float maxStamina = 3.0f;
     public float staminRechargeRate = 1.0f;
+    public float animSpeed = 0.0f;
 
     private CharacterController controller;
     private Vector3 velocity;
@@ -52,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 trueSpeed = speed;
             }
+            animSpeed = (move.magnitude * trueSpeed) / 24.0f;
             controller.Move(move * trueSpeed * Time.deltaTime);
             if(move.magnitude > 0.0f && trueSpeed == sprintSpeed && stamina > 0)
             {
@@ -73,10 +75,5 @@ public class PlayerMovement : MonoBehaviour
         }
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
-    }
-
-    public int GetMoveSpeed()
-    {
-        if()
     }
 }
