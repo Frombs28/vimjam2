@@ -9,22 +9,42 @@ public class PlayerInteract : MonoBehaviour
     public GameObject hand;
     public Camera mainCamera;
     public Animator anim;
+    public Light flashlight;
+    public List<MeshRenderer> handObjects;
+    // hand = 0, dont mess with this
+    // radio = 1
+    // flashlight = 2
+    // keys = 3
+    // lightbulb = 4
+    // plant = 5
 
+    private int currentItemInHand;
+    private bool readyForPickup = false;
     private bool readyForDoor = false;
     private bool readyToInteract = false;
     private bool currentlyInteracting = false;
-    private bool holdingSomething = false;
-    private GameObject objectBeingHeld;
+    private InteractableTask currentPickup;
     private InteractableTask currentTask;
     private DoorScript currentDoor;
     private Coroutine taskCoroutine;
     private float taskDuration;
-    [SerializeField]
-    private List<GameObject> objectsInRange;
+    private bool hasRadio = true;
+    private bool hasFlashlight = true;
+    private bool hasKeys = false;
+    private bool hasLightbulbs = false;
+    private bool hasPlants = false;
     // Start is called before the first frame update
     void Start()
     {
-        
+        handObjects[0].enabled = false;
+        handObjects[1].enabled = true;
+        handObjects[2].enabled = false;
+        handObjects[3].enabled = false;
+        handObjects[4].enabled = false;
+        handObjects[4].gameObject.transform.GetChild(0).GetComponent<MeshRenderer>().enabled = false;
+        handObjects[5].enabled = false;
+        currentItemInHand = 1;
+        flashlight.enabled = false;
     }
 
     // Update is called once per frame
@@ -44,7 +64,7 @@ public class PlayerInteract : MonoBehaviour
             }
             return;
         }
-        if (readyToInteract && Input.GetKeyDown(KeyCode.E) && (currentTask.requiredItem == "" || (objectBeingHeld != null && currentTask.requiredItem == objectBeingHeld.name)))
+        if (readyToInteract && Input.GetKeyDown(KeyCode.E) && !currentTask.completed && (currentTask.requiredItem == 0 || (currentTask.requiredItem == currentItemInHand)))
         {
             // Interact; lock player movement, begin interactable animation.
             BeginInteracting();
@@ -54,60 +74,88 @@ public class PlayerInteract : MonoBehaviour
             // Open door
             currentDoor.OpenDoor(player.transform.position);
         }
-        if (Input.GetMouseButtonDown(0))
+        if (readyForPickup && Input.GetMouseButtonDown(0))
         {
-            if (holdingSomething)
-            {
-                Drop(false);
-            }
-            else
-            {
-                PickUp();
-            }
+            // Add that pickup to our array
+            PickUp();
+        }
+        if(currentItemInHand == 2 && Input.GetMouseButtonDown(1))
+        {
+            flashlight.enabled = !flashlight.enabled;
+        }
+        if(hasRadio && Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            Equip(1);
+        }
+        if (hasFlashlight && Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            Equip(2);
+        }
+        if (hasKeys && Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            Equip(3);
+        }
+        if (hasLightbulbs && Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            Equip(4);
+        }
+        if (hasPlants && Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            Equip(5);
         }
     }
 
     void PickUp()
     {
-        if(objectsInRange.Count == 0)
+        int itemNum = currentPickup.pickupNum;
+        if (itemNum == 3)
+        {
+            hasKeys = true;
+        }
+        else if(itemNum == 4)
+        {
+            hasLightbulbs = true;
+        }
+        else if(itemNum == 5)
+        {
+            hasPlants = true;
+        }
+        else
+        {
+            Debug.LogError("Wrong current pickup number: " + itemNum);
+        }
+        Equip(itemNum);
+        currentPickup.gameObject.SetActive(false);
+        currentPickup = null;
+        readyForPickup = false;
+    }
+
+    void Equip(int itemNumber)
+    {
+        if(itemNumber == currentItemInHand)
         {
             return;
         }
-        float minDistance = 10.0f;
-        Vector3 center = new Vector3(0.5f,0.5f,0.0f);
-        foreach (GameObject thing in objectsInRange)
+        handObjects[currentItemInHand].enabled = false;
+        for(int i = 0; i < handObjects[currentItemInHand].gameObject.transform.childCount; i++)
         {
-            Vector3 viewPos = mainCamera.WorldToViewportPoint(thing.transform.position);
-            float distance = Vector3.Distance(viewPos, center);
-            if(distance < minDistance)
+            MeshRenderer ren = handObjects[currentItemInHand].gameObject.transform.GetChild(i).GetComponent<MeshRenderer>();
+            if (ren)
             {
-                minDistance = distance;
-                //Debug.Log("Distance of " + thing.name + " : " + distance);
-                objectBeingHeld = thing;
+                ren.enabled = false;
             }
         }
-        holdingSomething = true;
-        hand.GetComponent<MeshRenderer>().enabled = false;
-        objectBeingHeld.transform.position = hand.transform.position;
-        objectBeingHeld.transform.rotation = hand.transform.rotation;
-        objectBeingHeld.transform.parent = hand.transform;
-        objectBeingHeld.layer = 9;
-        objectBeingHeld.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
-    }
-
-    void Drop(bool deleteItem)
-    {
-        holdingSomething = false;
-        objectBeingHeld.transform.parent = null;
-        objectBeingHeld.layer = 11;
-        objectBeingHeld.transform.eulerAngles = Vector3.zero;
-        objectBeingHeld.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
-        if (deleteItem)
+        handObjects[itemNumber].enabled = true;
+        for (int i = 0; i < handObjects[itemNumber].gameObject.transform.childCount; i++)
         {
-            objectBeingHeld.SetActive(false);
+            MeshRenderer ren = handObjects[itemNumber].gameObject.transform.GetChild(i).GetComponent<MeshRenderer>();
+            if (ren)
+            {
+                ren.enabled = true;
+            }
         }
-        objectBeingHeld = null;
-        hand.GetComponent<MeshRenderer>().enabled = true;
+        currentItemInHand = itemNumber;
+        flashlight.enabled = false;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -115,10 +163,8 @@ public class PlayerInteract : MonoBehaviour
         Debug.Log(other.tag);
         if (other.tag == "Grabbable")
         {
-            if (!objectsInRange.Contains(other.gameObject))
-            {
-                objectsInRange.Add(other.gameObject);
-            }
+            readyForPickup = true;
+            currentPickup = other.gameObject.GetComponent<InteractableTask>();
         }
         if(other.tag == "Task" && !currentlyInteracting)
         {
@@ -136,7 +182,8 @@ public class PlayerInteract : MonoBehaviour
     {
         if (other.tag == "Grabbable")
         {
-            objectsInRange.Remove(other.gameObject);
+            readyForPickup = false;
+            currentPickup = null;
         }
         if (other.tag == "Task" && !currentlyInteracting)
         {
@@ -158,12 +205,18 @@ public class PlayerInteract : MonoBehaviour
         taskDuration = currentTask.duration;
         currentlyInteracting = true;
         currentTask.anim.Play("TaskStart");
-        if(currentTask.requiredItem != "")
+        if(currentTask.requiredItem != 0)
         {
-            Drop(true);
+            handObjects[currentItemInHand].enabled = false;
+            for (int i = 0; i < handObjects[currentItemInHand].gameObject.transform.childCount; i++)
+            {
+                MeshRenderer ren = handObjects[currentItemInHand].gameObject.transform.GetChild(i).GetComponent<MeshRenderer>();
+                if (ren)
+                {
+                    ren.enabled = false;
+                }
+            }
         }
-        //anim.Play(animName);
-        //StartCoroutine(WaitForInteraction(duration));
     }
 
     public void StopInteracting()
@@ -173,6 +226,15 @@ public class PlayerInteract : MonoBehaviour
         player.canMove = true;
         currentlyInteracting = false;
         currentTask = null;
+        handObjects[currentItemInHand].enabled = true;
+        for (int i = 0; i < handObjects[currentItemInHand].gameObject.transform.childCount; i++)
+        {
+            MeshRenderer ren = handObjects[currentItemInHand].gameObject.transform.GetChild(i).GetComponent<MeshRenderer>();
+            if (ren)
+            {
+                ren.enabled = true;
+            }
+        }
         //anim.Play("Main");
     }
 
