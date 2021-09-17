@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7698144881793084690}
   - component: {fileID: 7698144881793084688}
   - component: {fileID: 7698144881793084689}
+  - component: {fileID: 948947521}
   m_Layer: 0
   m_Name: FlorescentLight
   m_TagString: Untagged
@@ -218,6 +219,25 @@ MonoBehaviour:
   m_PointlightHDType: 1
   m_SpotLightShape: 0
   m_AreaLightShape: 0
+--- !u!114 &948947521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7698144881793084691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 886be51cdcfca00409c4aec877e98de0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberOfSecondsBetweenEpisodes: 3
+  minNumberOfSecondsBetweenFlicks: 0.05
+  maxNumberOfSecondsBetweenFlicks: 0.2
+  rend: {fileID: 3694914609604437730}
+  trueLight: {fileID: 7698144881793084688}
+  lightOn: {fileID: 2100000, guid: 961a25eaefbd38847a8dd47294036080, type: 2}
+  lightOff: {fileID: 2100000, guid: a4ae798d3aee3394db18901f3689fcac, type: 2}
 --- !u!1 &8516781268563338026
 GameObject:
   m_ObjectHideFlags: 0

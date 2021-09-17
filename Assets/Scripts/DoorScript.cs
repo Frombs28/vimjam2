@@ -6,11 +6,12 @@ public class DoorScript : MonoBehaviour
 {
     public Animator anim;
     public BoxCollider box;
+    public bool locked = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -21,6 +22,10 @@ public class DoorScript : MonoBehaviour
 
     public void OpenDoor(Vector3 playerPos)
     {
+        if (locked)
+        {
+            return;
+        }
         Vector3 doorToPlayer = new Vector3(playerPos.x, transform.position.y, playerPos.z) - new Vector3(transform.position.x, transform.position.y, transform.position.z);
         float angleBetween = Vector3.Angle(transform.forward, doorToPlayer);
         if (angleBetween > 90.0f)
