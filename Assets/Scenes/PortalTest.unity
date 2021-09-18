@@ -1222,7 +1222,7 @@ Transform:
   - {fileID: 37467787}
   - {fileID: 94546480}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &476499282
 MonoBehaviour:
@@ -3275,7 +3275,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1120743257
 GameObject:
@@ -3923,7 +3923,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1317183051
 Rigidbody:
@@ -5192,7 +5192,7 @@ Transform:
   m_Children:
   - {fileID: 1243815367}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1778652227
 GameObject:
@@ -5381,7 +5381,7 @@ Transform:
   - {fileID: 359017169}
   - {fileID: 1644561094}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1852882168
 MonoBehaviour:
@@ -5599,7 +5599,7 @@ Transform:
   m_Children:
   - {fileID: 1778652228}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1945076394
 Rigidbody:
@@ -5733,7 +5733,7 @@ Transform:
   - {fileID: 946302603}
   - {fileID: 1327660392}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1994232780
 Animator:
@@ -6675,7 +6675,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 164673589120332924, guid: 8ce72ffaa1004e24096e843e50510742, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 164673589120332924, guid: 8ce72ffaa1004e24096e843e50510742, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6717,9 +6717,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 164673589120332927, guid: 8ce72ffaa1004e24096e843e50510742, type: 3}
-      propertyPath: flashlight
-      value: 
-      objectReference: {fileID: 2005871633}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ce72ffaa1004e24096e843e50510742, type: 3}

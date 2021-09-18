@@ -194,7 +194,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 12
   sprintSpeed: 24
-  jumpHeight: 3
   gravity: -19.62
   groundCheck: {fileID: 164673589157133672}
   groundCheckDistance: 0.4
@@ -202,7 +201,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   canMove: 1
-  flashlight: {fileID: 0}
+  maxStamina: 3
+  staminRechargeRate: 1
+  animSpeed: 0
+  stamina: 0
 --- !u!1 &164673589157133673
 GameObject:
   m_ObjectHideFlags: 0
