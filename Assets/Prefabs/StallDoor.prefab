@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 1934759926913354984}
   - component: {fileID: 1934759926913354991}
   - component: {fileID: 1934759926913354990}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: StallDoor
   m_TagString: Door
   m_Icon: {fileID: 0}
@@ -279,6 +279,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 1934759926913354984}
   box: {fileID: 1934759926913354986}
+  locked: 0
 --- !u!54 &1934759926913354990
 Rigidbody:
   m_ObjectHideFlags: 0

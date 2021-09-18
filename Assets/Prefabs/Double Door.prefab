@@ -1233,7 +1233,7 @@ GameObject:
   - component: {fileID: 1145611770108311513}
   - component: {fileID: 1145611770108311518}
   - component: {fileID: 1145611770108311519}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Double Door
   m_TagString: Door
   m_Icon: {fileID: 0}
@@ -1305,6 +1305,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 1145611770108311513}
   box: {fileID: 1145611770108311515}
+  locked: 0
 --- !u!54 &1145611770108311519
 Rigidbody:
   m_ObjectHideFlags: 0

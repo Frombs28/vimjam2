@@ -7,6 +7,8 @@ public class DoorScript : MonoBehaviour
     public Animator anim;
     public BoxCollider box;
     public bool locked = false;
+    public bool linkedToDoor = false;
+    public DoorScript otherLinkedDoor;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +28,10 @@ public class DoorScript : MonoBehaviour
         {
             return;
         }
+        if(playerPos == Vector3.zero)
+        {
+            return;
+        }
         Vector3 doorToPlayer = new Vector3(playerPos.x, transform.position.y, playerPos.z) - new Vector3(transform.position.x, transform.position.y, transform.position.z);
         float angleBetween = Vector3.Angle(transform.forward, doorToPlayer);
         if (angleBetween > 90.0f)
@@ -40,6 +46,10 @@ public class DoorScript : MonoBehaviour
         }
         box.enabled = false;
         StartCoroutine(WaitToClose());
+        if (linkedToDoor)
+        {
+            otherLinkedDoor.OpenDoor(Vector3.zero);
+        }
     }
 
     IEnumerator WaitToClose()

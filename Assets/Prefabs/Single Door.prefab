@@ -955,7 +955,7 @@ GameObject:
   - component: {fileID: 3662295809256970044}
   - component: {fileID: 3662295809256970043}
   - component: {fileID: 3662295809256970042}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Single Door
   m_TagString: Door
   m_Icon: {fileID: 0}
@@ -1026,6 +1026,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 3662295809256970044}
   box: {fileID: 3662295809256970046}
+  locked: 0
 --- !u!54 &3662295809256970042
 Rigidbody:
   m_ObjectHideFlags: 0
