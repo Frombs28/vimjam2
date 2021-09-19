@@ -33,6 +33,7 @@ public class PlayerInteract : MonoBehaviour
     private bool hasKeys = false;
     private bool hasLightbulbs = false;
     private bool hasPlants = false;
+    private TaskManager tManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +46,7 @@ public class PlayerInteract : MonoBehaviour
         handObjects[5].enabled = false;
         currentItemInHand = 1;
         flashlight.enabled = false;
+        tManager = FindObjectOfType<TaskManager>();
     }
 
     // Update is called once per frame
@@ -72,7 +74,7 @@ public class PlayerInteract : MonoBehaviour
         if(readyForDoor && Input.GetKeyDown(KeyCode.E))
         {
             // Open door
-            currentDoor.OpenDoor(player.transform.position);
+            currentDoor.OpenDoor(player.transform.position,player.transform);
         }
         if (readyForPickup && Input.GetMouseButtonDown(0))
         {
@@ -238,6 +240,7 @@ public class PlayerInteract : MonoBehaviour
                 ren.enabled = true;
             }
         }
+        tManager.CompleteTask();
         //anim.Play("Main");
     }
 

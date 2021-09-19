@@ -11,7 +11,7 @@ public class PortalCam : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        transform.parent = myPortal;
     }
 
     // Update is called once per frame
@@ -20,8 +20,11 @@ public class PortalCam : MonoBehaviour
         
         // Correct code: useful for any angle
         Vector3 playerOffsetFromOtherPortal = playerCam.position - otherPortal.position;
-        transform.position = myPortal.position + playerOffsetFromOtherPortal;
-
+        transform.localPosition = playerOffsetFromOtherPortal;
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            Debug.Log("Offset: " + playerOffsetFromOtherPortal);
+        }
         float angleDifBetweenPortalRot = Quaternion.Angle(myPortal.rotation, otherPortal.rotation);
         Quaternion portalRotationalDifference = Quaternion.AngleAxis(angleDifBetweenPortalRot, Vector3.up);
         Vector3 newCamDirection = portalRotationalDifference * playerCam.forward;
