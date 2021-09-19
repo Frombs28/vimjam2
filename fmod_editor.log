@@ -25,37 +25,56 @@
 [LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
 [LOG] SystemI::createSound                     : filename = ../vimjam2Fmod/Fmod/Pool/Build/Desktop/Master.bank : mode 02010082
 [LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
-[LOG] SystemI::createSound                     : setdata soundi = 000001EF28B134B8 : node = 000001F0209950A0
-[LOG] SystemI::createSound                     : add node to async list : head = 000001F01A968938.  list count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001EF28B134B8
+[LOG] SystemI::createSound                     : setdata soundi = 000001EF8471CBE8 : node = 000001EFDFDDAF10
+[LOG] SystemI::createSound                     : add node to async list : head = 000001F0364F1048.  list count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001EF8471CBE8
 [LOG] SystemI::createSoundInternal             :     Create name='../vimjam2Fmod/Fmod/Pool/Build/Desktop/Master.bank', mode=0x02010082
 [LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
 [LOG] SystemI::createSoundInternal             :     exinfo->length             = 1703520
 [LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 50432
 [LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000001F0209951B0
+[LOG] SoundI::release                          :     Walkie Talkie Radio Static _ HQ Sound Effects (000001EF28B12DF8)
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000001EFDFDDB020
+[LOG] SoundI::release                          :         Walkie Talkie Radio Static _ HQ Sound Effects (000001F02B537D88)
+[LOG] SystemI::createSoundInternal             :         exinfo->inclusionlistnum   = 1
+[LOG] SoundI::release                          :         Walkie Talkie Radio Static _ HQ Sound Effects (000001EF28B134B8)
+[LOG] SystemI::createSoundInternal             :         exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 34375
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='Walkie Talkie Radio Static _ HQ Sound Effects', format=5, channels=2, frequency=48000, lengthbytes=391328, lengthpcm=2452584, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.539459.
+[WRN] FMOD_OS_Net_Listen                       :     Cannot listen for connections, port 9264 is currently in use.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001EF8471CBE8
+[WRN] SoundSourceInstrumentInstance::startChannelIfReady : Loading delay exceeded, sound may play at incorrect time
+[LOG] SystemI::createSound                     : filename = ../vimjam2Fmod/Fmod/Pool/Build/Desktop/Master.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] SystemI::createSound                     : setdata soundi = 000001F0262EDBB8 : node = 000001EFDFDDB410
+[LOG] SystemI::createSound                     : add node to async list : head = 000001F0364F1048.  list count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001F0262EDBB8
+[LOG] SystemI::createSoundInternal             :     Create name='../vimjam2Fmod/Fmod/Pool/Build/Desktop/Master.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 1703520
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 50432
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000001EFDFDDB520
 [LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
 [LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
 [LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 34375
 [LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
 [LOG] SystemI::createSoundInternal             :     Stream 0/1: name='Walkie Talkie Radio Static _ HQ Sound Effects', format=5, channels=2, frequency=48000, lengthbytes=391328, lengthpcm=2452584, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.539459.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001EF28B134B8
-[LOG] SoundI::release                          : Walkie Talkie Radio Static _ HQ Sound Effects (000001F0262EE278)
-[LOG] SoundI::release                          :     Walkie Talkie Radio Static _ HQ Sound Effects (000001EF2ED47F98)
-[LOG] SoundI::release                          :     Walkie Talkie Radio Static _ HQ Sound Effects (000001F0262ECC88)
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001F0262EDBB8
 [LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
 [LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
 [LOG] SystemI::createSoundInternal             : exinfo->length             = 1703520
 [LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 50432
 [LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000DF15B9EF28
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000DF15A9F048
 [LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
 [LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
 [LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFE7A3F60E0
 [LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFE7A3F60B0
 [LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFE7A3F61B0
 [LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFE7A3F6270
-[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001EF2D10DCC8
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001F012B3BAD8
 [LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
 [LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
 [LOG] SystemI::createSoundInternal             : Sample 0/1: name='Concrete4', format=5, channels=2, frequency=48000, lengthbytes=3360, lengthpcm=16300, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.340942.
@@ -64,14 +83,14 @@
 [LOG] SystemI::createSoundInternal             : exinfo->length             = 1703520
 [LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 50432
 [LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000DF15B9EF28
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000DF15A9F048
 [LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
 [LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
 [LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFE7A3F60E0
 [LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFE7A3F60B0
 [LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFE7A3F61B0
 [LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFE7A3F6270
-[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001EF2D10DCC8
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001F012B3BAD8
 [LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
 [LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
 [LOG] SystemI::createSoundInternal             : Sample 0/1: name='Concrete3', format=5, channels=2, frequency=48000, lengthbytes=4352, lengthpcm=21315, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.231445.
@@ -80,14 +99,14 @@
 [LOG] SystemI::createSoundInternal             : exinfo->length             = 1703520
 [LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 50432
 [LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000DF15B9EF28
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000DF15A9F048
 [LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
 [LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
 [LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFE7A3F60E0
 [LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFE7A3F60B0
 [LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFE7A3F61B0
 [LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFE7A3F6270
-[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001EF2D10DCC8
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001F012B3BAD8
 [LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
 [LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
 [LOG] SystemI::createSoundInternal             : Sample 0/1: name='Concrete1', format=5, channels=2, frequency=48000, lengthbytes=3488, lengthpcm=17554, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.944611.
@@ -96,14 +115,14 @@
 [LOG] SystemI::createSoundInternal             : exinfo->length             = 1703520
 [LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 50432
 [LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000DF15B9EF28
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000DF15A9F048
 [LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
 [LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
 [LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFE7A3F60E0
 [LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFE7A3F60B0
 [LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFE7A3F61B0
 [LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFE7A3F6270
-[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001EF2D10DCC8
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001F012B3BAD8
 [LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
 [LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
 [LOG] SystemI::createSoundInternal             : Sample 0/1: name='Concrete2', format=5, channels=2, frequency=48000, lengthbytes=3744, lengthpcm=18808, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.250397.
@@ -112,89 +131,92 @@
 [LOG] SystemI::createSoundInternal             : exinfo->length             = 1703520
 [LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 50432
 [LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000DF15B9EF28
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000DF15A9F048
 [LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
 [LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
 [LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFE7A3F60E0
 [LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFE7A3F60B0
 [LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFE7A3F61B0
 [LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFE7A3F6270
-[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001EF2D10DCC8
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001F012B3BAD8
 [LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
 [LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
 [LOG] SystemI::createSoundInternal             : Sample 0/1: name='Concrete5', format=5, channels=2, frequency=48000, lengthbytes=2784, lengthpcm=12538, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.292267.
+[LOG] SoundI::release                          : Walkie Talkie Radio Static _ HQ Sound Effects (000001EF8471CBE8)
+[LOG] SoundI::release                          :     Walkie Talkie Radio Static _ HQ Sound Effects (000001F02B537D88)
+[LOG] SoundI::release                          :     Walkie Talkie Radio Static _ HQ Sound Effects (000001EF8471C6D8)
 [WRN] FMOD_OS_Net_Listen                       : Cannot listen for connections, port 9264 is currently in use.
 [LOG] SystemI::createSound                     : filename = ../vimjam2Fmod/Fmod/Pool/Build/Desktop/Master.bank : mode 02010082
 [LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
-[LOG] SystemI::createSound                     : setdata soundi = 000001F0262ECC88 : node = 000001F02FA248A0
-[LOG] SystemI::createSound                     : add node to async list : head = 000001F01A968938.  list count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001F0262ECC88
+[LOG] SystemI::createSound                     : setdata soundi = 000001EF28B12DF8 : node = 000001EFCD757660
+[LOG] SystemI::createSound                     : add node to async list : head = 000001F0364F1048.  list count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001EF28B12DF8
 [LOG] SystemI::createSoundInternal             :     Create name='../vimjam2Fmod/Fmod/Pool/Build/Desktop/Master.bank', mode=0x02010082
 [LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
 [LOG] SystemI::createSoundInternal             :     exinfo->length             = 1703520
 [LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 50432
 [LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000001F02FA249B0
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000001EFCD757770
 [LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
 [LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
 [LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 34375
 [LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
 [LOG] SystemI::createSoundInternal             :     Stream 0/1: name='Walkie Talkie Radio Static _ HQ Sound Effects', format=5, channels=2, frequency=48000, lengthbytes=391328, lengthpcm=2452584, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.539459.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001F0262ECC88
-[LOG] SoundI::release                          : Walkie Talkie Radio Static _ HQ Sound Effects (000001EF28B134B8)
-[LOG] SoundI::release                          :     Walkie Talkie Radio Static _ HQ Sound Effects (000001EF2ED46A78)
-[LOG] SoundI::release                          :     Walkie Talkie Radio Static _ HQ Sound Effects (000001F068623B68)
-[WRN] FMOD_OS_Net_Listen                       : Cannot listen for connections, port 9264 is currently in use.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001EF28B12DF8
+[LOG] SoundI::release                          : Walkie Talkie Radio Static _ HQ Sound Effects (000001F0262EDBB8)
+[LOG] SoundI::release                          :     Walkie Talkie Radio Static _ HQ Sound Effects (000001F02B537708)
+[LOG] SoundI::release                          :     Walkie Talkie Radio Static _ HQ Sound Effects (000001EF28B134B8)
 [LOG] SystemI::createSound                     : filename = ../vimjam2Fmod/Fmod/Pool/Build/Desktop/Master.bank : mode 02010082
 [LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
-[LOG] SystemI::createSound                     : setdata soundi = 000001EF29437968 : node = 000001F020995320
-[LOG] SystemI::createSound                     : add node to async list : head = 000001F01A968938.  list count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001EF29437968
+[LOG] SystemI::createSound                     : setdata soundi = 000001F0262EE5D8 : node = 000001F02FA243A0
+[LOG] SystemI::createSound                     : add node to async list : head = 000001F0364F1048.  list count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001F0262EE5D8
 [LOG] SystemI::createSoundInternal             :     Create name='../vimjam2Fmod/Fmod/Pool/Build/Desktop/Master.bank', mode=0x02010082
 [LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
 [LOG] SystemI::createSoundInternal             :     exinfo->length             = 1703520
 [LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 50432
 [LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000001F020995430
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000001F02FA244B0
 [LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
 [LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
 [LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 34375
 [LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
 [LOG] SystemI::createSoundInternal             :     Stream 0/1: name='Walkie Talkie Radio Static _ HQ Sound Effects', format=5, channels=2, frequency=48000, lengthbytes=391328, lengthpcm=2452584, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.539459.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001EF29437968
-[LOG] SoundI::release                          : Walkie Talkie Radio Static _ HQ Sound Effects (000001F0262ECC88)
-[LOG] SoundI::release                          :     Walkie Talkie Radio Static _ HQ Sound Effects (000001EF2ED47918)
-[LOG] SoundI::release                          :     Walkie Talkie Radio Static _ HQ Sound Effects (000001F068622068)
-[LOG] SoundI::release                          :  (000001EFCDA9D5D8)
-[LOG] SoundI::release                          :     Concrete1 (000001EF2ED475D8)
-[LOG] SoundI::release                          :  (000001EFCDA9BA88)
-[LOG] SoundI::release                          :     Concrete2 (000001EF2ED470F8)
-[LOG] SoundI::release                          :  (000001EFCDA97F98)
-[LOG] SoundI::release                          :     Concrete3 (000001EF2ED47298)
-[LOG] SoundI::release                          : Walkie Talkie Radio Static _ HQ Sound Effects (000001EF29437968)
-[LOG] SoundI::release                          :     Walkie Talkie Radio Static _ HQ Sound Effects (000001EF2ED487B8)
-[LOG] SoundI::release                          :     Walkie Talkie Radio Static _ HQ Sound Effects (000001F068623B68)
-[LOG] SoundI::release                          : horrorAmbience (000001EF28B128E8)
-[LOG] SoundI::release                          :     horrorAmbience (000001EF2ED48478)
-[LOG] SoundI::release                          :     horrorAmbience (000001EF28B12DF8)
-[LOG] SoundI::release                          :  (000001EFCDA9D2F8)
-[LOG] SoundI::release                          :     Concrete4 (000001EF2ED4A018)
-[LOG] SoundI::release                          :  (000001EFCDA9C048)
-[LOG] SoundI::release                          :     Concrete5 (000001EF2ED46DB8)
-[LOG] SoundI::release                          :  (000001EFCDA91DD8)
-[LOG] SoundI::release                          :     horrortransition (000001EF2ED482D8)
-[LOG] SoundI::release                          :  (000001EFCDA91C68)
-[LOG] SoundI::release                          :     eyes in the water 2 (000001EF2ED49B38)
-[LOG] SoundI::release                          :  (000001EFCDA913C8)
-[LOG] SoundI::release                          :     eurobeat (000001EF2ED468D8)
-[LOG] SoundI::release                          :  (000001EFCDA91538)
-[LOG] SoundI::release                          :     rhodes (000001EF2ED497F8)
-[LOG] SoundI::release                          :  (000001EFCDA91258)
-[LOG] SoundI::release                          :     eyes in the water 3 (000001EF2ED46598)
-[LOG] SoundI::release                          :  (000001EFCDA910E8)
-[LOG] SoundI::release                          :     randomSong (000001EF2ED47438)
-[LOG] SoundI::release                          :  (000001EFCDA8E178)
-[LOG] SoundI::release                          :     eyes in the water 1 (000001EF2ED48138)
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001F0262EE5D8
+[WRN] FMOD_OS_Net_Listen                       : Cannot listen for connections, port 9264 is currently in use.
+[LOG] SoundI::release                          : Walkie Talkie Radio Static _ HQ Sound Effects (000001EF28B12DF8)
+[LOG] SoundI::release                          :     Walkie Talkie Radio Static _ HQ Sound Effects (000001F02B5388E8)
+[LOG] SoundI::release                          :     Walkie Talkie Radio Static _ HQ Sound Effects (000001EF8471C1C8)
+[LOG] SoundI::release                          :  (000001EFCDA668F8)
+[LOG] SoundI::release                          :     Concrete1 (000001F02B5359C8)
+[LOG] SoundI::release                          :  (000001EFCDA640B8)
+[LOG] SoundI::release                          :     Concrete2 (000001F02B533C88)
+[LOG] SoundI::release                          :  (000001EFCDA65088)
+[LOG] SoundI::release                          :     Concrete3 (000001F02B5373C8)
+[LOG] SoundI::release                          : Walkie Talkie Radio Static _ HQ Sound Effects (000001F0262EE5D8)
+[LOG] SoundI::release                          :     Walkie Talkie Radio Static _ HQ Sound Effects (000001F02B536EE8)
+[LOG] SoundI::release                          :     Walkie Talkie Radio Static _ HQ Sound Effects (000001EF8471C6D8)
+[LOG] SoundI::release                          : horrorAmbience (000001F0262EE278)
+[LOG] SoundI::release                          :     horrorAmbience (000001F02B538748)
+[LOG] SoundI::release                          :     horrorAmbience (000001F0262ECC88)
+[LOG] SoundI::release                          :  (000001EFCDA68B78)
+[LOG] SoundI::release                          :     Concrete4 (000001F02B533FC8)
+[LOG] SoundI::release                          :  (000001EFCDA64228)
+[LOG] SoundI::release                          :     Concrete5 (000001F02B531728)
+[LOG] SoundI::release                          :  (000001EFCDA927E8)
+[LOG] SoundI::release                          :     horrortransition (000001F02B537BE8)
+[LOG] SoundI::release                          :  (000001EFCDA93368)
+[LOG] SoundI::release                          :     eyes in the water 2 (000001F02B5385A8)
+[LOG] SoundI::release                          :  (000001EFCDA92DA8)
+[LOG] SoundI::release                          :     eurobeat (000001F02B538268)
+[LOG] SoundI::release                          :  (000001EFCDA92398)
+[LOG] SoundI::release                          :     rhodes (000001F02B538408)
+[LOG] SoundI::release                          :  (000001EFCDA96FC8)
+[LOG] SoundI::release                          :     eyes in the water 3 (000001F02B538DC8)
+[LOG] SoundI::release                          :  (000001EFCDA97868)
+[LOG] SoundI::release                          :     randomSong (000001F02B537F28)
+[LOG] SoundI::release                          :  (000001EFCDA97138)
+[LOG] SoundI::release                          :     eyes in the water 1 (000001F02B5378A8)
 [LOG] Thread::callback                         : FMOD Studio update thread finished.
 [LOG] Thread::callback                         : FMOD Studio bank load thread finished.
 [LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
