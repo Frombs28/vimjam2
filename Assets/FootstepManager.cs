@@ -10,9 +10,11 @@ public class FootstepManager : MonoBehaviour
     public float runSpeed = 0.3f;
 
     private bool isMoving = false;
+    private PlayerMovement pm;
     // Start is called before the first frame update
     void Start()
     {
+        pm = FindObjectOfType<PlayerMovement>();
         StartCoroutine(PlayFootsteps());
     }
 
@@ -37,7 +39,7 @@ public class FootstepManager : MonoBehaviour
             {
                 FMODUnity.RuntimeManager.PlayOneShot(inputSound, transform.position);
             }
-            if (Input.GetKey(KeyCode.LeftShift)) yield return new WaitForSeconds(runSpeed);
+            if (Input.GetKey(KeyCode.LeftShift) && pm.stamina > 0) yield return new WaitForSeconds(runSpeed);
             else yield return new WaitForSeconds(walkSpeed);
         }
     }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -15,13 +16,14 @@ public class PlayerMovement : MonoBehaviour
     public float maxStamina = 3.0f;
     public float staminRechargeRate = 1.0f;
     public float animSpeed = 0.0f;
+    public Slider staminaSlider;
 
     private CharacterController controller;
     private Vector3 velocity;
     private bool grounded;
     private float trueSpeed;
     [SerializeField]
-    private float stamina;
+    public float stamina;
     
     // Start is called before the first frame update
     void Start()
@@ -29,11 +31,16 @@ public class PlayerMovement : MonoBehaviour
         controller = GetComponent<CharacterController>();
         trueSpeed = speed;
         stamina = maxStamina;
+
+        staminaSlider.maxValue = maxStamina;
+        staminaSlider.value = stamina;
     }
 
     // Update is called once per frame
     void Update()
     {
+        staminaSlider.value = stamina;
+
         grounded = Physics.CheckSphere(groundCheck.position, groundCheckDistance, groundMask);
         if (grounded && velocity.y < 0)
         {
