@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class PortalTeleport : MonoBehaviour
 {
     public Transform player;
     public Transform receiver;
+    public CinemachineBrain cam;
 
     private bool playerIsHere = false;
     private CharacterController cc;
@@ -24,22 +26,31 @@ public class PortalTeleport : MonoBehaviour
         {
             Vector3 portalToPlayer = new Vector3(player.position.x, transform.position.y, player.position.z) - new Vector3(transform.position.x, transform.position.y, transform.position.z);
             float angleBetween = Vector3.Angle(transform.up, portalToPlayer);
-            Debug.DrawRay(transform.position, portalToPlayer, Color.green);
-            Debug.DrawRay(transform.position, transform.up, Color.red);
             if (angleBetween > 90.0f && primed)
             {
                 // Teleport
                 float rotDif = -Quaternion.Angle(transform.rotation, receiver.rotation);
                 rotDif += 180.0f;
+                Debug.Log("Rotate y axis " + player.transform.eulerAngles.y + " by " + rotDif + " to get " + (player.transform.eulerAngles.y + rotDif));
+                //cam.enabled = false;
+                //cam.transform.parent = player.transform;
                 player.Rotate(Vector3.up, rotDif);
-                Vector3 posOffset = Quaternion.Euler(0.0f, rotDif, 0.0f) * portalToPlayer;
-                Vector3 targetPos = receiver.position + posOffset;
+                //Vector3 posOffset = Quaternion.Euler(0.0f, rotDif, 0.0f) * portalToPlayer;
+                //Vector3 targetPos = receiver.position + posOffset;
                 cc.enabled = false;
-                player.position = new Vector3(targetPos.x, player.transform.position.y, targetPos.z);
+                //player.position = new Vector3(targetPos.x, targetPos.y, targetPos.z);
+                player.transform.parent = this.transform.parent;
+                Vector3 local = player.localPosition;
+                player.transform.parent = receiver;
+                player.localPosition = local;
+                player.transform.parent = null;
                 cc.enabled = true;
                 playerIsHere = false;
                 primed = false;
                 Debug.Log("Teleport now!");
+                //StartCoroutine(WaitToEnable());
+                //cam.transform.parent = null;
+                //cam.enabled = true;
             }
             else
             {
@@ -64,4 +75,12 @@ public class PortalTeleport : MonoBehaviour
             playerIsHere = false;
         }
     }
+    
+    IEnumerator WaitToEnable()
+    {
+        yield return new WaitForSeconds(0.1f);
+        cam.transform.parent = null;
+        cam.enabled = true;
+    }
+    
 }
