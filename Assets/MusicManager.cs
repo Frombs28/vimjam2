@@ -23,6 +23,6 @@ public class MusicManager : MonoBehaviour
 
     public void UpdateTension(int t)
     {
-        trackInstance.setParameterByName("Tension", t);
+        FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Tension", t);
     }
 }
