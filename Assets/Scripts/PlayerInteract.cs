@@ -33,6 +33,8 @@ public class PlayerInteract : MonoBehaviour
     private bool hasKeys = false;
     private bool hasLightbulbs = false;
     private bool hasPlants = false;
+    private bool readyForKey = false;
+    private GameObject keys;
     private TaskManager tManager;
     // Start is called before the first frame update
     void Start()
@@ -41,9 +43,8 @@ public class PlayerInteract : MonoBehaviour
         handObjects[1].enabled = true;
         handObjects[2].enabled = false;
         handObjects[3].enabled = false;
+        handObjects[3].gameObject.transform.GetChild(0).GetComponent<MeshRenderer>().enabled = false;
         handObjects[4].enabled = false;
-        handObjects[4].gameObject.transform.GetChild(0).GetComponent<MeshRenderer>().enabled = false;
-        handObjects[5].enabled = false;
         currentItemInHand = 1;
         flashlight.enabled = false;
         tManager = FindObjectOfType<TaskManager>();
@@ -81,6 +82,12 @@ public class PlayerInteract : MonoBehaviour
             // Add that pickup to our array
             PickUp();
         }
+        if (readyForKey && Input.GetMouseButtonDown(0))
+        {
+            FindObjectOfType<LockedDoorManager>().UnlockAllDoors();
+            keys.SetActive(false);
+        }
+
         if(currentItemInHand == 2 && Input.GetMouseButtonDown(1))
         {
             flashlight.enabled = !flashlight.enabled;
@@ -93,17 +100,13 @@ public class PlayerInteract : MonoBehaviour
         {
             Equip(2);
         }
-        if (hasKeys && Input.GetKeyDown(KeyCode.Alpha3))
+        if (hasLightbulbs && Input.GetKeyDown(KeyCode.Alpha3))
         {
             Equip(3);
         }
-        if (hasLightbulbs && Input.GetKeyDown(KeyCode.Alpha4))
+        if (hasPlants && Input.GetKeyDown(KeyCode.Alpha4))
         {
             Equip(4);
-        }
-        if (hasPlants && Input.GetKeyDown(KeyCode.Alpha5))
-        {
-            Equip(5);
         }
 
         //anim stuff
@@ -113,15 +116,11 @@ public class PlayerInteract : MonoBehaviour
     void PickUp()
     {
         int itemNum = currentPickup.pickupNum;
-        if (itemNum == 3)
-        {
-            hasKeys = true;
-        }
-        else if(itemNum == 4)
+        if(itemNum == 3)
         {
             hasLightbulbs = true;
         }
-        else if(itemNum == 5)
+        else if(itemNum == 4)
         {
             hasPlants = true;
         }
@@ -181,6 +180,11 @@ public class PlayerInteract : MonoBehaviour
             currentDoor = other.gameObject.GetComponent<DoorScript>();
             readyForDoor = true;
         }
+        if(other.tag == "Keys")
+        {
+            keys = other.gameObject;
+            readyForKey = true;
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -199,6 +203,10 @@ public class PlayerInteract : MonoBehaviour
         {
             readyForDoor = false;
             currentDoor = null;
+        }
+        if (other.tag == "Keys")
+        {
+            readyForKey = false;
         }
     }
 
