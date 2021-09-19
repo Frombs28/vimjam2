@@ -25,6 +25,11 @@ public class PortalTeleport : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKey(KeyCode.E))
+        {
+            parentTransform.Rotate(Vector3.up,1);
+        }
+
         if (playerIsHere)
         {
             Vector3 portalToPlayer = new Vector3(player.position.x, transform.position.y, player.position.z) - new Vector3(transform.position.x, transform.position.y, transform.position.z);
@@ -38,29 +43,32 @@ public class PortalTeleport : MonoBehaviour
                 //cam.enabled = false;
                 //cam.transform.parent = player.transform;
                 //parentTransform.position = 
-                parentTransform.position = player.position;
-                cam.parent = parentTransform;
-                player.parent = parentTransform;
-                virtualCam.parent = parentTransform;
-                parentTransform.Rotate(Vector3.up, rotDif);
-                cam.parent = null;
-                player.parent = null;
-                virtualCam.parent = null;
-                //player.Rotate(Vector3.up, rotDif);
-                //Vector3 posOffset = Quaternion.Euler(0.0f, rotDif, 0.0f) * portalToPlayer;
-                //Vector3 targetPos = receiver.position + posOffset;
+
                 cc.enabled = false;
-                //player.position = new Vector3(targetPos.x, targetPos.y, targetPos.z);
                 player.transform.parent = this.transform.parent;
                 Vector3 local = player.localPosition;
                 player.transform.parent = receiver;
                 player.localPosition = local;
                 player.transform.parent = null;
                 cc.enabled = true;
+
+                cam.parent = null;
+                player.parent = null;
+                virtualCam.parent = null;
+                parentTransform.position = player.position;
+                cam.parent = parentTransform;
+                player.parent = parentTransform;
+                virtualCam.parent = parentTransform;
+                parentTransform.Rotate(Vector3.up, rotDif);
+
+                //player.Rotate(Vector3.up, rotDif);
+                //Vector3 posOffset = Quaternion.Euler(0.0f, rotDif, 0.0f) * portalToPlayer;
+                //Vector3 targetPos = receiver.position + posOffset;
+                
                 playerIsHere = false;
                 primed = false;
                 Debug.Log("Teleport now!");
-                //StartCoroutine(WaitToEnable());
+                StartCoroutine(WaitToEnable());
                 //cam.transform.parent = null;
                 //cam.enabled = true;
             }
@@ -87,13 +95,14 @@ public class PortalTeleport : MonoBehaviour
             playerIsHere = false;
         }
     }
-    /*
+    
     IEnumerator WaitToEnable()
     {
         yield return new WaitForSeconds(0.1f);
-        cam.transform.parent = null;
-        cam.enabled = true;
+        //cam.parent = null;
+        //player.parent = null;
+        //virtualCam.parent = null;
     }
-    */
+    
 
 }

@@ -67,5 +67,6 @@ public class MonsterScript : MonoBehaviour
                 Debug.LogError("invalid tension value: " + tension);
                 break;
         }
+        Debug.Log("Tension is: " + tension);
     }
 }

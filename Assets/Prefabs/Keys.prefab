@@ -13,10 +13,9 @@ GameObject:
   - component: {fileID: 2963774095946171459}
   - component: {fileID: 2963774095946171516}
   - component: {fileID: 2963774095946171517}
-  - component: {fileID: 2963774095946171518}
   m_Layer: 11
   m_Name: Keys
-  m_TagString: Grabbable
+  m_TagString: Key
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -115,20 +114,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 122
   m_CollisionDetection: 0
---- !u!114 &2963774095946171518
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2963774095946171519}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96b5d2e80f8d0014a98067d2d03c1f8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  duration: 5
-  requiredItem: 0
-  anim: {fileID: 0}
-  pickupNum: 3
-  completed: 0
