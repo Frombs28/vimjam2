@@ -7,12 +7,15 @@ public class PortalTeleport : MonoBehaviour
 {
     public Transform player;
     public Transform receiver;
-    public CinemachineBrain cam;
+    public Transform cam;
+    public Transform parentTransform;
+    public Transform virtualCam;
+    //public CinemachineBrain cam;
 
     private bool playerIsHere = false;
     private CharacterController cc;
     bool primed = false;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +37,16 @@ public class PortalTeleport : MonoBehaviour
                 Debug.Log("Rotate y axis " + player.transform.eulerAngles.y + " by " + rotDif + " to get " + (player.transform.eulerAngles.y + rotDif));
                 //cam.enabled = false;
                 //cam.transform.parent = player.transform;
-                player.Rotate(Vector3.up, rotDif);
+                //parentTransform.position = 
+                parentTransform.position = player.position;
+                cam.parent = parentTransform;
+                player.parent = parentTransform;
+                virtualCam.parent = parentTransform;
+                parentTransform.Rotate(Vector3.up, rotDif);
+                cam.parent = null;
+                player.parent = null;
+                virtualCam.parent = null;
+                //player.Rotate(Vector3.up, rotDif);
                 //Vector3 posOffset = Quaternion.Euler(0.0f, rotDif, 0.0f) * portalToPlayer;
                 //Vector3 targetPos = receiver.position + posOffset;
                 cc.enabled = false;
@@ -61,7 +73,7 @@ public class PortalTeleport : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        if (other.tag == "Player")
         {
             playerIsHere = true;
             primed = false;
@@ -75,12 +87,13 @@ public class PortalTeleport : MonoBehaviour
             playerIsHere = false;
         }
     }
-    
+    /*
     IEnumerator WaitToEnable()
     {
         yield return new WaitForSeconds(0.1f);
         cam.transform.parent = null;
         cam.enabled = true;
     }
-    
+    */
+
 }
