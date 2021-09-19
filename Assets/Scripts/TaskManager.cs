@@ -29,6 +29,6 @@ public class TaskManager : MonoBehaviour
 
     void WinConMet()
     {
-
+        // Allow outside door to be open
     }
 }

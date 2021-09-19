@@ -25,10 +25,6 @@ public class PortalTeleport : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.E))
-        {
-            parentTransform.Rotate(Vector3.up,1);
-        }
 
         if (playerIsHere)
         {
