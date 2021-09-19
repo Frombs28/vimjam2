@@ -10,6 +10,8 @@ public class DoorScript : MonoBehaviour
     public bool linkedToDoor = false;
     public float distanceToClose = 7.0f;
     public DoorScript otherLinkedDoor;
+    public bool finale = false;
+
     private Transform currentPlayerTransform;
     private bool primedToClose = false;
 
@@ -40,6 +42,10 @@ public class DoorScript : MonoBehaviour
         if (locked)
         {
             return;
+        }
+        if (finale)
+        {
+            FindObjectOfType<ConditionManager>().Win();
         }
         Vector3 doorToPlayer = new Vector3(playerPos.x, transform.position.y, playerPos.z) - new Vector3(transform.position.x, transform.position.y, transform.position.z);
         float angleBetween = Vector3.Angle(transform.forward, doorToPlayer);
