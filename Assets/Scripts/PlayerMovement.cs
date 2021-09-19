@@ -74,6 +74,14 @@ public class PlayerMovement : MonoBehaviour
                     stamina = maxStamina;
                 }
             }
+            else if(move.magnitude > 0.0f && trueSpeed == speed && stamina < maxStamina)
+            {
+                stamina += (staminRechargeRate / 4) * Time.deltaTime;
+                if (stamina > maxStamina)
+                {
+                    stamina = maxStamina;
+                }
+            }
 
             //if (Input.GetButtonDown("Jump") && grounded)
             //{
