@@ -10,6 +10,7 @@ public class TaskManager : MonoBehaviour
     public Text textBox;
 
     private RadioManager radManager;
+    [SerializeField]
     private int numberTasks;
     private int step = 0;
     // Start is called before the first frame update
@@ -22,7 +23,11 @@ public class TaskManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(step == 0)
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            CompleteTask();
+        }
+        if (step == 0)
         {
             textBox.text = "Find the keys";
         }
@@ -32,7 +37,7 @@ public class TaskManager : MonoBehaviour
         }
         else if(step == 2)
         {
-            textBox.text = numberTasks.ToString() + " out of " + numberTasksToWin;
+            textBox.text = "Deliminalize: " + numberTasks.ToString() + " out of " + numberTasksToWin;
         }
         else if(step == 3)
         {
@@ -55,6 +60,7 @@ public class TaskManager : MonoBehaviour
         {
             WinConMet();
         }
+        Debug.Log("Complete");
     }
 
     void WinConMet()

@@ -158,6 +158,7 @@ public class PlayerInteract : MonoBehaviour
             Debug.Log("Got key!");
             radManager.getKeys();
             tManager.StepUp(1);
+            readyForKey = false;
         }
 
         if (currentItemInHand == 2 && Input.GetMouseButtonDown(1))
