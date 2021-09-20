@@ -1306,6 +1306,12 @@ MonoBehaviour:
   anim: {fileID: 1145611770108311513}
   box: {fileID: 1145611770108311515}
   locked: 0
+  linkedToDoor: 0
+  distanceToClose: 7
+  otherLinkedDoor: {fileID: 0}
+  finale: 0
+  lockedDoorNoise: event:/LockedDoor
+  openDoorNoise: event:/DoorOpen
 --- !u!54 &1145611770108311519
 Rigidbody:
   m_ObjectHideFlags: 0

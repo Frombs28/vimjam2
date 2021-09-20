@@ -223,6 +223,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3662295809256970043, guid: 2cc6a502055273740b3d6b91990bb0a8, type: 3}
+      propertyPath: openDoorNoise
+      value: event:/DoorOpen
+      objectReference: {fileID: 0}
+    - target: {fileID: 3662295809256970043, guid: 2cc6a502055273740b3d6b91990bb0a8, type: 3}
+      propertyPath: lockedDoorNoise
+      value: event:/LockedDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 3662295809256970043, guid: 2cc6a502055273740b3d6b91990bb0a8, type: 3}
       propertyPath: otherLinkedDoor
       value: 
       objectReference: {fileID: 0}

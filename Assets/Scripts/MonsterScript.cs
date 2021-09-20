@@ -20,9 +20,11 @@ public class MonsterScript : MonoBehaviour
 
     private int tension;
     private float currentPlayerHealth;
+    private MusicManager mm;
     // Start is called before the first frame update
     void Start()
     {
+        mm = FindObjectOfType<MusicManager>();
         tension = 0;
         if(tensionDistances.Count - 1 != maxTension)
         {
@@ -38,10 +40,12 @@ public class MonsterScript : MonoBehaviour
         if(tension < 4 && currentDistance <= tensionDistances[tension + 1])
         {
             tension++;
+            mm.UpdateTension(tension);
         }
         if(tension > 0 && currentDistance > tensionDistances[tension])
         {
             tension--;
+            mm.UpdateTension(tension);
         }
         switch (tension)
         {

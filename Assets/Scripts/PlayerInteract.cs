@@ -22,10 +22,6 @@ public class PlayerInteract : MonoBehaviour
     [FMODUnity.EventRef]
     public string flashlightTrack;
 
-    [HideInInspector]
-    public FMOD.Studio.EventInstance trackInstance;
-
-
     private int currentItemInHand;
     private bool readyForPickup = false;
     private bool readyForDoor = false;
@@ -115,8 +111,7 @@ public class PlayerInteract : MonoBehaviour
         if(currentItemInHand == 2 && Input.GetMouseButtonDown(1))
         {
             flashlight.enabled = !flashlight.enabled;
-            trackInstance = FMODUnity.RuntimeManager.CreateInstance(flashlightTrack);
-            trackInstance.start();
+            FMODUnity.RuntimeManager.PlayOneShot(flashlightTrack, transform.position);
         }
 
         if(hasRadio && Input.GetKeyDown(KeyCode.Alpha1))
