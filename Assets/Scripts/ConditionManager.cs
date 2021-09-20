@@ -2,9 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ConditionManager : MonoBehaviour
 {
+    public PlayerMovement player;
+    public MonsterScript monster;
+    public Image fadeOut;
+    public string winScene;
+    public string loseScene;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,10 +27,32 @@ public class ConditionManager : MonoBehaviour
     public void Win()
     {
         // Fade to white, move to win scene
+        player.enabled = false;
+        monster.enabled = false;
+        Cursor.lockState = CursorLockMode.Confined;
+        StartCoroutine(WinTheGame());
     }
 
     public void Lose()
     {
-        // Fade to black, move to lose scene
+        //Already faded to black, just load lose scene
+        Cursor.lockState = CursorLockMode.Confined;
+        SceneManager.LoadScene(loseScene);
+    }
+
+    IEnumerator WinTheGame()
+    {
+        Color tempColor = Color.white;
+        tempColor.a = 0.0f;
+        fadeOut.color = tempColor;
+        while(fadeOut.color.a < 1.0f)
+        {
+            Color yeet = fadeOut.color;
+            yeet.a += (Time.deltaTime / 3.5f);
+            fadeOut.color = yeet;
+            yield return null;
+        }
+        // Load Win scene
+        SceneManager.LoadScene(winScene);
     }
 }

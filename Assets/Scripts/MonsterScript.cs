@@ -59,7 +59,7 @@ public class MonsterScript : MonoBehaviour
                 // start messing with radio
                 agent.SetDestination(player.transform.position);
                 agent.speed = normalMoveSpeed;
-                currentPlayerHealth += (Time.deltaTime);
+                currentPlayerHealth += (Time.deltaTime*0.5f);
                 break;
             case 2:
                 // start flickering light
@@ -70,6 +70,12 @@ public class MonsterScript : MonoBehaviour
                 // make something appear, mess with camera
                 agent.SetDestination(player.transform.position);
                 agent.speed = walkMoveSpeed;
+                currentPlayerHealth -= (Time.deltaTime * damageMult * 0.5f);
+                if (currentPlayerHealth <= 0.0f)
+                {
+                    // Kill player if he spends enough time right next to ghost
+                    FindObjectOfType<ConditionManager>().Lose();
+                }
                 break;
             case 4:
                 // begin killing player
@@ -86,10 +92,8 @@ public class MonsterScript : MonoBehaviour
                 Debug.LogError("invalid tension value: " + tension);
                 break;
         }
-        Debug.Log("Tension is: " + tension);
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            Debug.Log("Distance: " + currentDistance);
-        }
+        Color newColor = injuredScreen.color;
+        newColor.a = (maxPlayerHealth - currentPlayerHealth)/maxPlayerHealth;
+        injuredScreen.color = newColor;
     }
 }
