@@ -22,6 +22,12 @@ public class MainMenu : MonoBehaviour
         
     }
 
+    public void ReturnToMain()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot(buttonSFX, transform.position);
+        SceneManager.LoadScene(0);
+    }
+
     public void StartGame()
     {
         FMODUnity.RuntimeManager.PlayOneShot(buttonSFX, transform.position);
