@@ -52,6 +52,7 @@ public class PlayerInteract : MonoBehaviour
     private GameObject keys;
     private TaskManager tManager;
     private RadioManager radManager;
+    private bool currentLightState = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -122,6 +123,7 @@ public class PlayerInteract : MonoBehaviour
                 //Stop playing sound
                 trackInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
                 trackInstance.release();
+                textBox.text = "";
             }
             if (Input.GetMouseButtonDown(1))
             {
@@ -129,6 +131,7 @@ public class PlayerInteract : MonoBehaviour
                 StopCoroutine(taskCoroutine);
                 currentTask.anim.Play("Idle");
                 StopInteracting(false);
+                textBox.text = "";
             }
             return;
         }
@@ -153,18 +156,18 @@ public class PlayerInteract : MonoBehaviour
             FindObjectOfType<LockedDoorManager>().UnlockAllDoors();
             keys.SetActive(false);
             Debug.Log("Got key!");
-            monster.SetActive(true);
             radManager.getKeys();
-            tManager.StepUp();
+            tManager.StepUp(1);
         }
 
-        if(currentItemInHand == 2 && Input.GetMouseButtonDown(1))
+        if (currentItemInHand == 2 && Input.GetMouseButtonDown(1))
         {
             flashlight.enabled = !flashlight.enabled;
+            currentLightState = flashlight.enabled;
             FMODUnity.RuntimeManager.PlayOneShot(flashlightTrack, transform.position);
         }
 
-        if(hasRadio && Input.GetKeyDown(KeyCode.Alpha1))
+        if (hasRadio && Input.GetKeyDown(KeyCode.Alpha1))
         {
             Equip(1);
         }
@@ -209,7 +212,8 @@ public class PlayerInteract : MonoBehaviour
         if(hasLightbulbs && hasPlants)
         {
             radManager.getItems();
-            tManager.StepUp();
+            tManager.StepUp(2);
+            monster.SetActive(true);
         }
     }
 
@@ -219,10 +223,23 @@ public class PlayerInteract : MonoBehaviour
         {
             return;
         }
+        if(itemNumber == 2)
+        {
+            flashlight.enabled = currentLightState;
+            if (flashlight.enabled)
+            {
+                FMODUnity.RuntimeManager.PlayOneShot(flashlightTrack, transform.position);
+            }
+        }
+        else if(currentItemInHand == 2)
+        {
+            currentLightState = flashlight.enabled;
+            flashlight.enabled = false;
+            FMODUnity.RuntimeManager.PlayOneShot(flashlightTrack, transform.position);
+        }
         handObjects[currentItemInHand].enabled = false;
         handObjects[itemNumber].enabled = true;
         currentItemInHand = itemNumber;
-        flashlight.enabled = false;
         radManager.RadioActive(itemNumber == 1);
     }
 

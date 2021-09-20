@@ -121,12 +121,15 @@ MonoBehaviour:
   - 25
   - 15
   - 6
-  normalMoveSpeed: 3.5
-  walkMoveSpeed: 1.75
-  slowMoveSpeed: 0.875
   maxPlayerHealth: 5
   damageMult: 1
   injuredScreen: {fileID: 0}
+  speeds:
+  - 12
+  - 6
+  - 4
+  - 2
+  - 2
 --- !u!195 &305026834609662395
 NavMeshAgent:
   m_ObjectHideFlags: 0

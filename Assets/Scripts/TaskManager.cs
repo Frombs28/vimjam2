@@ -62,11 +62,11 @@ public class TaskManager : MonoBehaviour
         // Allow outside door to be open
         finalDoor.locked = false;
         radManager.tasksDone();
-        StepUp();
+        StepUp(3);
     }
 
-    public void StepUp()
+    public void StepUp(int newStep)
     {
-        step++;
+        step = newStep;
     }
 }

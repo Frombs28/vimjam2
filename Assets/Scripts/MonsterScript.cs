@@ -10,12 +10,13 @@ public class MonsterScript : MonoBehaviour
     public GameObject player;
     public int maxTension = 4;
     public List<float> tensionDistances;
-    public float normalMoveSpeed = 1.0f;
-    public float walkMoveSpeed = 0.5f;
-    public float slowMoveSpeed = 0.25f;
+    //public float normalMoveSpeed = 1.0f;
+    //public float walkMoveSpeed = 0.5f;
+    //public float slowMoveSpeed = 0.25f;
     public float maxPlayerHealth = 5.0f;
     public float damageMult = 1.0f;
     public Image injuredScreen;
+    public List<float> speeds;
 
 
     private int tension;
@@ -47,29 +48,26 @@ public class MonsterScript : MonoBehaviour
             tension--;
             mm.UpdateTension(tension);
         }
+        agent.speed = speeds[tension];
         switch (tension)
         {
             case 0:
                 // Just move towards player
                 agent.SetDestination(player.transform.position);
-                agent.speed = normalMoveSpeed;
                 currentPlayerHealth += (Time.deltaTime);
                 break;
             case 1:
                 // start messing with radio
                 agent.SetDestination(player.transform.position);
-                agent.speed = normalMoveSpeed;
                 currentPlayerHealth += (Time.deltaTime*0.5f);
                 break;
             case 2:
                 // start flickering light
                 agent.SetDestination(player.transform.position);
-                agent.speed = walkMoveSpeed;
                 break;
             case 3:
                 // make something appear, mess with camera
                 agent.SetDestination(player.transform.position);
-                agent.speed = walkMoveSpeed;
                 currentPlayerHealth -= (Time.deltaTime * damageMult * 0.5f);
                 if (currentPlayerHealth <= 0.0f)
                 {
@@ -80,7 +78,6 @@ public class MonsterScript : MonoBehaviour
             case 4:
                 // begin killing player
                 agent.SetDestination(player.transform.position);
-                agent.speed = slowMoveSpeed;
                 currentPlayerHealth -= (Time.deltaTime * damageMult);
                 if(currentPlayerHealth <= 0.0f)
                 {
