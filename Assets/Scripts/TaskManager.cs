@@ -23,10 +23,6 @@ public class TaskManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            CompleteTask();
-        }
         if (step == 0)
         {
             textBox.text = "Find the keys";
