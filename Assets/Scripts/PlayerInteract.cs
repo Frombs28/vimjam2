@@ -11,6 +11,8 @@ public class PlayerInteract : MonoBehaviour
     public Camera mainCamera;
     public Animator anim;
     public Slider taskProgress;
+    public Slider taskProgress2;
+    public Image taskOutline;
     public Light flashlight;
     public List<MeshRenderer> handObjects;
     // hand = 0, dont mess with this
@@ -54,7 +56,10 @@ public class PlayerInteract : MonoBehaviour
         tManager = FindObjectOfType<TaskManager>();
         radManager = FindObjectOfType<RadioManager>();
         taskProgress.value = 0.0f;
+        taskProgress2.value = 0.0f;
         taskProgress.enabled = false;
+        taskProgress2.enabled = false;
+        taskOutline.enabled = false;
     }
 
     // Update is called once per frame
@@ -65,6 +70,8 @@ public class PlayerInteract : MonoBehaviour
             if (Input.GetMouseButton(0))
             {
                 taskProgress.value += Time.deltaTime;
+                taskProgress2.value = taskProgress.value;
+                
             }
             if (Input.GetMouseButtonDown(0))
             {
@@ -76,6 +83,7 @@ public class PlayerInteract : MonoBehaviour
                 currentTask.anim.SetBool("DoTask", false);
                 StopCoroutine(taskCoroutine);
                 taskProgress.value = 0.0f;
+                taskProgress2.value = taskProgress.value;
             }
             if (Input.GetMouseButtonDown(1))
             {
@@ -229,6 +237,7 @@ public class PlayerInteract : MonoBehaviour
         {
             handObjects[currentItemInHand].enabled = false;
         }
+        taskOutline.enabled = true;
     }
 
     public void StopInteracting(bool finished)
@@ -244,8 +253,11 @@ public class PlayerInteract : MonoBehaviour
         {
             tManager.CompleteTask();
         }
+        taskOutline.enabled = false;
         taskProgress.enabled = false;
+        taskProgress2.enabled = false;
         taskProgress.value = 0.0f;
+        taskProgress2.value = 0.0f;
         //anim.Play("Main");
     }
 
