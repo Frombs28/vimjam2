@@ -11,6 +11,12 @@ public class DoorScript : MonoBehaviour
     public float distanceToClose = 7.0f;
     public DoorScript otherLinkedDoor;
     public bool finale = false;
+    [FMODUnity.EventRef]
+    public string lockedDoorNoise;
+    [FMODUnity.EventRef]
+    public string openDoorNoise;
+    [HideInInspector]
+    public FMOD.Studio.EventInstance trackInstance;
 
     private Transform currentPlayerTransform;
     private bool primedToClose = false;
@@ -41,6 +47,8 @@ public class DoorScript : MonoBehaviour
     {
         if (locked)
         {
+            trackInstance = FMODUnity.RuntimeManager.CreateInstance(lockedDoorNoise);
+            trackInstance.start();
             return;
         }
         if (finale)
@@ -69,6 +77,8 @@ public class DoorScript : MonoBehaviour
         {
             otherLinkedDoor.OpenDoor(dir);
         }
+        trackInstance = FMODUnity.RuntimeManager.CreateInstance(openDoorNoise);
+        trackInstance.start();
     }
 
     public void OpenDoor(bool forward)

@@ -213,5 +213,5 @@ MonoBehaviour:
   duration: 5
   requiredItem: 0
   anim: {fileID: 0}
-  pickupNum: 4
+  pickupNum: 3
   completed: 0

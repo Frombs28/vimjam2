@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerInteract : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class PlayerInteract : MonoBehaviour
     public GameObject hand;
     public Camera mainCamera;
     public Animator anim;
+    public Slider taskProgress;
     public Light flashlight;
     public List<MeshRenderer> handObjects;
     // hand = 0, dont mess with this
@@ -17,6 +19,12 @@ public class PlayerInteract : MonoBehaviour
     // keys = 3
     // lightbulb = 4
     // plant = 5
+    [FMODUnity.EventRef]
+    public string flashlightTrack;
+
+    [HideInInspector]
+    public FMOD.Studio.EventInstance trackInstance;
+
 
     private int currentItemInHand;
     private bool readyForPickup = false;
@@ -36,6 +44,7 @@ public class PlayerInteract : MonoBehaviour
     private bool readyForKey = false;
     private GameObject keys;
     private TaskManager tManager;
+    private RadioManager radManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -48,6 +57,9 @@ public class PlayerInteract : MonoBehaviour
         currentItemInHand = 1;
         flashlight.enabled = false;
         tManager = FindObjectOfType<TaskManager>();
+        radManager = FindObjectOfType<RadioManager>();
+        taskProgress.value = 0.0f;
+        taskProgress.enabled = false;
     }
 
     // Update is called once per frame
@@ -55,6 +67,10 @@ public class PlayerInteract : MonoBehaviour
     {
         if (currentlyInteracting)
         {
+            if (Input.GetMouseButton(0))
+            {
+                taskProgress.value += Time.deltaTime;
+            }
             if (Input.GetMouseButtonDown(0))
             {
                 currentTask.anim.SetBool("DoTask", true);
@@ -64,6 +80,14 @@ public class PlayerInteract : MonoBehaviour
             {
                 currentTask.anim.SetBool("DoTask", false);
                 StopCoroutine(taskCoroutine);
+                taskProgress.value = 0.0f;
+            }
+            if (Input.GetMouseButtonDown(1))
+            {
+                currentTask.anim.SetBool("DoTask", false);
+                StopCoroutine(taskCoroutine);
+                currentTask.anim.Play("Idle");
+                StopInteracting(false);
             }
             return;
         }
@@ -77,21 +101,25 @@ public class PlayerInteract : MonoBehaviour
             // Open door
             currentDoor.OpenDoor(player.transform.position,player.transform);
         }
-        if (readyForPickup && Input.GetMouseButtonDown(0))
+        if (readyForPickup && Input.GetKeyDown(KeyCode.E))
         {
             // Add that pickup to our array
             PickUp();
         }
-        if (readyForKey && Input.GetMouseButtonDown(0))
+        if (readyForKey && Input.GetKeyDown(KeyCode.E))
         {
             FindObjectOfType<LockedDoorManager>().UnlockAllDoors();
             keys.SetActive(false);
+            Debug.Log("Got key!");
         }
 
         if(currentItemInHand == 2 && Input.GetMouseButtonDown(1))
         {
             flashlight.enabled = !flashlight.enabled;
+            trackInstance = FMODUnity.RuntimeManager.CreateInstance(flashlightTrack);
+            trackInstance.start();
         }
+
         if(hasRadio && Input.GetKeyDown(KeyCode.Alpha1))
         {
             Equip(1);
@@ -160,6 +188,7 @@ public class PlayerInteract : MonoBehaviour
         }
         currentItemInHand = itemNumber;
         flashlight.enabled = false;
+        radManager.RadioActive(itemNumber == 1);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -180,7 +209,7 @@ public class PlayerInteract : MonoBehaviour
             currentDoor = other.gameObject.GetComponent<DoorScript>();
             readyForDoor = true;
         }
-        if(other.tag == "Keys")
+        if(other.tag == "Key")
         {
             keys = other.gameObject;
             readyForKey = true;
@@ -232,12 +261,13 @@ public class PlayerInteract : MonoBehaviour
         }
     }
 
-    public void StopInteracting()
+    public void StopInteracting(bool finished)
     {
         // Either call from anim or call from coroutine after anim length
         //virtualCam.enabled = true;
         player.canMove = true;
         currentlyInteracting = false;
+        currentTask.completed = finished;
         currentTask = null;
         handObjects[currentItemInHand].enabled = true;
         for (int i = 0; i < handObjects[currentItemInHand].gameObject.transform.childCount; i++)
@@ -248,14 +278,24 @@ public class PlayerInteract : MonoBehaviour
                 ren.enabled = true;
             }
         }
-        tManager.CompleteTask();
+        if (finished)
+        {
+            tManager.CompleteTask();
+        }
+        taskProgress.enabled = false;
+        taskProgress.value = 0.0f;
         //anim.Play("Main");
     }
 
     IEnumerator WaitForInteraction(float duration)
     {
         yield return new WaitForSeconds(duration);
-        StopInteracting();
+        StopInteracting(true);
+    }
+
+    public int GetCurrentItem()
+    {
+        return currentItemInHand;
     }
 
 }

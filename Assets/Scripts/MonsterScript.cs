@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class MonsterScript : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class MonsterScript : MonoBehaviour
     public float slowMoveSpeed = 0.25f;
     public float maxPlayerHealth = 5.0f;
     public float damageMult = 1.0f;
+    public Image injuredScreen;
 
 
     private int tension;
@@ -47,11 +49,13 @@ public class MonsterScript : MonoBehaviour
                 // Just move towards player
                 agent.SetDestination(player.transform.position);
                 agent.speed = normalMoveSpeed;
+                currentPlayerHealth += (Time.deltaTime);
                 break;
             case 1:
                 // start messing with radio
                 agent.SetDestination(player.transform.position);
                 agent.speed = normalMoveSpeed;
+                currentPlayerHealth += (Time.deltaTime);
                 break;
             case 2:
                 // start flickering light

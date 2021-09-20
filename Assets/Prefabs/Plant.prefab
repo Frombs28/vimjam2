@@ -130,5 +130,5 @@ MonoBehaviour:
   duration: 5
   requiredItem: 0
   anim: {fileID: 0}
-  pickupNum: 5
+  pickupNum: 4
   completed: 0
