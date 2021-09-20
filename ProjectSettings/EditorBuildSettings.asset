@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 3b85f81b48d9b7d47a54000c53c36bd3
+  - enabled: 1
     path: Assets/Scenes/PSX Look.unity
     guid: 5d2f3c98bb8f84b41bb0601dbe92b2fe
   m_configObjects: {}
