@@ -7,11 +7,14 @@ public class TaskManager : MonoBehaviour
     public int numberTasksToWin = 20;
     public DoorScript finalDoor;
 
+
+    private RadioManager radManager;
     private int numberTasks;
     // Start is called before the first frame update
     void Start()
     {
         numberTasks = 0;
+        radManager = FindObjectOfType<RadioManager>();
     }
 
     // Update is called once per frame
@@ -33,5 +36,6 @@ public class TaskManager : MonoBehaviour
     {
         // Allow outside door to be open
         finalDoor.locked = false;
+        radManager.tasksDone();
     }
 }
