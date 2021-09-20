@@ -37,12 +37,14 @@ public class LightFlicker : MonoBehaviour
     {
         trueNumBetweenEps = Random.Range(numberOfSecondsBetweenEpisodes / 1.5f, numberOfSecondsBetweenEpisodes * 1.5f);
         Invoke("BeginFlicking", trueNumBetweenEps);
+        Debug.Log("Prepped for " + trueNumBetweenEps + " seconds.");
     }
 
     void BeginFlicking()
     {
         numberOfFlicks = Random.Range(3, 9);
         StartCoroutine(Flicker(numberOfFlicks));
+        Debug.Log("Now do " + numberOfFlicks + " flickers");
     }
 
     IEnumerator Flicker(int numberOfTimes)

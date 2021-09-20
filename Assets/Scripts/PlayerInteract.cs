@@ -52,7 +52,6 @@ public class PlayerInteract : MonoBehaviour
         handObjects[1].enabled = true;
         handObjects[2].enabled = false;
         handObjects[3].enabled = false;
-        handObjects[3].gameObject.transform.GetChild(0).GetComponent<MeshRenderer>().enabled = false;
         handObjects[4].enabled = false;
         currentItemInHand = 1;
         flashlight.enabled = false;
@@ -169,23 +168,7 @@ public class PlayerInteract : MonoBehaviour
             return;
         }
         handObjects[currentItemInHand].enabled = false;
-        for(int i = 0; i < handObjects[currentItemInHand].gameObject.transform.childCount; i++)
-        {
-            MeshRenderer ren = handObjects[currentItemInHand].gameObject.transform.GetChild(i).GetComponent<MeshRenderer>();
-            if (ren)
-            {
-                ren.enabled = false;
-            }
-        }
         handObjects[itemNumber].enabled = true;
-        for (int i = 0; i < handObjects[itemNumber].gameObject.transform.childCount; i++)
-        {
-            MeshRenderer ren = handObjects[itemNumber].gameObject.transform.GetChild(i).GetComponent<MeshRenderer>();
-            if (ren)
-            {
-                ren.enabled = true;
-            }
-        }
         currentItemInHand = itemNumber;
         flashlight.enabled = false;
         radManager.RadioActive(itemNumber == 1);
@@ -250,14 +233,6 @@ public class PlayerInteract : MonoBehaviour
         if(currentTask.requiredItem != 0)
         {
             handObjects[currentItemInHand].enabled = false;
-            for (int i = 0; i < handObjects[currentItemInHand].gameObject.transform.childCount; i++)
-            {
-                MeshRenderer ren = handObjects[currentItemInHand].gameObject.transform.GetChild(i).GetComponent<MeshRenderer>();
-                if (ren)
-                {
-                    ren.enabled = false;
-                }
-            }
         }
     }
 
@@ -270,14 +245,6 @@ public class PlayerInteract : MonoBehaviour
         currentTask.completed = finished;
         currentTask = null;
         handObjects[currentItemInHand].enabled = true;
-        for (int i = 0; i < handObjects[currentItemInHand].gameObject.transform.childCount; i++)
-        {
-            MeshRenderer ren = handObjects[currentItemInHand].gameObject.transform.GetChild(i).GetComponent<MeshRenderer>();
-            if (ren)
-            {
-                ren.enabled = true;
-            }
-        }
         if (finished)
         {
             tManager.CompleteTask();
