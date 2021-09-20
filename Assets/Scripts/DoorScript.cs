@@ -26,6 +26,10 @@ public class DoorScript : MonoBehaviour
         {
             FindObjectOfType<LockedDoorManager>().lockedDoors.Add(this);
         }
+        if (finale)
+        {
+            FindObjectOfType<TaskManager>().finalDoor = this;
+        }
     }
 
     // Update is called once per frame

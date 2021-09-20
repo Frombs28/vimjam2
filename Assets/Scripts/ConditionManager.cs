@@ -19,11 +19,11 @@ public class ConditionManager : MonoBehaviour
 
     public void Win()
     {
-
+        // Fade to white, move to win scene
     }
 
     public void Lose()
     {
-
+        // Fade to black, move to lose scene
     }
 }
