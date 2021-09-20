@@ -65,8 +65,27 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Enabled
-    path: Point Light
-    classID: 108
+    path: 
+    classID: 114
+    script: {fileID: 11500000, guid: 886be51cdcfca00409c4aec877e98de0, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: Cylinder/Sphere
+    classID: 1
     script: {fileID: 0}
   - curve:
       serializedVersion: 2
@@ -83,10 +102,10 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: m_Enabled
-    path: 
-    classID: 114
-    script: {fileID: 11500000, guid: 886be51cdcfca00409c4aec877e98de0, type: 3}
+    attribute: m_IsActive
+    path: Cylinder/Sphere (1)
+    classID: 1
+    script: {fileID: 0}
   m_PPtrCurves: []
   m_SampleRate: 60
   m_WrapMode: 0
@@ -96,18 +115,25 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 1963377571
-      attribute: 3305885265
-      script: {fileID: 0}
-      typeID: 108
-      customType: 0
-      isPPtrCurve: 0
-    - serializedVersion: 2
       path: 0
       attribute: 3305885265
       script: {fileID: 11500000, guid: 886be51cdcfca00409c4aec877e98de0, type: 3}
       typeID: 114
       customType: 24
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 2442374031
+      attribute: 2086281974
+      script: {fileID: 0}
+      typeID: 1
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 2394199619
+      attribute: 2086281974
+      script: {fileID: 0}
+      typeID: 1
+      customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
       path: 1651653052
@@ -275,8 +301,27 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Enabled
-    path: Point Light
-    classID: 108
+    path: 
+    classID: 114
+    script: {fileID: 11500000, guid: 886be51cdcfca00409c4aec877e98de0, type: 3}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: Cylinder/Sphere
+    classID: 1
     script: {fileID: 0}
   - curve:
       serializedVersion: 2
@@ -293,10 +338,10 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: m_Enabled
-    path: 
-    classID: 114
-    script: {fileID: 11500000, guid: 886be51cdcfca00409c4aec877e98de0, type: 3}
+    attribute: m_IsActive
+    path: Cylinder/Sphere (1)
+    classID: 1
+    script: {fileID: 0}
   m_EulerEditorCurves:
   - curve:
       serializedVersion: 2

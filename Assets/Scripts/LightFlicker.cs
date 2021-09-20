@@ -35,30 +35,49 @@ public class LightFlicker : MonoBehaviour
 
     void PrepFlick()
     {
-        trueNumBetweenEps = Random.Range(numberOfSecondsBetweenEpisodes / 1.5f, numberOfSecondsBetweenEpisodes * 1.5f);
-        Invoke("BeginFlicking", trueNumBetweenEps);
-        Debug.Log("Prepped for " + trueNumBetweenEps + " seconds.");
+        if (enabled)
+        {
+            trueNumBetweenEps = Random.Range(numberOfSecondsBetweenEpisodes / 1.5f, numberOfSecondsBetweenEpisodes * 1.5f);
+            Invoke("BeginFlicking", trueNumBetweenEps);
+        }
     }
 
     void BeginFlicking()
     {
-        numberOfFlicks = Random.Range(3, 9);
-        StartCoroutine(Flicker(numberOfFlicks));
-        Debug.Log("Now do " + numberOfFlicks + " flickers");
+        if (enabled)
+        {
+            numberOfFlicks = Random.Range(3, 9);
+            StartCoroutine(Flicker(numberOfFlicks));
+        }
+        
+        
     }
 
     IEnumerator Flicker(int numberOfTimes)
     {
         for(int i = 0; i < numberOfTimes; i++)
         {
+            if (!enabled)
+            {
+                yield break;
+            }
             rend.material = lightOff;
-            trueLight.enabled = false;
+            //trueLight.enabled = false;
+            float origianlIn = trueLight.intensity;
+            trueLight.intensity = 0;
+            Debug.Log("Off!");
             yield return new WaitForSeconds(Random.Range(minNumberOfSecondsBetweenFlicks, maxNumberOfSecondsBetweenFlicks));
+            if (!enabled)
+            {
+                yield break;
+            }
             rend.material = lightOn;
-            trueLight.enabled = true;
+            //trueLight.enabled = true;
+            trueLight.intensity = origianlIn;
+            Debug.Log("On!");
             yield return new WaitForSeconds(Random.Range(minNumberOfSecondsBetweenFlicks, maxNumberOfSecondsBetweenFlicks));
         }
-        if (loop)
+        if (loop && enabled)
         {
             PrepFlick();
         }
@@ -66,7 +85,10 @@ public class LightFlicker : MonoBehaviour
 
     public void FlickerLight()
     {
-        PrepFlick();
+        if (enabled)
+        {
+            PrepFlick();
+        }
     }
 
 }
