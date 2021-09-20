@@ -41,11 +41,13 @@ public class RadioManager : MonoBehaviour
         {
             staticInstance.setVolume(1);
             noiseInstance.setVolume(1);
+            voiceInstance.setVolume(1);
         }
         else
         {
             staticInstance.setVolume(0);
             noiseInstance.setVolume(0);
+            voiceInstance.setVolume(0);
         }
     }
 
