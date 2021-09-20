@@ -9,18 +9,24 @@ public class RadioManager : MonoBehaviour
     public string staticBackground;
     [FMODUnity.EventRef]
     public string radioNoises;
+    [FMODUnity.EventRef]
+    public string voiceLines;
 
     [HideInInspector]
     public FMOD.Studio.EventInstance staticInstance;
     [HideInInspector]
     public FMOD.Studio.EventInstance noiseInstance;
+    [HideInInspector]
+    public FMOD.Studio.EventInstance voiceInstance;
     // Start is called before the first frame update
     void Start()
     {
         staticInstance = FMODUnity.RuntimeManager.CreateInstance(staticBackground);
         noiseInstance = FMODUnity.RuntimeManager.CreateInstance(radioNoises);
+        voiceInstance = FMODUnity.RuntimeManager.CreateInstance(voiceLines);
         staticInstance.start();
         noiseInstance.start();
+        voiceInstance.start();
     }
 
     // Update is called once per frame
@@ -41,5 +47,20 @@ public class RadioManager : MonoBehaviour
             staticInstance.setVolume(0);
             noiseInstance.setVolume(0);
         }
+    }
+
+    public void getKeys()
+    {
+        voiceInstance.setParameterByName("haskeys", 1);
+    }
+
+    public void getItems()
+    {
+        voiceInstance.setParameterByName("hasitems", 1);
+    }
+
+    public void tasksDone()
+    {
+        voiceInstance.setParameterByName("isdone", 1);
     }
 }
