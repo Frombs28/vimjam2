@@ -5,6 +5,8 @@ using UnityEngine;
 public class TaskManager : MonoBehaviour
 {
     public int numberTasksToWin = 20;
+    public DoorScript finalDoor;
+
     private int numberTasks;
     // Start is called before the first frame update
     void Start()
@@ -30,5 +32,6 @@ public class TaskManager : MonoBehaviour
     void WinConMet()
     {
         // Allow outside door to be open
+        finalDoor.locked = false;
     }
 }

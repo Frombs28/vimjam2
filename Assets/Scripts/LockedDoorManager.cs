@@ -22,7 +22,10 @@ public class LockedDoorManager : MonoBehaviour
     {
         foreach(DoorScript door in lockedDoors)
         {
-            door.locked = false;
+            if (!door.finale)
+            {
+                door.locked = false;
+            }
         }
     }
 }

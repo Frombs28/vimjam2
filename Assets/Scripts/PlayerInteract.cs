@@ -15,6 +15,7 @@ public class PlayerInteract : MonoBehaviour
     public Image taskOutline;
     public Light flashlight;
     public List<MeshRenderer> handObjects;
+    public Text textBox;
     // hand = 0, dont mess with this
     // radio = 1
     // flashlight = 2
@@ -23,6 +24,12 @@ public class PlayerInteract : MonoBehaviour
     // plant = 5
     [FMODUnity.EventRef]
     public string flashlightTrack;
+    [FMODUnity.EventRef]
+    public string lightbulbScrewing;
+    [FMODUnity.EventRef]
+    public string plantSetup;
+    [HideInInspector]
+    public FMOD.Studio.EventInstance trackInstance;
 
     private int currentItemInHand;
     private bool readyForPickup = false;
@@ -60,6 +67,7 @@ public class PlayerInteract : MonoBehaviour
         taskProgress.enabled = false;
         taskProgress2.enabled = false;
         taskOutline.enabled = false;
+        textBox.text = "";
     }
 
     // Update is called once per frame
@@ -77,6 +85,24 @@ public class PlayerInteract : MonoBehaviour
             {
                 currentTask.anim.SetBool("DoTask", true);
                 taskCoroutine = StartCoroutine(WaitForInteraction(taskDuration));
+                if (currentTask.requiredItem == 3)
+                {
+                    // lightbulb
+                    //FMODUnity.RuntimeManager.PlayOneShot(lightbulbScrewing, currentTask.transform.position);
+                    trackInstance = FMODUnity.RuntimeManager.CreateInstance(lightbulbScrewing);
+                    trackInstance.start();
+                }
+                else if (currentTask.requiredItem == 4)
+                {
+                    // plant
+                    //FMODUnity.RuntimeManager.PlayOneShot(plantSetup, currentTask.transform.position);
+                    trackInstance = FMODUnity.RuntimeManager.CreateInstance(plantSetup);
+                    trackInstance.start();
+                }
+                else
+                {
+                    Debug.LogError("Non existant task!");
+                }
             }
             else if(Input.GetMouseButtonUp(0))
             {
@@ -84,6 +110,9 @@ public class PlayerInteract : MonoBehaviour
                 StopCoroutine(taskCoroutine);
                 taskProgress.value = 0.0f;
                 taskProgress2.value = taskProgress.value;
+                //Stop playing sound
+                trackInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                trackInstance.release();
             }
             if (Input.GetMouseButtonDown(1))
             {
@@ -103,6 +132,7 @@ public class PlayerInteract : MonoBehaviour
         {
             // Open door
             currentDoor.OpenDoor(player.transform.position,player.transform);
+            textBox.text = "";
         }
         if (readyForPickup && Input.GetKeyDown(KeyCode.E))
         {
@@ -162,6 +192,7 @@ public class PlayerInteract : MonoBehaviour
         currentPickup.gameObject.SetActive(false);
         currentPickup = null;
         readyForPickup = false;
+        textBox.text = "";
     }
 
     void Equip(int itemNumber)
@@ -184,21 +215,35 @@ public class PlayerInteract : MonoBehaviour
         {
             readyForPickup = true;
             currentPickup = other.gameObject.GetComponent<InteractableTask>();
+            textBox.text = "Press E to pickup " + other.name;
         }
         if(other.tag == "Task" && !currentlyInteracting)
         {
             readyToInteract = true;
             currentTask = other.gameObject.GetComponent<InteractableTask>();
+            if (!currentTask.completed && (currentTask.requiredItem == 0 || (currentTask.requiredItem == currentItemInHand)))
+            {
+                textBox.text = "Press E";
+            }
         }
         if(other.tag == "Door")
         {
             currentDoor = other.gameObject.GetComponent<DoorScript>();
             readyForDoor = true;
+            if (!currentDoor.locked)
+            {
+                textBox.text = "Press E to open";
+            }
+            else
+            {
+                textBox.text = "Locked...";
+            }
         }
         if(other.tag == "Key")
         {
             keys = other.gameObject;
             readyForKey = true;
+            textBox.text = "Press E to pickup keys";
         }
     }
 
@@ -208,20 +253,24 @@ public class PlayerInteract : MonoBehaviour
         {
             readyForPickup = false;
             currentPickup = null;
+            textBox.text = "";
         }
         if (other.tag == "Task" && !currentlyInteracting)
         {
             readyToInteract = false;
             currentTask = null;
+            textBox.text = "";
         }
         if (other.tag == "Door")
         {
             readyForDoor = false;
             currentDoor = null;
+            textBox.text = "";
         }
         if (other.tag == "Keys")
         {
             readyForKey = false;
+            textBox.text = "";
         }
     }
 
@@ -238,12 +287,16 @@ public class PlayerInteract : MonoBehaviour
             handObjects[currentItemInHand].enabled = false;
         }
         taskOutline.enabled = true;
+        textBox.text = "Hold Left Click to complete task\nRight Click to stop";
     }
 
     public void StopInteracting(bool finished)
     {
         // Either call from anim or call from coroutine after anim length
         //virtualCam.enabled = true;
+        //Stop playing sound
+        trackInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        trackInstance.release();
         player.canMove = true;
         currentlyInteracting = false;
         currentTask.completed = finished;
@@ -252,6 +305,11 @@ public class PlayerInteract : MonoBehaviour
         if (finished)
         {
             tManager.CompleteTask();
+            textBox.text = "";
+        }
+        else
+        {
+            textBox.text = "Press E";
         }
         taskOutline.enabled = false;
         taskProgress.enabled = false;
