@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EndScreen.unity
     guid: f3717fde29682fe4ab22e406c2f8496b
+  - enabled: 1
+    path: Assets/Scenes/WinScene.unity
+    guid: 79891a9645d88664e9b776671e5b13f3
   m_configObjects: {}
