@@ -16,6 +16,7 @@ public class PlayerInteract : MonoBehaviour
     public Light flashlight;
     public List<MeshRenderer> handObjects;
     public Text textBox;
+    public GameObject monster;
     // hand = 0, dont mess with this
     // radio = 1
     // flashlight = 2
@@ -68,6 +69,7 @@ public class PlayerInteract : MonoBehaviour
         taskProgress2.enabled = false;
         taskOutline.enabled = false;
         textBox.text = "";
+        monster.SetActive(false);
     }
 
     // Update is called once per frame
@@ -90,7 +92,6 @@ public class PlayerInteract : MonoBehaviour
                     // lightbulb
                     //FMODUnity.RuntimeManager.PlayOneShot(lightbulbScrewing, currentTask.transform.position);
                     trackInstance = FMODUnity.RuntimeManager.CreateInstance(lightbulbScrewing);
-                    trackInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(currentTask.transform.position));
                     trackInstance.start();
                 }
                 else if (currentTask.requiredItem == 4)
@@ -98,7 +99,6 @@ public class PlayerInteract : MonoBehaviour
                     // plant
                     //FMODUnity.RuntimeManager.PlayOneShot(plantSetup, currentTask.transform.position);
                     trackInstance = FMODUnity.RuntimeManager.CreateInstance(plantSetup);
-                    trackInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(currentTask.transform.position));
                     trackInstance.start();
                 }
                 else
@@ -146,6 +146,7 @@ public class PlayerInteract : MonoBehaviour
             FindObjectOfType<LockedDoorManager>().UnlockAllDoors();
             keys.SetActive(false);
             Debug.Log("Got key!");
+            monster.SetActive(true);
         }
 
         if(currentItemInHand == 2 && Input.GetMouseButtonDown(1))
