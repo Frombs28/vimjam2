@@ -17,6 +17,7 @@ public class PlayerInteract : MonoBehaviour
     public List<MeshRenderer> handObjects;
     public Text textBox;
     public GameObject monster;
+    public List<GameObject> uiImages;
     // hand = 0, dont mess with this
     // radio = 1
     // flashlight = 2
@@ -70,6 +71,12 @@ public class PlayerInteract : MonoBehaviour
         taskOutline.enabled = false;
         textBox.text = "";
         monster.SetActive(false);
+        
+        uiImages[0].SetActive(true);
+        uiImages[1].SetActive(true);
+        uiImages[2].SetActive(false);
+        uiImages[3].SetActive(false);
+        
     }
 
     // Update is called once per frame
@@ -191,6 +198,7 @@ public class PlayerInteract : MonoBehaviour
         {
             Debug.LogError("Wrong current pickup number: " + itemNum);
         }
+        uiImages[itemNum - 1].SetActive(true);
         Equip(itemNum);
         currentPickup.gameObject.SetActive(false);
         currentPickup = null;
