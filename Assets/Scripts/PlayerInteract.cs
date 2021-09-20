@@ -155,6 +155,7 @@ public class PlayerInteract : MonoBehaviour
             Debug.Log("Got key!");
             monster.SetActive(true);
             radManager.getKeys();
+            tManager.StepUp();
         }
 
         if(currentItemInHand == 2 && Input.GetMouseButtonDown(1))
@@ -208,6 +209,7 @@ public class PlayerInteract : MonoBehaviour
         if(hasLightbulbs && hasPlants)
         {
             radManager.getItems();
+            tManager.StepUp();
         }
     }
 
