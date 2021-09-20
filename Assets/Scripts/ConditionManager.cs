@@ -12,10 +12,14 @@ public class ConditionManager : MonoBehaviour
     public string winScene;
     public string loseScene;
 
+    private MusicManager mm;
+    private RadioManager rm;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        mm = FindObjectOfType<MusicManager>();
+        rm = FindObjectOfType<RadioManager>();
     }
 
     // Update is called once per frame
@@ -31,6 +35,8 @@ public class ConditionManager : MonoBehaviour
         monster.enabled = false;
         Cursor.lockState = CursorLockMode.Confined;
         StartCoroutine(WinTheGame());
+        rm.StopInstance();
+        mm.StopInstance();
     }
 
     public void Lose()
@@ -38,6 +44,8 @@ public class ConditionManager : MonoBehaviour
         //Already faded to black, just load lose scene
         Cursor.lockState = CursorLockMode.Confined;
         SceneManager.LoadScene(loseScene);
+        rm.StopInstance();
+        mm.StopInstance();
     }
 
     IEnumerator WinTheGame()

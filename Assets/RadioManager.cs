@@ -65,4 +65,14 @@ public class RadioManager : MonoBehaviour
     {
         voiceInstance.setParameterByName("isdone", 1);
     }
+
+    public void StopInstance()
+    {
+        staticInstance.release();
+        noiseInstance.release();
+        voiceInstance.release();
+        staticInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        noiseInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        voiceInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+    }
 }

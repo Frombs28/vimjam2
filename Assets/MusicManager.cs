@@ -25,4 +25,10 @@ public class MusicManager : MonoBehaviour
     {
         FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Tension", t);
     }
+
+    public void StopInstance()
+    {
+        trackInstance.release();
+        trackInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+    }
 }

@@ -10,10 +10,12 @@ public class MainMenu : MonoBehaviour
     public GameObject creditsSet;
     public GameObject mainSet;
 
+    private MusicManager mm;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        mm = FindObjectOfType<MusicManager>();
     }
 
     // Update is called once per frame
@@ -24,12 +26,14 @@ public class MainMenu : MonoBehaviour
 
     public void ReturnToMain()
     {
+        if(mm != null) mm.StopInstance();
         FMODUnity.RuntimeManager.PlayOneShot(buttonSFX, transform.position);
         SceneManager.LoadScene(0);
     }
 
     public void StartGame()
     {
+        if (mm != null) mm.StopInstance();
         FMODUnity.RuntimeManager.PlayOneShot(buttonSFX, transform.position);
         SceneManager.LoadScene(1);
     }
@@ -50,6 +54,7 @@ public class MainMenu : MonoBehaviour
 
     public void Exit()
     {
+        mm.StopInstance();
         FMODUnity.RuntimeManager.PlayOneShot(buttonSFX, transform.position);
         Application.Quit();
     }
