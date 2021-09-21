@@ -22,6 +22,7 @@ public class MonsterScript : MonoBehaviour
     private int tension;
     private float currentPlayerHealth;
     private MusicManager mm;
+    private bool inRange = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -68,29 +69,43 @@ public class MonsterScript : MonoBehaviour
             case 3:
                 // make something appear, mess with camera
                 agent.SetDestination(player.transform.position);
-                currentPlayerHealth -= (Time.deltaTime * damageMult * 0.5f);
-                if (currentPlayerHealth <= 0.0f)
-                {
-                    // Kill player if he spends enough time right next to ghost
-                    FindObjectOfType<ConditionManager>().Lose();
-                }
                 break;
             case 4:
                 // begin killing player
                 agent.SetDestination(player.transform.position);
-                currentPlayerHealth -= (Time.deltaTime * damageMult);
-                if(currentPlayerHealth <= 0.0f)
-                {
-                    // Kill player if he spends enough time right next to ghost
-                    FindObjectOfType<ConditionManager>().Lose();
-                }
                 break;
             default:
                 Debug.LogError("invalid tension value: " + tension);
                 break;
         }
+        if (inRange)
+        {
+            currentPlayerHealth -= (Time.deltaTime * damageMult);
+            if (currentPlayerHealth <= 0.0f)
+            {
+                // Kill player if he spends enough time right next to ghost
+                FindObjectOfType<ConditionManager>().Lose();
+            }
+        }
+
         Color newColor = injuredScreen.color;
         newColor.a = (maxPlayerHealth - currentPlayerHealth)/maxPlayerHealth;
         injuredScreen.color = newColor;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Player")
+        {
+            inRange = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            inRange = false;
+        }
     }
 }

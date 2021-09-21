@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class TaskManager : MonoBehaviour
 {
-    public int numberTasksToWin = 20;
+    public int numberTasksToWin = 15;
     public DoorScript finalDoor;
     public Text textBox;
 
