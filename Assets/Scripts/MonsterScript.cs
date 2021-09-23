@@ -53,25 +53,31 @@ public class MonsterScript : MonoBehaviour
         switch (tension)
         {
             case 0:
-                // Just move towards player
+                // Just move towards player; really far, needs to get closer
                 agent.SetDestination(player.transform.position);
-                currentPlayerHealth += (Time.deltaTime);
+                if(currentPlayerHealth < maxPlayerHealth)
+                {
+                    currentPlayerHealth += (Time.deltaTime);
+                }
                 break;
             case 1:
-                // start messing with radio
+                // somewhat close by; maybe walk the other way
                 agent.SetDestination(player.transform.position);
-                currentPlayerHealth += (Time.deltaTime*0.5f);
+                if(currentPlayerHealth < maxPlayerHealth)
+                {
+                    currentPlayerHealth += (Time.deltaTime * 0.5f);
+                }
                 break;
             case 2:
-                // start flickering light
+                // Probably in the next room over, start flickering light
                 agent.SetDestination(player.transform.position);
                 break;
             case 3:
-                // make something appear, mess with camera
+                // in the same room, almost at kill distance, maybe start messing with camera if that's possible?
                 agent.SetDestination(player.transform.position);
                 break;
             case 4:
-                // begin killing player
+                // begin killing player; this is the highest tension is
                 agent.SetDestination(player.transform.position);
                 break;
             default:
@@ -107,5 +113,10 @@ public class MonsterScript : MonoBehaviour
         {
             inRange = false;
         }
+    }
+
+    public int GetTension()
+    {
+        return tension;
     }
 }
