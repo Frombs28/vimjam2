@@ -9,6 +9,7 @@ public class MainMenu : MonoBehaviour
     public string buttonSFX;
     public GameObject creditsSet;
     public GameObject mainSet;
+    public GameObject optionsSet;
 
     private MusicManager mm;
 
@@ -45,10 +46,18 @@ public class MainMenu : MonoBehaviour
         mainSet.SetActive(false);
     }
 
+    public void OpenOptions()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot(buttonSFX, transform.position);
+        optionsSet.SetActive(true);
+        mainSet.SetActive(false);
+    }
+
     public void OpenMain()
     {
         FMODUnity.RuntimeManager.PlayOneShot(buttonSFX, transform.position);
         creditsSet.SetActive(false);
+        optionsSet.SetActive(false);
         mainSet.SetActive(true);
     }
 
