@@ -14,6 +14,8 @@ public class SettingsManager : MonoBehaviour
     {
         masterBus = FMODUnity.RuntimeManager.GetBus("bus:/");
         distoBus = FMODUnity.RuntimeManager.GetBus("bus:/Disto");
+        distoBus.setVolume(0);
+
         resolutions = Screen.resolutions;
         resDropdown.ClearOptions();
 
