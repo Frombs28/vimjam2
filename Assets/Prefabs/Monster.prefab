@@ -102,19 +102,19 @@ MonoBehaviour:
   player: {fileID: 0}
   maxTension: 4
   tensionDistances:
-  - 0
-  - 50
+  - 100
+  - 65
+  - 45
   - 25
-  - 15
   - 6
   maxPlayerHealth: 5
   damageMult: 1
   injuredScreen: {fileID: 0}
   speeds:
-  - 12
+  - 15
+  - 10
   - 6
   - 4
-  - 2
   - 2
 --- !u!195 &305026834609662395
 NavMeshAgent:
