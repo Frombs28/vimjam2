@@ -80,7 +80,7 @@ public class SettingsManager : MonoBehaviour
 
             case 3:
                 distoBus.setVolume(1f);
-                masterBus.setVolume(1f);
+                masterBus.setVolume(0.5f);
                 break;
         }
     }
