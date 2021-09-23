@@ -85,6 +85,7 @@ public class PlayerInteract : MonoBehaviour
     {
         if (currentlyInteracting)
         {
+            textBox.text = "Hold Left Click to complete task\nRight Click to stop";
             if (Input.GetMouseButton(0))
             {
                 taskProgress.value += Time.deltaTime;
@@ -123,7 +124,7 @@ public class PlayerInteract : MonoBehaviour
                 //Stop playing sound
                 trackInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
                 trackInstance.release();
-                textBox.text = "";
+                //textBox.text = "";
             }
             if (Input.GetMouseButtonDown(1))
             {
@@ -323,7 +324,6 @@ public class PlayerInteract : MonoBehaviour
             handObjects[currentItemInHand].enabled = false;
         }
         taskOutline.enabled = true;
-        textBox.text = "Hold Left Click to complete task\nRight Click to stop";
     }
 
     public void StopInteracting(bool finished)
