@@ -7043,8 +7043,6 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: Borderless
       m_Image: {fileID: 0}
-    - m_Text: Maximized
-      m_Image: {fileID: 0}
     - m_Text: Windowed
       m_Image: {fileID: 0}
   m_OnValueChanged:
