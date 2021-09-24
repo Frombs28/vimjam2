@@ -85,58 +85,22 @@ public class PlayerInteract : MonoBehaviour
     {
         if (currentlyInteracting)
         {
-            textBox.text = "Hold Left Click to complete task\nRight Click to stop";
             if (Input.GetMouseButton(0))
             {
                 taskProgress.value += Time.deltaTime;
                 taskProgress2.value = taskProgress.value;
                 
             }
-            if (Input.GetMouseButtonDown(0))
-            {
-                currentTask.anim.SetBool("DoTask", true);
-                taskCoroutine = StartCoroutine(WaitForInteraction(taskDuration));
-                if (currentTask.requiredItem == 3)
-                {
-                    // lightbulb
-                    //FMODUnity.RuntimeManager.PlayOneShot(lightbulbScrewing, currentTask.transform.position);
-                    trackInstance = FMODUnity.RuntimeManager.CreateInstance(lightbulbScrewing);
-                    trackInstance.start();
-                }
-                else if (currentTask.requiredItem == 4)
-                {
-                    // plant
-                    //FMODUnity.RuntimeManager.PlayOneShot(plantSetup, currentTask.transform.position);
-                    trackInstance = FMODUnity.RuntimeManager.CreateInstance(plantSetup);
-                    trackInstance.start();
-                }
-                else
-                {
-                    Debug.LogError("Non existant task!");
-                }
-            }
-            else if(Input.GetMouseButtonUp(0))
-            {
-                currentTask.anim.SetBool("DoTask", false);
-                StopCoroutine(taskCoroutine);
-                taskProgress.value = 0.0f;
-                taskProgress2.value = taskProgress.value;
-                //Stop playing sound
-                trackInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-                trackInstance.release();
-                //textBox.text = "";
-            }
-            if (Input.GetMouseButtonDown(1))
+            else
             {
                 currentTask.anim.SetBool("DoTask", false);
                 StopCoroutine(taskCoroutine);
                 currentTask.anim.Play("Idle");
                 StopInteracting(false);
-                textBox.text = "";
             }
             return;
         }
-        if (readyToInteract && Input.GetKeyDown(KeyCode.E) && !currentTask.completed && (currentTask.requiredItem == 0 || (currentTask.requiredItem == currentItemInHand)))
+        if (readyToInteract && Input.GetMouseButtonDown(0) && !currentTask.completed && (currentTask.requiredItem == 0 || (currentTask.requiredItem == currentItemInHand)))
         {
             // Interact; lock player movement, begin interactable animation.
             BeginInteracting();
@@ -260,7 +224,7 @@ public class PlayerInteract : MonoBehaviour
             currentTask = other.gameObject.GetComponent<InteractableTask>();
             if (!currentTask.completed && (currentTask.requiredItem == 0 || (currentTask.requiredItem == currentItemInHand)))
             {
-                textBox.text = "Press E";
+                textBox.text = "Hold Left Click to complete task";
             }
         }
         if(other.tag == "Door")
@@ -324,6 +288,26 @@ public class PlayerInteract : MonoBehaviour
             handObjects[currentItemInHand].enabled = false;
         }
         taskOutline.enabled = true;
+        currentTask.anim.SetBool("DoTask", true);
+        taskCoroutine = StartCoroutine(WaitForInteraction(taskDuration));
+        if (currentTask.requiredItem == 3)
+        {
+            // lightbulb
+            //FMODUnity.RuntimeManager.PlayOneShot(lightbulbScrewing, currentTask.transform.position);
+            trackInstance = FMODUnity.RuntimeManager.CreateInstance(lightbulbScrewing);
+            trackInstance.start();
+        }
+        else if (currentTask.requiredItem == 4)
+        {
+            // plant
+            //FMODUnity.RuntimeManager.PlayOneShot(plantSetup, currentTask.transform.position);
+            trackInstance = FMODUnity.RuntimeManager.CreateInstance(plantSetup);
+            trackInstance.start();
+        }
+        else
+        {
+            Debug.LogError("Non existant task!");
+        }
     }
 
     public void StopInteracting(bool finished)
@@ -345,7 +329,7 @@ public class PlayerInteract : MonoBehaviour
         }
         else
         {
-            textBox.text = "Press E";
+            textBox.text = "Hold Left Click to complete task";
         }
         taskOutline.enabled = false;
         taskProgress.enabled = false;

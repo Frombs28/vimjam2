@@ -17,12 +17,16 @@ public class MonsterScript : MonoBehaviour
     public float damageMult = 1.0f;
     public Image injuredScreen;
     public List<float> speeds;
+    public LightFlicker flashLightFlicker;
 
 
     private int tension;
+    [SerializeField]
     private float currentPlayerHealth;
     private MusicManager mm;
     private bool inRange = false;
+    private Light light;
+    private float originalIntensity;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +37,8 @@ public class MonsterScript : MonoBehaviour
             Debug.LogError("Wrong tension number for the number of tension distances!");
         }
         currentPlayerHealth = maxPlayerHealth;
+        light = flashLightFlicker.trueLight;
+        originalIntensity = light.intensity;
     }
 
     // Update is called once per frame
@@ -54,30 +60,91 @@ public class MonsterScript : MonoBehaviour
         {
             case 0:
                 // Just move towards player; really far, needs to get closer
+                if (flashLightFlicker.enabled)
+                {
+                    flashLightFlicker.enabled = false;
+                }
+                if(light.intensity != originalIntensity)
+                {
+                    light.intensity = originalIntensity;
+                }
                 agent.SetDestination(player.transform.position);
                 if(currentPlayerHealth < maxPlayerHealth)
                 {
-                    currentPlayerHealth += (Time.deltaTime);
+                    currentPlayerHealth += (Time.deltaTime * 2.0f);
+                    if(currentPlayerHealth > maxPlayerHealth)
+                    {
+                        currentPlayerHealth = maxPlayerHealth;
+                    }
                 }
                 break;
             case 1:
                 // somewhat close by; maybe walk the other way
+                if (flashLightFlicker.enabled)
+                {
+                    flashLightFlicker.enabled = false;
+                }
+                if (light.intensity != originalIntensity)
+                {
+                    light.intensity = originalIntensity;
+                }
                 agent.SetDestination(player.transform.position);
                 if(currentPlayerHealth < maxPlayerHealth)
                 {
-                    currentPlayerHealth += (Time.deltaTime * 0.5f);
+                    currentPlayerHealth += (Time.deltaTime);
+                    if (currentPlayerHealth > maxPlayerHealth)
+                    {
+                        currentPlayerHealth = maxPlayerHealth;
+                    }
                 }
                 break;
             case 2:
                 // Probably in the next room over, start flickering light
+                flashLightFlicker.numberOfSecondsBetweenEpisodes = 1.0f;
+                if (!flashLightFlicker.enabled)
+                {
+                    flashLightFlicker.enabled = true;
+                    flashLightFlicker.FlickerLight();
+
+                }
                 agent.SetDestination(player.transform.position);
+                if (currentPlayerHealth < maxPlayerHealth)
+                {
+                    currentPlayerHealth += (Time.deltaTime);
+                    if (currentPlayerHealth > maxPlayerHealth)
+                    {
+                        currentPlayerHealth = maxPlayerHealth;
+                    }
+                }
                 break;
             case 3:
                 // in the same room, almost at kill distance, maybe start messing with camera if that's possible?
+                flashLightFlicker.numberOfSecondsBetweenEpisodes = 0.5f;
+                if (!flashLightFlicker.enabled)
+                {
+                    flashLightFlicker.enabled = true;
+                    flashLightFlicker.FlickerLight();
+
+                }
                 agent.SetDestination(player.transform.position);
+                if (currentPlayerHealth < maxPlayerHealth)
+                {
+                    currentPlayerHealth += (Time.deltaTime);
+                    if (currentPlayerHealth > maxPlayerHealth)
+                    {
+                        currentPlayerHealth = maxPlayerHealth;
+                    }
+                }
                 break;
             case 4:
                 // begin killing player; this is the highest tension is
+                flashLightFlicker.numberOfSecondsBetweenEpisodes = 0.25f;
+                if (!flashLightFlicker.enabled)
+                {
+                    flashLightFlicker.enabled = true;
+                    flashLightFlicker.FlickerLight();
+
+                }
                 agent.SetDestination(player.transform.position);
                 break;
             default:

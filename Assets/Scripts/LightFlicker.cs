@@ -61,7 +61,10 @@ public class LightFlicker : MonoBehaviour
             {
                 yield break;
             }
-            rend.material = lightOff;
+            if(rend != null)
+            {
+                rend.material = lightOff;
+            }
             //trueLight.enabled = false;
             float origianlIn = trueLight.intensity;
             trueLight.intensity = 0;
@@ -71,7 +74,10 @@ public class LightFlicker : MonoBehaviour
             {
                 yield break;
             }
-            rend.material = lightOn;
+            if(rend != null)
+            {
+                rend.material = lightOn;
+            }
             //trueLight.enabled = true;
             trueLight.intensity = origianlIn;
             Debug.Log("On!");
