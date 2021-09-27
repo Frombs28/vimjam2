@@ -295,6 +295,7 @@ public class PlayerInteract : MonoBehaviour
             // lightbulb
             //FMODUnity.RuntimeManager.PlayOneShot(lightbulbScrewing, currentTask.transform.position);
             trackInstance = FMODUnity.RuntimeManager.CreateInstance(lightbulbScrewing);
+            FMODUnity.RuntimeManager.AttachInstanceToGameObject(trackInstance, currentTask.transform);
             trackInstance.start();
         }
         else if (currentTask.requiredItem == 4)
@@ -302,6 +303,7 @@ public class PlayerInteract : MonoBehaviour
             // plant
             //FMODUnity.RuntimeManager.PlayOneShot(plantSetup, currentTask.transform.position);
             trackInstance = FMODUnity.RuntimeManager.CreateInstance(plantSetup);
+            FMODUnity.RuntimeManager.AttachInstanceToGameObject(trackInstance, currentTask.transform);
             trackInstance.start();
         }
         else
