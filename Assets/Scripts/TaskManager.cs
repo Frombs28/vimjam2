@@ -71,4 +71,9 @@ public class TaskManager : MonoBehaviour
     {
         step = newStep;
     }
+
+    public int NumberTasksDone()
+    {
+        return numberTasks;
+    }
 }

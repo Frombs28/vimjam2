@@ -15,9 +15,12 @@ public class DoorScript : MonoBehaviour
     public string lockedDoorNoise;
     [FMODUnity.EventRef]
     public string openDoorNoise;
+    public bool canBePortal = false;
+    public bool forwardPortal = true;
 
     private Transform currentPlayerTransform;
     private bool primedToClose = false;
+    private PortalManager pm;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +32,10 @@ public class DoorScript : MonoBehaviour
         if (finale)
         {
             FindObjectOfType<TaskManager>().finalDoor = this;
+        }
+        if(canBePortal)
+        {
+            pm = FindObjectOfType<PortalManager>();
         }
     }
 
@@ -79,6 +86,10 @@ public class DoorScript : MonoBehaviour
             otherLinkedDoor.OpenDoor(dir);
         }
         FMODUnity.RuntimeManager.PlayOneShot(openDoorNoise, transform.position);
+        if(dir == forwardPortal && canBePortal)
+        {
+            pm.DoorOpen(this);
+        }
     }
 
     public void OpenDoor(bool forward)
@@ -116,5 +127,11 @@ public class DoorScript : MonoBehaviour
     {
         yield return new WaitForSeconds(0.2f);
         primedToClose = true;
+    }
+
+    public void WaitClose(Transform playerTrans)
+    {
+        currentPlayerTransform = playerTrans;
+        StartCoroutine(WaitToClose());
     }
 }

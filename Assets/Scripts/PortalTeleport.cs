@@ -6,10 +6,14 @@ using Cinemachine;
 public class PortalTeleport : MonoBehaviour
 {
     public Transform player;
+    public Transform sender;
     public Transform receiver;
     public Transform cam;
     public Transform parentTransform;
     public Transform virtualCam;
+    public DoorScript teleportedDoor = null;
+    public GameObject portalObject = null;
+    public float offset = 180.0f;
     //public CinemachineBrain cam;
 
     private bool playerIsHere = false;
@@ -33,15 +37,15 @@ public class PortalTeleport : MonoBehaviour
             if (angleBetween > 90.0f && primed)
             {
                 // Teleport
-                float rotDif = -Quaternion.Angle(transform.rotation, receiver.rotation);
-                rotDif += 180.0f;
+                float rotDif = Vector3.Angle(sender.forward, parentTransform.forward);
+                //rotDif += offset;
                 Debug.Log("Rotate y axis " + player.transform.eulerAngles.y + " by " + rotDif + " to get " + (player.transform.eulerAngles.y + rotDif));
                 //cam.enabled = false;
                 //cam.transform.parent = player.transform;
                 //parentTransform.position = 
 
                 cc.enabled = false;
-                player.transform.parent = this.transform.parent;
+                player.transform.parent = sender;
                 Vector3 local = player.localPosition;
                 player.transform.parent = receiver;
                 player.localPosition = local;
@@ -52,6 +56,7 @@ public class PortalTeleport : MonoBehaviour
                 player.parent = null;
                 virtualCam.parent = null;
                 parentTransform.position = player.position;
+                parentTransform.forward = receiver.forward;
                 cam.parent = parentTransform;
                 player.parent = parentTransform;
                 virtualCam.parent = parentTransform;
@@ -65,6 +70,15 @@ public class PortalTeleport : MonoBehaviour
                 primed = false;
                 Debug.Log("Teleport now!");
                 StartCoroutine(WaitToEnable());
+
+                if(teleportedDoor != null)
+                {
+                    teleportedDoor.WaitClose(player);
+                }
+                if(portalObject != null)
+                {
+                    portalObject.SetActive(false);
+                }
                 //cam.transform.parent = null;
                 //cam.enabled = true;
             }
