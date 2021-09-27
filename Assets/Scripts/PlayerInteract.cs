@@ -105,11 +105,13 @@ public class PlayerInteract : MonoBehaviour
             // Interact; lock player movement, begin interactable animation.
             BeginInteracting();
         }
-        if(readyForDoor && Input.GetKeyDown(KeyCode.E))
+        if(readyForDoor && Input.GetKeyDown(KeyCode.E) && !currentDoor.locked)
         {
             // Open door
             currentDoor.OpenDoor(player.transform.position,player.transform);
             textBox.text = "";
+            currentDoor = null;
+            readyForDoor = false;
         }
         if (readyForPickup && Input.GetKeyDown(KeyCode.E))
         {
@@ -124,6 +126,7 @@ public class PlayerInteract : MonoBehaviour
             radManager.getKeys();
             tManager.StepUp(1);
             readyForKey = false;
+            textBox.text = "";
         }
 
         if (currentItemInHand == 2 && Input.GetMouseButtonDown(1))
