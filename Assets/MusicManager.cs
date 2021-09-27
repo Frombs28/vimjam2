@@ -7,11 +7,15 @@ public class MusicManager : MonoBehaviour
     [FMODUnity.EventRef]
     public string trackName;
 
+    private RadioManager rm;
+
     [HideInInspector]
     public FMOD.Studio.EventInstance trackInstance;
     // Start is called before the first frame update
     void Start()
     {
+        rm = FindObjectOfType<RadioManager>();
+
         trackInstance = FMODUnity.RuntimeManager.CreateInstance(trackName);
         trackInstance.start();
     }
@@ -30,5 +34,11 @@ public class MusicManager : MonoBehaviour
     {
         trackInstance.release();
         trackInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+    }
+
+    public void Pause(bool state)
+    {
+        trackInstance.setPaused(state);
+        rm.PauseInstance(state);
     }
 }

@@ -10,9 +10,11 @@ public class MainMenu : MonoBehaviour
     public GameObject creditsSet;
     public GameObject mainSet;
     public GameObject optionsSet;
+    public GameObject pauseSet;
+    public bool isPauseMenu = false;
 
     private MusicManager mm;
-
+    private bool paused;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +24,23 @@ public class MainMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(isPauseMenu)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape) && !paused)
+            {
+                OpenPauseMenu();
+                return;
+            }
+            if (Input.GetKeyDown(KeyCode.Escape) && paused)
+            {
+                Unpause();
+                return;
+            }
+            if(paused)
+            {
+                Cursor.visible = true;
+            }
+        }
     }
 
     public void ReturnToMain()
@@ -66,5 +84,40 @@ public class MainMenu : MonoBehaviour
         mm.StopInstance();
         FMODUnity.RuntimeManager.PlayOneShot(buttonSFX, transform.position);
         Application.Quit();
+    }
+
+    public void OpenPauseMenu()
+    {
+        paused = true;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        Time.timeScale = 0;
+        if (mm != null) mm.Pause(true);
+        mainSet.SetActive(false);
+        pauseSet.SetActive(true);
+    }
+
+    public void Unpause()
+    {
+        paused = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        if (mm != null) mm.Pause(false);
+        Time.timeScale = 1;
+        mainSet.SetActive(true);
+        pauseSet.SetActive(false);
+        optionsSet.SetActive(false);
+    }
+
+    public void ClosePauseMenu()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot(buttonSFX, transform.position);
+        Unpause();
+    }
+
+    public void OpenOptionsPaused()
+    {
+        pauseSet.SetActive(false);
+        OpenOptions();
     }
 }

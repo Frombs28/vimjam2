@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     private bool grounded;
     private float trueSpeed;
     private CinemachinePOV pov;
+    private MainMenu mm;
     [SerializeField]
     public float stamina;
     
@@ -33,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         pov = vcam.GetCinemachineComponent<CinemachinePOV>();
+        mm = FindObjectOfType<MainMenu>();
         trueSpeed = speed;
         stamina = maxStamina;
 
@@ -42,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {       
         //update sense
         if (PlayerPrefs.HasKey("Sensetivity"))
         {

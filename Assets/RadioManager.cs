@@ -75,4 +75,11 @@ public class RadioManager : MonoBehaviour
         noiseInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         voiceInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
     }
+
+    public void PauseInstance(bool b)
+    {
+        staticInstance.setPaused(b);
+        noiseInstance.setPaused(b);
+        voiceInstance.setPaused(b);
+    }
 }
