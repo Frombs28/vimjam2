@@ -6,6 +6,10 @@ using UnityEngine.UI;
 public class SettingsManager : MonoBehaviour
 {
     public Dropdown resDropdown;
+    public Dropdown qualityDropdown;
+    public Dropdown fullscreenDropdown;
+    public Dropdown volumeDrowdown;
+    public Slider senseSlider;
     Resolution[] resolutions;
     FMOD.Studio.Bus masterBus;
     FMOD.Studio.Bus distoBus;
@@ -35,11 +39,24 @@ public class SettingsManager : MonoBehaviour
         resDropdown.AddOptions(options);
         resDropdown.value = currentResIndex;
         resDropdown.RefreshShownValue();
+
+        //set player prefs
+        if (PlayerPrefs.HasKey("Resolution")) resDropdown.value = PlayerPrefs.GetInt("Resolution");
+        else PlayerPrefs.SetInt("Resolution", resDropdown.value);
+        if (PlayerPrefs.HasKey("Quality")) qualityDropdown.value = PlayerPrefs.GetInt("Quality");
+        else PlayerPrefs.SetInt("Quality", qualityDropdown.value);
+        if (PlayerPrefs.HasKey("Fullscreen")) fullscreenDropdown.value = PlayerPrefs.GetInt("Fullscreen");
+        else PlayerPrefs.SetInt("Fullscreen", fullscreenDropdown.value);
+        if (PlayerPrefs.HasKey("Volume")) volumeDrowdown.value = PlayerPrefs.GetInt("Volume");
+        else PlayerPrefs.SetInt("Volume", volumeDrowdown.value);
+        if (PlayerPrefs.HasKey("Sensetivity")) senseSlider.value = PlayerPrefs.GetFloat("Sensetivity");
+        else PlayerPrefs.SetFloat("Sensetivity", senseSlider.value);
     }
 
     public void SetQuality(int index)
     {
         QualitySettings.SetQualityLevel(index);
+        PlayerPrefs.SetInt("Quality", index);
     }
 
     public void SetFullscreen(int mode)
@@ -53,11 +70,13 @@ public class SettingsManager : MonoBehaviour
         {
             Screen.fullScreen = true;
         }
+        PlayerPrefs.SetInt("Fullscreen", mode);
     }
 
     public void SetResolution(int index)
     {
         Screen.SetResolution(resolutions[index].width, resolutions[index].height, Screen.fullScreen);
+        PlayerPrefs.SetInt("Resolution", index);
     }
 
     public void SetVolume(int index)
@@ -83,6 +102,7 @@ public class SettingsManager : MonoBehaviour
                 masterBus.setVolume(0.5f);
                 break;
         }
+        PlayerPrefs.SetInt("Volume", index);
     }
 
     public void SetSense(float s)

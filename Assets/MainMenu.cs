@@ -97,6 +97,14 @@ public class MainMenu : MonoBehaviour
         pauseSet.SetActive(true);
     }
 
+    public void PauseBackToMain()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot(buttonSFX, transform.position);
+        mainSet.SetActive(false);
+        optionsSet.SetActive(false);
+        pauseSet.SetActive(true);
+    }
+
     public void Unpause()
     {
         paused = false;

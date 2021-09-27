@@ -48,8 +48,8 @@ public class PlayerMovement : MonoBehaviour
         //update sense
         if (PlayerPrefs.HasKey("Sensetivity"))
         {
-            pov.m_VerticalAxis.m_MaxSpeed = 600 * PlayerPrefs.GetFloat("Sensetivity");
-            pov.m_HorizontalAxis.m_MaxSpeed = 600 * PlayerPrefs.GetFloat("Sensetivity");
+            pov.m_VerticalAxis.m_MaxSpeed = PlayerPrefs.GetFloat("Sensetivity");
+            pov.m_HorizontalAxis.m_MaxSpeed = PlayerPrefs.GetFloat("Sensetivity");
         }
 
         staminaSlider.value = stamina;
