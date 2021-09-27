@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Cinemachine;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -17,11 +18,13 @@ public class PlayerMovement : MonoBehaviour
     public float staminRechargeRate = 1.0f;
     public float animSpeed = 0.0f;
     public Slider staminaSlider;
+    public CinemachineVirtualCamera vcam;
 
     private CharacterController controller;
     private Vector3 velocity;
     private bool grounded;
     private float trueSpeed;
+    private CinemachinePOV pov;
     [SerializeField]
     public float stamina;
     
@@ -29,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        pov = vcam.GetCinemachineComponent<CinemachinePOV>();
         trueSpeed = speed;
         stamina = maxStamina;
 
@@ -39,6 +43,13 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //update sense
+        if (PlayerPrefs.HasKey("Sensetivity"))
+        {
+            pov.m_VerticalAxis.m_MaxSpeed = 600 * PlayerPrefs.GetFloat("Sensetivity");
+            pov.m_HorizontalAxis.m_MaxSpeed = 600 * PlayerPrefs.GetFloat("Sensetivity");
+        }
+
         staminaSlider.value = stamina;
 
         grounded = Physics.CheckSphere(groundCheck.position, groundCheckDistance, groundMask);
