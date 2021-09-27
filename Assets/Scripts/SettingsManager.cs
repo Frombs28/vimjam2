@@ -84,4 +84,9 @@ public class SettingsManager : MonoBehaviour
                 break;
         }
     }
+
+    public void SetSense(float s)
+    {
+        PlayerPrefs.SetFloat("Sensetivity", s);
+    }
 }
