@@ -74,9 +74,20 @@ public class TaskManager : MonoBehaviour
     public void StepUp(int newStep)
     {
         step = newStep;
+        CancelInvoke();
         if(step == 1)
         {
             currentVoiceLine = 24;
+            PlaySubtitle();
+        }
+        if(step == 2)
+        {
+            currentVoiceLine = 36;
+            PlaySubtitle();
+        }
+        if(step == 3)
+        {
+            currentVoiceLine = 39;
             PlaySubtitle();
         }
     }
@@ -220,12 +231,92 @@ public class TaskManager : MonoBehaviour
             case 25:
                 subtitleBox.text = "okay great";
                 currentVoiceLine++;
-                Invoke("PlaySubtitle", 3f);
+                Invoke("PlaySubtitle", 1.5f);
                 break;
             case 26:
-                subtitleBox.text = "so the next two things that you're gonna want to get are";
+                subtitleBox.text = "so the next two things that you're gonna want to get is";
+                currentVoiceLine++;
+                Invoke("PlaySubtitle", 2.5f);
+                break;
+            case 27:
+                subtitleBox.text = "a box of lightbulbs, and couple of potted plants";
                 currentVoiceLine++;
                 Invoke("PlaySubtitle", 3f);
+                break;
+            case 28:
+                subtitleBox.text = "so the plants should be to the right, on the other side of the hallway, right inside the stairwell";
+                currentVoiceLine++;
+                Invoke("PlaySubtitle", 5.5f);
+                break;
+            case 29:
+                subtitleBox.text = "should be a couple in there, and you can place those on the designated markers";
+                currentVoiceLine++;
+                Invoke("PlaySubtitle", 4f);
+                break;
+            case 30:
+                subtitleBox.text = "should be kinda some x's drawn on the ground for where you can place those";
+                currentVoiceLine++;
+                Invoke("PlaySubtitle", 4f);
+                break;
+            case 31:
+                subtitleBox.text = "and then, there should be a box of lightbulbs in the mens bathroom";
+                currentVoiceLine++;
+                Invoke("PlaySubtitle", 4f);
+                break;
+            case 32:
+                subtitleBox.text = "on the other side in the janitor's closet over there";
+                currentVoiceLine++;
+                Invoke("PlaySubtitle", 2.5f);
+                break;
+            case 33:
+                subtitleBox.text = "and you can use those to uh, fix any kinda light bulbs that might be flickering or starting to go out";
+                currentVoiceLine++;
+                Invoke("PlaySubtitle", 6f);
+                break;
+            case 34:
+                subtitleBox.text = "and that should really uh, bring the space back to life a little bit";
+                currentVoiceLine++;
+                Invoke("PlaySubtitle", 3f);
+                break;
+            case 35:
+                subtitleBox.text = "";
+                subtitleBox.enabled = false;
+                currentVoiceLine++;
+                break;
+            case 36:
+                subtitleBox.text = "alright great, now uh, just get to work puttin' down those plants and fixing them lights";
+                currentVoiceLine++;
+                Invoke("PlaySubtitle", 4f);
+                break;
+            case 37:
+                subtitleBox.text = "and you should be good to go in a few minutes";
+                currentVoiceLine++;
+                Invoke("PlaySubtitle", 3f);
+                break;
+            case 38:
+                subtitleBox.text = "";
+                subtitleBox.enabled = false;
+                currentVoiceLine++;
+                break;
+            case 39:
+                subtitleBox.text = "Alright great work today kid, um";
+                currentVoiceLine++;
+                Invoke("PlaySubtitle", 3f);
+                break;
+            case 40:
+                subtitleBox.text = "ya know, feel free to just head out through them exit doors";
+                currentVoiceLine++;
+                Invoke("PlaySubtitle", 3f);
+                break;
+            case 41:
+                subtitleBox.text = "and you should be all good to go";
+                currentVoiceLine++;
+                Invoke("PlaySubtitle", 3f);
+                break;
+            case 42:
+                subtitleBox.text = "";
+                subtitleBox.enabled = false;
+                currentVoiceLine++;
                 break;
         }
         subtitleBox.text = subtitleBox.text.ToLower();
