@@ -286,7 +286,7 @@ public class TaskManager : MonoBehaviour
             case 36:
                 subtitleBox.text = "alright great, now uh, just get to work puttin' down those plants and fixing them lights";
                 currentVoiceLine++;
-                Invoke("PlaySubtitle", 4f);
+                Invoke("PlaySubtitle", 6f);
                 break;
             case 37:
                 subtitleBox.text = "and you should be good to go in a few minutes";
