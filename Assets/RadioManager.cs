@@ -23,10 +23,12 @@ public class RadioManager : MonoBehaviour
 
     FMOD.Studio.EVENT_CALLBACK playCallback;
     string currentPlayingVoiceClip;
+
+    private GameObject radioText;
     // Start is called before the first frame update
     void Start()
     {
-
+        radioText = GameObject.Find("SubtitleBox");
 
         staticInstance = FMODUnity.RuntimeManager.CreateInstance(staticBackground);
         noiseInstance = FMODUnity.RuntimeManager.CreateInstance(radioNoises);
@@ -43,6 +45,7 @@ public class RadioManager : MonoBehaviour
 
     public void RadioActive(bool t)
     {
+        radioText.SetActive(t);
         if (t)
         {
             staticInstance.setVolume(1);

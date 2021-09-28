@@ -99,7 +99,7 @@ public class TaskManager : MonoBehaviour
 
     private void PlaySubtitle()
     {
-        subtitleBox.enabled = true;
+        //subtitleBox.enabled = true;
         switch (currentVoiceLine)
         {
             case 0:
@@ -220,7 +220,7 @@ public class TaskManager : MonoBehaviour
                 break;
             case 23:
                 subtitleBox.text = "";
-                subtitleBox.enabled = false;
+                //subtitleBox.enabled = false;
                 currentVoiceLine++;
                 break;
             case 24:
@@ -280,7 +280,7 @@ public class TaskManager : MonoBehaviour
                 break;
             case 35:
                 subtitleBox.text = "";
-                subtitleBox.enabled = false;
+                //subtitleBox.enabled = false;
                 currentVoiceLine++;
                 break;
             case 36:
@@ -295,7 +295,7 @@ public class TaskManager : MonoBehaviour
                 break;
             case 38:
                 subtitleBox.text = "";
-                subtitleBox.enabled = false;
+                //subtitleBox.enabled = false;
                 currentVoiceLine++;
                 break;
             case 39:
@@ -315,7 +315,7 @@ public class TaskManager : MonoBehaviour
                 break;
             case 42:
                 subtitleBox.text = "";
-                subtitleBox.enabled = false;
+                //subtitleBox.enabled = false;
                 currentVoiceLine++;
                 break;
         }
