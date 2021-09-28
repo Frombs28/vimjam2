@@ -16,7 +16,7 @@ public class PortalManager : MonoBehaviour
     void Start()
     {
         tm = FindObjectOfType<TaskManager>();
-        maxTasks = tm.numberTasksToWin;
+        maxTasks = tm.getMaxTasks();
         doors = new List<DoorScript>();
         foreach(GameObject door in allDoorTeleporters)
         {

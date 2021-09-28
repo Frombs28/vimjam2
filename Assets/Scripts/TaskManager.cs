@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class TaskManager : MonoBehaviour
 {
-    public int numberTasksToWin = 15;
+    private int numberTasksToWin = 15;
     public DoorScript finalDoor;
     public Text textBox;
 
@@ -31,15 +31,15 @@ public class TaskManager : MonoBehaviour
         {
             textBox.text = "Find the keys";
         }
-        else if(step == 1)
+        else if (step == 1)
         {
             textBox.text = "Find the lightbulbs and plants";
         }
-        else if(step == 2)
+        else if (step == 2)
         {
             textBox.text = "Deliminalize: " + numberTasks.ToString() + " out of " + numberTasksToWin;
         }
-        else if(step == 3)
+        else if (step == 3)
         {
             textBox.text = "Get out";
         }
@@ -51,12 +51,12 @@ public class TaskManager : MonoBehaviour
 
     public void CompleteTask()
     {
-        if(numberTasks >= numberTasksToWin)
+        if (numberTasks >= numberTasksToWin)
         {
             return;
         }
         numberTasks++;
-        if(numberTasks >= numberTasksToWin)
+        if (numberTasks >= numberTasksToWin)
         {
             WinConMet();
         }
@@ -75,17 +75,17 @@ public class TaskManager : MonoBehaviour
     {
         step = newStep;
         CancelInvoke();
-        if(step == 1)
+        if (step == 1)
         {
             currentVoiceLine = 24;
             PlaySubtitle();
         }
-        if(step == 2)
+        if (step == 2)
         {
             currentVoiceLine = 36;
             PlaySubtitle();
         }
-        if(step == 3)
+        if (step == 3)
         {
             currentVoiceLine = 39;
             PlaySubtitle();
@@ -144,12 +144,12 @@ public class TaskManager : MonoBehaviour
                 break;
 
             case 8:
-                subtitleBox.text = "all the staff and patrons keep complaining about the building just feeling wrong";                
+                subtitleBox.text = "all the staff and patrons keep complaining about the building just feeling wrong";
                 currentVoiceLine++;
                 Invoke("PlaySubtitle", 3.5f);
                 break;
             case 9:
-                subtitleBox.text = "saying it's kinda like, slipping outa wack";               
+                subtitleBox.text = "saying it's kinda like, slipping outa wack";
                 currentVoiceLine++;
                 Invoke("PlaySubtitle", 2.8f);
                 break;
@@ -321,4 +321,6 @@ public class TaskManager : MonoBehaviour
         }
         subtitleBox.text = subtitleBox.text.ToLower();
     }
+
+    public int getMaxTasks() { return numberTasksToWin; }
 }
