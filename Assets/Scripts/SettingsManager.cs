@@ -10,9 +10,29 @@ public class SettingsManager : MonoBehaviour
     public Dropdown fullscreenDropdown;
     public Dropdown volumeDrowdown;
     public Slider senseSlider;
+    public Dropdown subDropdown;
     Resolution[] resolutions;
     FMOD.Studio.Bus masterBus;
     FMOD.Studio.Bus distoBus;
+
+    private void Awake()
+    {
+        //set player prefs
+        /*
+        if (PlayerPrefs.HasKey("Resolution")) resDropdown.value = PlayerPrefs.GetInt("Resolution");
+        else PlayerPrefs.SetInt("Resolution", resDropdown.value);
+        */
+        if (PlayerPrefs.HasKey("Quality")) qualityDropdown.value = PlayerPrefs.GetInt("Quality");
+        else PlayerPrefs.SetInt("Quality", qualityDropdown.value);
+        if (PlayerPrefs.HasKey("Fullscreen")) fullscreenDropdown.value = PlayerPrefs.GetInt("Fullscreen");
+        else PlayerPrefs.SetInt("Fullscreen", fullscreenDropdown.value);
+        if (PlayerPrefs.HasKey("Volume")) volumeDrowdown.value = PlayerPrefs.GetInt("Volume");
+        else PlayerPrefs.SetInt("Volume", volumeDrowdown.value);
+        if (PlayerPrefs.HasKey("Sensetivity")) senseSlider.value = PlayerPrefs.GetFloat("Sensetivity");
+        else PlayerPrefs.SetFloat("Sensetivity", senseSlider.value);
+        if (PlayerPrefs.HasKey("Subtitles")) subDropdown.value = PlayerPrefs.GetInt("Subtitles");
+        else PlayerPrefs.SetFloat("Subtitles", subDropdown.value);
+    }
 
     private void Start()
     {
@@ -40,17 +60,10 @@ public class SettingsManager : MonoBehaviour
         resDropdown.value = currentResIndex;
         resDropdown.RefreshShownValue();
 
-        //set player prefs
+        //set player prefs for resolution
         if (PlayerPrefs.HasKey("Resolution")) resDropdown.value = PlayerPrefs.GetInt("Resolution");
         else PlayerPrefs.SetInt("Resolution", resDropdown.value);
-        if (PlayerPrefs.HasKey("Quality")) qualityDropdown.value = PlayerPrefs.GetInt("Quality");
-        else PlayerPrefs.SetInt("Quality", qualityDropdown.value);
-        if (PlayerPrefs.HasKey("Fullscreen")) fullscreenDropdown.value = PlayerPrefs.GetInt("Fullscreen");
-        else PlayerPrefs.SetInt("Fullscreen", fullscreenDropdown.value);
-        if (PlayerPrefs.HasKey("Volume")) volumeDrowdown.value = PlayerPrefs.GetInt("Volume");
-        else PlayerPrefs.SetInt("Volume", volumeDrowdown.value);
-        if (PlayerPrefs.HasKey("Sensetivity")) senseSlider.value = PlayerPrefs.GetFloat("Sensetivity");
-        else PlayerPrefs.SetFloat("Sensetivity", senseSlider.value);
+
     }
 
     public void SetQuality(int index)
@@ -108,5 +121,10 @@ public class SettingsManager : MonoBehaviour
     public void SetSense(float s)
     {
         PlayerPrefs.SetFloat("Sensetivity", s);
+    }
+
+    public void SetSubs(int index)
+    {
+        PlayerPrefs.SetInt("Subtitles", index);
     }
 }

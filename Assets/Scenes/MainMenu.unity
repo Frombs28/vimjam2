@@ -980,6 +980,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 460325600}
   m_CullTransparentMesh: 1
+--- !u!114 &528408493 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7889961138141802981, guid: 604fde9ff05d1b040b0a5e8ed3a55e64, type: 3}
+  m_PrefabInstance: {fileID: 5292636703302524688}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d0b652f32a2cc243917e4028fa0f046, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &643780116
 GameObject:
   m_ObjectHideFlags: 0
@@ -2597,6 +2608,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5292636703302524689}
     - target: {fileID: 3940605396844143276, guid: aecb06505a715e34ba0b311c88da4e40, type: 3}
+      propertyPath: subDropdown
+      value: 
+      objectReference: {fileID: 528408493}
+    - target: {fileID: 3940605396844143276, guid: aecb06505a715e34ba0b311c88da4e40, type: 3}
       propertyPath: volumeDrowdown
       value: 
       objectReference: {fileID: 5292636703302524690}
@@ -2804,6 +2819,14 @@ PrefabInstance:
     - target: {fileID: 5292636704022156156, guid: 604fde9ff05d1b040b0a5e8ed3a55e64, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7889961138141802981, guid: 604fde9ff05d1b040b0a5e8ed3a55e64, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1424177474}
+    - target: {fileID: 7889961138141802981, guid: 604fde9ff05d1b040b0a5e8ed3a55e64, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetSubs
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 604fde9ff05d1b040b0a5e8ed3a55e64, type: 3}

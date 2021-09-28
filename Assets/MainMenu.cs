@@ -14,11 +14,13 @@ public class MainMenu : MonoBehaviour
     public bool isPauseMenu = false;
 
     private MusicManager mm;
+    private RadioManager rm;
     private bool paused;
     // Start is called before the first frame update
     void Start()
     {
         mm = FindObjectOfType<MusicManager>();
+        rm = FindObjectOfType<RadioManager>();
     }
 
     // Update is called once per frame
@@ -115,6 +117,10 @@ public class MainMenu : MonoBehaviour
         mainSet.SetActive(true);
         pauseSet.SetActive(false);
         optionsSet.SetActive(false);
+        if (PlayerPrefs.HasKey("Subtitles"))
+        {
+            rm.SubActive(PlayerPrefs.GetInt("Subtitles"));
+        }
     }
 
     public void ClosePauseMenu()

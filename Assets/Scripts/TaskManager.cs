@@ -34,8 +34,7 @@ public class TaskManager : MonoBehaviour
         radioIcon.color = Color.red;
 
         FMODUnity.RuntimeManager.PlayOneShot(radioBeep, radManager.transform.position);
-        PlaySubtitle();
-
+        Invoke("PlaySubtitle", 1f);
     }
 
     // Update is called once per frame
@@ -91,17 +90,22 @@ public class TaskManager : MonoBehaviour
         step = newStep;
         CancelInvoke();
         radioIcon.color = Color.red;
-        if (step == 1)
+        PlaySubtitleAt(step);
+    }
+
+    void PlaySubtitleAt(int i)
+    {
+        if (i == 1)
         {
             currentVoiceLine = 24;
             PlaySubtitle();
         }
-        if (step == 2)
+        if (i == 2)
         {
             currentVoiceLine = 36;
             PlaySubtitle();
         }
-        if (step == 3)
+        if (i == 3)
         {
             currentVoiceLine = 39;
             PlaySubtitle();
@@ -113,9 +117,8 @@ public class TaskManager : MonoBehaviour
         return numberTasks;
     }
 
-    private void PlaySubtitle()
+    public void PlaySubtitle()
     {
-        //subtitleBox.enabled = true;
         switch (currentVoiceLine)
         {
             case 0:
@@ -238,7 +241,6 @@ public class TaskManager : MonoBehaviour
                 subtitleBox.text = "";
                 radioIcon.color = startColor;
                 FMODUnity.RuntimeManager.PlayOneShot(radioOff, radManager.transform.position);
-                //subtitleBox.enabled = false;
                 currentVoiceLine++;
                 break;
             case 24:
@@ -300,7 +302,6 @@ public class TaskManager : MonoBehaviour
                 subtitleBox.text = "";
                 radioIcon.color = startColor;
                 FMODUnity.RuntimeManager.PlayOneShot(radioOff, radManager.transform.position);
-                //subtitleBox.enabled = false;
                 currentVoiceLine++;
                 break;
             case 36:
@@ -317,7 +318,6 @@ public class TaskManager : MonoBehaviour
                 subtitleBox.text = "";
                 radioIcon.color = startColor;
                 FMODUnity.RuntimeManager.PlayOneShot(radioOff, radManager.transform.position);
-                //subtitleBox.enabled = false;
                 currentVoiceLine++;
                 break;
             case 39:
@@ -339,7 +339,6 @@ public class TaskManager : MonoBehaviour
                 subtitleBox.text = "";
                 radioIcon.color = startColor;
                 FMODUnity.RuntimeManager.PlayOneShot(radioOff, radManager.transform.position);
-                //subtitleBox.enabled = false;
                 currentVoiceLine++;
                 break;
         }

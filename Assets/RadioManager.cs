@@ -36,6 +36,14 @@ public class RadioManager : MonoBehaviour
         staticInstance.start();
         noiseInstance.start();
         voiceInstance.start();
+
+        if (PlayerPrefs.HasKey("Subtitles"))
+        {
+            if (PlayerPrefs.GetInt("Subtitles") == 1)
+            {
+                radioText.SetActive(false);
+            }
+        }
     }
 
     // Update is called once per frame
@@ -43,9 +51,37 @@ public class RadioManager : MonoBehaviour
     {
     }
 
+    public void SubActive(int t)
+    {
+        if (t == 0)
+        {
+            float vol = 0;
+            voiceInstance.getVolume(out vol);
+            if (vol > 0.1f)
+            {
+                radioText.SetActive(true);
+            }
+        }
+        else radioText.SetActive(false);
+    }
+
     public void RadioActive(bool t)
     {
-        radioText.SetActive(t);
+        if (PlayerPrefs.HasKey("Subtitles"))
+        {
+            if (PlayerPrefs.GetInt("Subtitles") == 1)
+            {
+                radioText.SetActive(false);
+            }
+            else
+            {
+                radioText.SetActive(t);
+            }
+        }
+        else
+        {
+            radioText.SetActive(t);
+        }
         if (t)
         {
             staticInstance.setVolume(1);
