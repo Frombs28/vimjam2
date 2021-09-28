@@ -17,6 +17,7 @@ public class DoorScript : MonoBehaviour
     public string openDoorNoise;
     public bool canBePortal = false;
     public bool forwardPortal = true;
+    public PortalCam portalCamera;
 
     private Transform currentPlayerTransform;
     private bool primedToClose = false;
@@ -90,6 +91,10 @@ public class DoorScript : MonoBehaviour
         {
             pm.DoorOpen(this);
         }
+        if(portalCamera != null)
+        {
+            portalCamera.Activate();
+        }
     }
 
     public void OpenDoor(bool forward)
@@ -121,6 +126,10 @@ public class DoorScript : MonoBehaviour
         anim.SetBool("OpenFor", false);
         box.enabled = true;
         primedToClose = false;
+        if (portalCamera != null)
+        {
+            portalCamera.Deactivate();
+        }
     }
 
     IEnumerator WaitToClose()

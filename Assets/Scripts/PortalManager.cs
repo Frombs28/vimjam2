@@ -49,7 +49,7 @@ public class PortalManager : MonoBehaviour
                 allDoorTeleporters[index].SetActive(true);
             }
         }
-        else
+        else if(numTasksDone < 15)
         {
             // 66% chance
             float percent = Random.Range(1, 101);
