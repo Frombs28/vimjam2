@@ -49,14 +49,14 @@ public class MainMenu : MonoBehaviour
     {
         if(mm != null) mm.StopInstance();
         FMODUnity.RuntimeManager.PlayOneShot(buttonSFX, transform.position);
-        SceneManager.LoadScene(0);
+        StartCoroutine(LoadScene(0));
     }
 
     public void StartGame()
     {
         if (mm != null) mm.StopInstance();
         FMODUnity.RuntimeManager.PlayOneShot(buttonSFX, transform.position);
-        SceneManager.LoadScene(1);
+        StartCoroutine(LoadScene(1));
     }
 
     public void OpenCredits()
@@ -133,5 +133,16 @@ public class MainMenu : MonoBehaviour
     {
         pauseSet.SetActive(false);
         OpenOptions();
+    }
+
+    private IEnumerator LoadScene(int index)
+    {
+        // Start loading the scene
+        AsyncOperation asyncLoadLevel = SceneManager.LoadSceneAsync(index, LoadSceneMode.Single);
+        // Wait until the level finish loading
+        while (!asyncLoadLevel.isDone)
+            yield return null;
+        // Wait a frame so every Awake and Start method is called
+        yield return new WaitForEndOfFrame();
     }
 }
