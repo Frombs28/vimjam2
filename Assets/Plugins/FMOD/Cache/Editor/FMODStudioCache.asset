@@ -4427,7 +4427,7 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 2704448369403929616}
+  - {fileID: 4752310718559315380}
   MinDistance: 0
   MaxDistance: 0
   Length: 117389
@@ -7423,6 +7423,28 @@ MonoBehaviour:
   Type: 1
   IsGlobal: 0
   Exists: 0
+--- !u!114 &-6469074921608390408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Ambience/Tension
+  m_EditorClassIdentifier: 
+  Name: Tension
+  Min: 0
+  Max: 4
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 1
+  IsGlobal: 1
+  Exists: 0
 --- !u!114 &-6463202549978298127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7510,6 +7532,28 @@ MonoBehaviour:
     data2: 0
   Type: 1
   IsGlobal: 1
+  Exists: 0
+--- !u!114 &-6453540883171743756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/VoiceLines/isdone
+  m_EditorClassIdentifier: 
+  Name: isdone
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 1
+  IsGlobal: 0
   Exists: 0
 --- !u!114 &-6446518841844920714
 MonoBehaviour:
@@ -11469,6 +11513,28 @@ MonoBehaviour:
   Type: 1
   IsGlobal: 1
   Exists: 0
+--- !u!114 &-4963616531122277029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/VoiceLines/isdone
+  m_EditorClassIdentifier: 
+  Name: isdone
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 1
+  IsGlobal: 0
+  Exists: 0
 --- !u!114 &-4958974902154963086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11579,6 +11645,28 @@ MonoBehaviour:
   Type: 1
   IsGlobal: 0
   Exists: 1
+--- !u!114 &-4920286730313591697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/VoiceLines/VoiceLine
+  m_EditorClassIdentifier: 
+  Name: VoiceLine
+  Min: 0
+  Max: 10
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 1
+  IsGlobal: 0
+  Exists: 0
 --- !u!114 &-4918969859501717642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12274,6 +12362,28 @@ MonoBehaviour:
   m_Name: parameter:/VoiceLines/haskeys
   m_EditorClassIdentifier: 
   Name: haskeys
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 1
+  IsGlobal: 0
+  Exists: 0
+--- !u!114 &-4636369497606349077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/VoiceLines/hasitems
+  m_EditorClassIdentifier: 
+  Name: hasitems
   Min: 0
   Max: 1
   Default: 0
@@ -15937,6 +16047,28 @@ MonoBehaviour:
   Type: 1
   IsGlobal: 0
   Exists: 0
+--- !u!114 &-3325120203696664391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/VoiceLines/hasitems
+  m_EditorClassIdentifier: 
+  Name: hasitems
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 1
+  IsGlobal: 0
+  Exists: 1
 --- !u!114 &-3324571137443619430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16707,6 +16839,28 @@ MonoBehaviour:
   Type: 1
   IsGlobal: 0
   Exists: 0
+--- !u!114 &-3074991075667759247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/VoiceLines/hasitems
+  m_EditorClassIdentifier: 
+  Name: hasitems
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 1
+  IsGlobal: 0
+  Exists: 0
 --- !u!114 &-3072809293740278098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16840,6 +16994,28 @@ MonoBehaviour:
   Type: 1
   IsGlobal: 1
   Exists: 0
+--- !u!114 &-3027691764099154039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/VoiceLines/isdone
+  m_EditorClassIdentifier: 
+  Name: isdone
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 1
+  IsGlobal: 0
+  Exists: 1
 --- !u!114 &-3025038926715670745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17940,6 +18116,28 @@ MonoBehaviour:
   Type: 1
   IsGlobal: 0
   Exists: 0
+--- !u!114 &-2686764024755710401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/VoiceLines/isdone
+  m_EditorClassIdentifier: 
+  Name: isdone
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 1
+  IsGlobal: 0
+  Exists: 1
 --- !u!114 &-2685729305524707199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17983,6 +18181,28 @@ MonoBehaviour:
     data2: 0
   Type: 1
   IsGlobal: 0
+  Exists: 0
+--- !u!114 &-2669727367190354411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/RaidoSounds/Tension
+  m_EditorClassIdentifier: 
+  Name: Tension
+  Min: 0
+  Max: 4
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 1
+  IsGlobal: 1
   Exists: 0
 --- !u!114 &-2641679709299279034
 MonoBehaviour:
@@ -18621,7 +18841,7 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 1535409534613421384}
+  - {fileID: 8634863089354698069}
   MinDistance: 0
   MaxDistance: 0
   Length: 106666
@@ -25374,10 +25594,10 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 5729884963946092760}
-  - {fileID: -6780770683615027483}
-  - {fileID: -5250123566793724683}
-  - {fileID: -7202989363399231929}
+  - {fileID: 8592173107062707193}
+  - {fileID: -3027691764099154039}
+  - {fileID: 9162935425130801418}
+  - {fileID: 1916751172761199984}
   MinDistance: 0
   MaxDistance: 0
   Length: 240000
@@ -26540,6 +26760,28 @@ MonoBehaviour:
   Name: hasitems
   Min: 0
   Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 1
+  IsGlobal: 0
+  Exists: 0
+--- !u!114 &432734022819993925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/VoiceLines/VoiceLine
+  m_EditorClassIdentifier: 
+  Name: VoiceLine
+  Min: 0
+  Max: 10
   Default: 0
   ID:
     data1: 0
@@ -27823,6 +28065,28 @@ MonoBehaviour:
   Type: 1
   IsGlobal: 1
   Exists: 1
+--- !u!114 &998258799440020880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/VoiceLines/VoiceLine
+  m_EditorClassIdentifier: 
+  Name: VoiceLine
+  Min: 0
+  Max: 10
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 1
+  IsGlobal: 0
+  Exists: 1
 --- !u!114 &1004715833706832695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28924,6 +29188,28 @@ MonoBehaviour:
   IsGlobal: 1
   Exists: 1
 --- !u!114 &1405939565336155862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/RaidoSounds/Tension
+  m_EditorClassIdentifier: 
+  Name: Tension
+  Min: 0
+  Max: 4
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 1
+  IsGlobal: 1
+  Exists: 0
+--- !u!114 &1442731558945916972
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -30133,6 +30419,28 @@ MonoBehaviour:
   Type: 1
   IsGlobal: 1
   Exists: 0
+--- !u!114 &1849002793478639119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/VoiceLines/haskeys
+  m_EditorClassIdentifier: 
+  Name: haskeys
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 1
+  IsGlobal: 0
+  Exists: 1
 --- !u!114 &1900424327843817670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30177,6 +30485,28 @@ MonoBehaviour:
   Type: 1
   IsGlobal: 0
   Exists: 0
+--- !u!114 &1916751172761199984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/VoiceLines/haskeys
+  m_EditorClassIdentifier: 
+  Name: haskeys
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 1
+  IsGlobal: 0
+  Exists: 1
 --- !u!114 &1919764001664567286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32531,6 +32861,28 @@ MonoBehaviour:
   Type: 1
   IsGlobal: 0
   Exists: 1
+--- !u!114 &2722805163001672290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/VoiceLines/haskeys
+  m_EditorClassIdentifier: 
+  Name: haskeys
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 1
+  IsGlobal: 0
+  Exists: 0
 --- !u!114 &2725791152319706545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37571,6 +37923,28 @@ MonoBehaviour:
   Type: 1
   IsGlobal: 0
   Exists: 0
+--- !u!114 &4752310718559315380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Ambience/Tension
+  m_EditorClassIdentifier: 
+  Name: Tension
+  Min: 0
+  Max: 4
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 1
+  IsGlobal: 1
+  Exists: 1
 --- !u!114 &4762147336438165340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42128,6 +42502,28 @@ MonoBehaviour:
   Type: 1
   IsGlobal: 0
   Exists: 0
+--- !u!114 &6300121344664530895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/VoiceLines/haskeys
+  m_EditorClassIdentifier: 
+  Name: haskeys
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 1
+  IsGlobal: 0
+  Exists: 0
 --- !u!114 &6305490328423125724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44880,6 +45276,28 @@ MonoBehaviour:
   IsGlobal: 0
   Exists: 1
 --- !u!114 &7257729642100236329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/RaidoSounds/Tension
+  m_EditorClassIdentifier: 
+  Name: Tension
+  Min: 0
+  Max: 4
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 1
+  IsGlobal: 1
+  Exists: 1
+--- !u!114 &7262372682642954487
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -48203,6 +48621,28 @@ MonoBehaviour:
   Type: 1
   IsGlobal: 1
   Exists: 0
+--- !u!114 &8592173107062707193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/VoiceLines/hasitems
+  m_EditorClassIdentifier: 
+  Name: hasitems
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 1
+  IsGlobal: 0
+  Exists: 1
 --- !u!114 &8594129944128968141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48291,6 +48731,50 @@ MonoBehaviour:
   Type: 1
   IsGlobal: 1
   Exists: 0
+--- !u!114 &8632513484150800627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Ambience/Tension
+  m_EditorClassIdentifier: 
+  Name: Tension
+  Min: 0
+  Max: 4
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 1
+  IsGlobal: 1
+  Exists: 1
+--- !u!114 &8634863089354698069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/RaidoSounds/Tension
+  m_EditorClassIdentifier: 
+  Name: Tension
+  Min: 0
+  Max: 4
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 1
+  IsGlobal: 1
+  Exists: 1
 --- !u!114 &8674916586191426126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48466,6 +48950,28 @@ MonoBehaviour:
     data2: 0
   Type: 1
   IsGlobal: 0
+  Exists: 0
+--- !u!114 &8694420972298060446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Ambience/Tension
+  m_EditorClassIdentifier: 
+  Name: Tension
+  Min: 0
+  Max: 4
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 1
+  IsGlobal: 1
   Exists: 0
 --- !u!114 &8697314079973140235
 MonoBehaviour:
@@ -49657,6 +50163,28 @@ MonoBehaviour:
   Type: 1
   IsGlobal: 0
   Exists: 0
+--- !u!114 &9162935425130801418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/VoiceLines/VoiceLine
+  m_EditorClassIdentifier: 
+  Name: VoiceLine
+  Min: 0
+  Max: 10
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 1
+  IsGlobal: 0
+  Exists: 1
 --- !u!114 &9168420860629965148
 MonoBehaviour:
   m_ObjectHideFlags: 0
