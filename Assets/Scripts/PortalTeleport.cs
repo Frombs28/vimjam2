@@ -38,11 +38,6 @@ public class PortalTeleport : MonoBehaviour
             {
                 // Teleport
                 float rotDif = Vector3.Angle(sender.forward, parentTransform.forward);
-                //rotDif += offset;
-                Debug.Log("Rotate y axis " + player.transform.eulerAngles.y + " by " + rotDif + " to get " + (player.transform.eulerAngles.y + rotDif));
-                //cam.enabled = false;
-                //cam.transform.parent = player.transform;
-                //parentTransform.position = 
 
                 cc.enabled = false;
                 player.transform.parent = sender;
@@ -61,14 +56,9 @@ public class PortalTeleport : MonoBehaviour
                 player.parent = parentTransform;
                 virtualCam.parent = parentTransform;
                 parentTransform.Rotate(Vector3.up, rotDif);
-
-                //player.Rotate(Vector3.up, rotDif);
-                //Vector3 posOffset = Quaternion.Euler(0.0f, rotDif, 0.0f) * portalToPlayer;
-                //Vector3 targetPos = receiver.position + posOffset;
                 
                 playerIsHere = false;
                 primed = false;
-                Debug.Log("Teleport now!");
                 StartCoroutine(WaitToEnable());
 
                 if(teleportedDoor != null)
@@ -79,8 +69,6 @@ public class PortalTeleport : MonoBehaviour
                 {
                     portalObject.SetActive(false);
                 }
-                //cam.transform.parent = null;
-                //cam.enabled = true;
             }
             else
             {
