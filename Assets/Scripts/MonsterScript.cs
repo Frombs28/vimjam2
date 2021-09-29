@@ -72,14 +72,6 @@ public class MonsterScript : MonoBehaviour
                     light.intensity = originalIntensity;
                 }
                 agent.SetDestination(player.transform.position);
-                if(currentPlayerHealth < maxPlayerHealth)
-                {
-                    currentPlayerHealth += (Time.deltaTime * 2.0f);
-                    if(currentPlayerHealth > maxPlayerHealth)
-                    {
-                        currentPlayerHealth = maxPlayerHealth;
-                    }
-                }
                 break;
             case 1:
                 // somewhat close by; maybe walk the other way
@@ -92,18 +84,10 @@ public class MonsterScript : MonoBehaviour
                     light.intensity = originalIntensity;
                 }
                 agent.SetDestination(player.transform.position);
-                if(currentPlayerHealth < maxPlayerHealth)
-                {
-                    currentPlayerHealth += (Time.deltaTime);
-                    if (currentPlayerHealth > maxPlayerHealth)
-                    {
-                        currentPlayerHealth = maxPlayerHealth;
-                    }
-                }
                 break;
             case 2:
                 // Probably in the next room over, start flickering light
-                flashLightFlicker.numberOfSecondsBetweenEpisodes = 1.0f;
+                flashLightFlicker.numberOfSecondsBetweenEpisodes = 0.75f;
                 if (!flashLightFlicker.enabled)
                 {
                     flashLightFlicker.enabled = true;
@@ -111,18 +95,10 @@ public class MonsterScript : MonoBehaviour
 
                 }
                 agent.SetDestination(player.transform.position);
-                if (currentPlayerHealth < maxPlayerHealth)
-                {
-                    currentPlayerHealth += (Time.deltaTime);
-                    if (currentPlayerHealth > maxPlayerHealth)
-                    {
-                        currentPlayerHealth = maxPlayerHealth;
-                    }
-                }
                 break;
             case 3:
                 // in the same room, almost at kill distance, maybe start messing with camera if that's possible?
-                flashLightFlicker.numberOfSecondsBetweenEpisodes = 0.5f;
+                flashLightFlicker.numberOfSecondsBetweenEpisodes = 0.35f;
                 if (!flashLightFlicker.enabled)
                 {
                     flashLightFlicker.enabled = true;
@@ -130,18 +106,10 @@ public class MonsterScript : MonoBehaviour
 
                 }
                 agent.SetDestination(player.transform.position);
-                if (currentPlayerHealth < maxPlayerHealth)
-                {
-                    currentPlayerHealth += (Time.deltaTime);
-                    if (currentPlayerHealth > maxPlayerHealth)
-                    {
-                        currentPlayerHealth = maxPlayerHealth;
-                    }
-                }
                 break;
             case 4:
                 // begin killing player; this is the highest tension is
-                flashLightFlicker.numberOfSecondsBetweenEpisodes = 0.25f;
+                flashLightFlicker.numberOfSecondsBetweenEpisodes = 0.125f;
                 if (!flashLightFlicker.enabled)
                 {
                     flashLightFlicker.enabled = true;
@@ -154,13 +122,30 @@ public class MonsterScript : MonoBehaviour
                 Debug.LogError("invalid tension value: " + tension);
                 break;
         }
+        bool dealDamage = false;
         if (inRange)
+        {
+            // raycast to make sure line of sight is active
+        }
+
+        if (dealDamage)
         {
             currentPlayerHealth -= (Time.deltaTime * damageMult);
             if (currentPlayerHealth <= 0.0f)
             {
                 // Kill player if he spends enough time right next to ghost
                 FindObjectOfType<ConditionManager>().Lose();
+            }
+        }
+        else
+        {
+            if (currentPlayerHealth < maxPlayerHealth)
+            {
+                currentPlayerHealth += (Time.deltaTime);
+                if (currentPlayerHealth > maxPlayerHealth)
+                {
+                    currentPlayerHealth = maxPlayerHealth;
+                }
             }
         }
 

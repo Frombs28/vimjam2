@@ -22,6 +22,7 @@ public class DoorScript : MonoBehaviour
     private Transform currentPlayerTransform;
     private bool primedToClose = false;
     private PortalManager pm;
+    private bool secondOpen = false;
 
     // Start is called before the first frame update
     void Start()
@@ -60,7 +61,11 @@ public class DoorScript : MonoBehaviour
             FMODUnity.RuntimeManager.PlayOneShot(lockedDoorNoise, transform.position);
             return;
         }
-        if (finale)
+        if(finale && !secondOpen)
+        {
+            secondOpen = true;
+        }
+        else if (finale && secondOpen)
         {
             FindObjectOfType<ConditionManager>().Win();
         }
