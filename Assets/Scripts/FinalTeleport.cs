@@ -15,7 +15,7 @@ public class FinalTeleport : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        monster = FindObjectOfType<MonsterScript>();
+        monster = FindObjectOfType<MonsterScript>().gameObject;
     }
 
     // Update is called once per frame
