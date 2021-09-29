@@ -18,6 +18,7 @@ public class MonsterScript : MonoBehaviour
     public Image injuredScreen;
     public List<float> speeds;
     public LightFlicker flashLightFlicker;
+    public List<Transform> teleportLocations;
 
 
     private int tension;
@@ -27,6 +28,8 @@ public class MonsterScript : MonoBehaviour
     private bool inRange = false;
     private Light light;
     private float originalIntensity;
+    private bool teleporting = false;
+    private int lastRandom = -1;
     // Start is called before the first frame update
     void Start()
     {
@@ -185,5 +188,31 @@ public class MonsterScript : MonoBehaviour
     public int GetTension()
     {
         return tension;
+    }
+
+    public void InLight()
+    {
+        // either teleport away or more around the edge. try just teleporting for now
+        if(!teleporting && teleportLocations.Count > 0)
+        {
+            teleporting = true;
+            StartCoroutine(WaitToTeleport());
+        }
+    }
+
+    IEnumerator WaitToTeleport()
+    {
+        //Wait a little
+        yield return new WaitForSeconds(0.3f);
+        // Not the sameplace twice in a row
+        int index = Random.Range(0, teleportLocations.Count);
+        while(index == lastRandom)
+        {
+            index = Random.Range(0, teleportLocations.Count);
+        }
+        //Teleport
+        Vector3 newPos = teleportLocations[index].position;
+        transform.position = new Vector3(newPos.x, transform.position.y, newPos.z);
+        teleporting = false;
     }
 }

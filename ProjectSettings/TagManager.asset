@@ -23,9 +23,9 @@ TagManager:
   - Interactable
   - Door
   - Mirror
-  - 
-  - 
-  - 
+  - LightDetect
+  - LightHurt
+  - ReverbZones
   - 
   - 
   - 
