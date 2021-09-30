@@ -67,6 +67,7 @@ public class PlayerInteract : MonoBehaviour
         flashlight.enabled = false;
         tManager = FindObjectOfType<TaskManager>();
         radManager = FindObjectOfType<RadioManager>();
+        tensionRando = FindObjectOfType<TensionRanodmizer>();
         taskProgress.value = 0.0f;
         taskProgress2.value = 0.0f;
         taskProgress.enabled = false;
@@ -79,6 +80,9 @@ public class PlayerInteract : MonoBehaviour
         uiImages[1].SetActive(true);
         uiImages[2].SetActive(false);
         uiImages[3].SetActive(false);
+
+        uiX[0].SetActive(false);
+        uiX[1].SetActive(false);
         
     }
 
@@ -176,7 +180,7 @@ public class PlayerInteract : MonoBehaviour
         }
         uiImages[itemNum - 1].SetActive(true);
         uiX[itemNum - 3].SetActive(true);
-        Equip(itemNum);
+        //Equip(itemNum);
         currentPickup.gameObject.SetActive(false);
         currentPickup = null;
         readyForPickup = false;
