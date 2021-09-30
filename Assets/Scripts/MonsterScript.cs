@@ -20,6 +20,7 @@ public class MonsterScript : MonoBehaviour
     public LightFlicker flashLightFlicker;
     public List<Transform> teleportLocations;
     public LayerMask mask;
+    public GameObject exitParticles;
 
 
     private int tension;
@@ -205,13 +206,15 @@ public class MonsterScript : MonoBehaviour
     IEnumerator WaitToTeleport()
     {
         //Wait a little
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.25f);
         // Not the sameplace twice in a row
         int index = Random.Range(0, teleportLocations.Count);
         while(index == lastRandom)
         {
             index = Random.Range(0, teleportLocations.Count);
         }
+        // Poof
+        Instantiate(exitParticles, new Vector3(transform.position.x, transform.position.y + 0.87f, transform.position.z), transform.rotation);
         //Teleport
         Vector3 newPos = teleportLocations[index].position;
         transform.position = new Vector3(newPos.x, transform.position.y, newPos.z);
