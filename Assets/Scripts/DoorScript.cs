@@ -23,6 +23,8 @@ public class DoorScript : MonoBehaviour
     private bool primedToClose = false;
     private PortalManager pm;
     private bool secondOpen = false;
+    private bool linkedDir;
+    private bool teleporterActive = false;
 
     // Start is called before the first frame update
     void Start()
@@ -50,6 +52,24 @@ public class DoorScript : MonoBehaviour
             if(distance >= distanceToClose)
             {
                 Close();
+                if (teleporterActive)
+                {
+                    pm.CloseDoor(this);
+                    teleporterActive = false;
+                }
+                if (linkedToDoor)
+                {
+                    // Compare current player pos to linked door. If it is too far from it, close it, otherwise keep it open.
+                    float linkDistance = Vector3.Distance(otherLinkedDoor.gameObject.transform.position, currentPlayerTransform.position);
+                    if(linkDistance >= distanceToClose)
+                    {
+                        otherLinkedDoor.Close();
+                    }
+                    else
+                    {
+                        otherLinkedDoor.WaitClose(currentPlayerTransform);
+                    }
+                }
             }
         }
     }
@@ -89,7 +109,8 @@ public class DoorScript : MonoBehaviour
         StartCoroutine(WaitToClose());
         if (linkedToDoor)
         {
-            otherLinkedDoor.OpenDoor(dir);
+            //otherLinkedDoor.OpenDoor(dir);
+            linkedDir = dir;
         }
         FMODUnity.RuntimeManager.PlayOneShot(openDoorNoise, transform.position);
         if(dir == forwardPortal && canBePortal)
@@ -119,10 +140,18 @@ public class DoorScript : MonoBehaviour
             anim.SetBool("OpenBack", true);
         }
         box.enabled = false;
-        if (linkedToDoor)
-        {
-            otherLinkedDoor.OpenDoor(forward);
-        }
+        
+        //if (linkedToDoor)
+        //{
+        //    otherLinkedDoor.OpenDoor(forward);
+        //}
+        
+    }
+
+    public void TeleporterActive()
+    {
+        otherLinkedDoor.OpenDoor(linkedDir);
+        teleporterActive = true;
     }
 
     public void Close()

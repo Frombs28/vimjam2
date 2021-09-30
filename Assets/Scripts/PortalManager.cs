@@ -47,6 +47,7 @@ public class PortalManager : MonoBehaviour
             {
                 // Create portal
                 allDoorTeleporters[index].SetActive(true);
+                door.TeleporterActive();
             }
         }
         else if(numTasksDone < 15)
@@ -57,7 +58,14 @@ public class PortalManager : MonoBehaviour
             {
                 // Create portal
                 allDoorTeleporters[index].SetActive(true);
+                door.TeleporterActive();
             }
         }
+    }
+
+    public void CloseDoor(DoorScript door)
+    {
+        int index = doors.IndexOf(door);
+        allDoorTeleporters[index].SetActive(false);
     }
 }

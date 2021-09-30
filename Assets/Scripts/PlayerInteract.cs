@@ -223,6 +223,17 @@ public class PlayerInteract : MonoBehaviour
         handObjects[itemNumber].enabled = true;
         currentItemInHand = itemNumber;
         radManager.RadioActive(itemNumber == 1);
+        if (readyToInteract)
+        {
+            if (!currentTask.completed && (currentTask.requiredItem == 0 || (currentTask.requiredItem == currentItemInHand)))
+            {
+                textBox.text = "Hold Left Click to complete task";
+            }
+            else
+            {
+                textBox.text = "";
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -361,7 +372,8 @@ public class PlayerInteract : MonoBehaviour
         }
         else
         {
-            textBox.text = "Hold Left Click to complete task";
+            //textBox.text = "Hold Left Click to complete task";
+            textBox.text = "";
         }
         taskOutline.enabled = false;
         taskProgress.enabled = false;
