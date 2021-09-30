@@ -19,6 +19,7 @@ public class MonsterScript : MonoBehaviour
     public List<float> speeds;
     public LightFlicker flashLightFlicker;
     public List<Transform> teleportLocations;
+    public LayerMask mask;
 
 
     private int tension;
@@ -30,6 +31,7 @@ public class MonsterScript : MonoBehaviour
     private float originalIntensity;
     private bool teleporting = false;
     private int lastRandom = -1;
+    private bool randomizedTension = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -47,18 +49,25 @@ public class MonsterScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float currentDistance = Vector3.Distance(transform.position, player.transform.position);
-        if(tension < 4 && currentDistance <= tensionDistances[tension + 1])
+        if (randomizedTension)
         {
-            tension++;
-            mm.UpdateTension(tension);
+
         }
-        if(tension > 0 && currentDistance > tensionDistances[tension])
+        else
         {
-            tension--;
-            mm.UpdateTension(tension);
+            float currentDistance = Vector3.Distance(transform.position, player.transform.position);
+            if (tension < 4 && currentDistance <= tensionDistances[tension + 1])
+            {
+                tension++;
+                mm.UpdateTension(tension);
+            }
+            if (tension > 0 && currentDistance > tensionDistances[tension])
+            {
+                tension--;
+                mm.UpdateTension(tension);
+            }
+            agent.speed = speeds[tension];
         }
-        agent.speed = speeds[tension];
         switch (tension)
         {
             case 0:
@@ -125,7 +134,12 @@ public class MonsterScript : MonoBehaviour
         bool dealDamage = false;
         if (inRange)
         {
-            // raycast to make sure line of sight is active
+            // raycast to make sure line of sight is active. If so, set deal dmage to true.
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, (player.transform.position - transform.position), out hit, Mathf.Infinity, mask))
+            {
+                dealDamage = true;
+            }
         }
 
         if (dealDamage)
@@ -199,5 +213,18 @@ public class MonsterScript : MonoBehaviour
         Vector3 newPos = teleportLocations[index].position;
         transform.position = new Vector3(newPos.x, transform.position.y, newPos.z);
         teleporting = false;
+    }
+
+    public void RanomizeTension()
+    {
+        randomizedTension = true;
+        tension = 4;
+        StartCoroutine(WaitForRandoTension());
+    }
+
+    IEnumerator WaitForRandoTension()
+    {
+        yield return new WaitForSeconds(Random.Range(8.5f,12.5f));
+        randomizedTension = false;
     }
 }

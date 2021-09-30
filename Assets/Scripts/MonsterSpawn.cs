@@ -43,7 +43,8 @@ public class MonsterSpawn : MonoBehaviour
     {
         if(monster.gameObject.activeSelf && monster.GetTension() < tensionToNotTP)
         {
-            monster.transform.position = new Vector3(spot.position.x,monster.transform.position.y,spot.position.z);
+            //monster.transform.position = new Vector3(spot.position.x,monster.transform.position.y,spot.position.z);
+            monster.transform.position = spot.position;
             monster.transform.forward = spot.forward;
         }
         if(numTimes != 99)
