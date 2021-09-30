@@ -18,6 +18,7 @@ public class PlayerInteract : MonoBehaviour
     public Text textBox;
     public GameObject monster;
     public List<GameObject> uiImages;
+    public List<GameObject> uiX;
     // hand = 0, dont mess with this
     // radio = 1
     // flashlight = 2
@@ -53,6 +54,7 @@ public class PlayerInteract : MonoBehaviour
     private TaskManager tManager;
     private RadioManager radManager;
     private bool currentLightState = true;
+    private TensionRanodmizer tensionRando;
     // Start is called before the first frame update
     void Start()
     {
@@ -144,11 +146,11 @@ public class PlayerInteract : MonoBehaviour
         {
             Equip(2);
         }
-        if (hasLightbulbs && Input.GetKeyDown(KeyCode.Alpha3))
+        if (hasLightbulbs && hasPlants && Input.GetKeyDown(KeyCode.Alpha3))
         {
             Equip(3);
         }
-        if (hasPlants && Input.GetKeyDown(KeyCode.Alpha4))
+        if (hasPlants && hasLightbulbs && Input.GetKeyDown(KeyCode.Alpha4))
         {
             Equip(4);
         }
@@ -173,6 +175,7 @@ public class PlayerInteract : MonoBehaviour
             Debug.LogError("Wrong current pickup number: " + itemNum);
         }
         uiImages[itemNum - 1].SetActive(true);
+        uiX[itemNum - 3].SetActive(true);
         Equip(itemNum);
         currentPickup.gameObject.SetActive(false);
         currentPickup = null;
@@ -180,9 +183,15 @@ public class PlayerInteract : MonoBehaviour
         textBox.text = "";
         if(hasLightbulbs && hasPlants)
         {
+            // Truly begin the game!!
             radManager.getItems();
             tManager.StepUp(2);
             monster.SetActive(true);
+            tensionRando.Randomize(tensionRando.waitTime + 20.0f);
+            foreach(GameObject x in uiX)
+            {
+                x.SetActive(false);
+            }
         }
     }
 
@@ -249,6 +258,20 @@ public class PlayerInteract : MonoBehaviour
             readyForKey = true;
             textBox.text = "Press E to pickup keys";
         }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        // Maybe have text for tasks display here instead?
+        //if (other.tag == "Task" && !currentlyInteracting)
+        //{
+        //    readyToInteract = true;
+        //    currentTask = other.gameObject.GetComponent<InteractableTask>();
+        //    if (!currentTask.completed && (currentTask.requiredItem == 0 || (currentTask.requiredItem == currentItemInHand)))
+        //    {
+        //        textBox.text = "Hold Left Click to complete task";
+        //    }
+        //}
     }
 
     private void OnTriggerExit(Collider other)
