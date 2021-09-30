@@ -6,7 +6,6 @@ public class MonsterSpawn : MonoBehaviour
 {
     public Transform spot;
     public float time = 0.0f;
-    public int tensionToNotTP = 2;
     public int numTimes = 1;
 
     private MonsterScript monster;
@@ -41,11 +40,13 @@ public class MonsterSpawn : MonoBehaviour
 
     void Teleport()
     {
-        if(monster.gameObject.activeSelf && monster.GetTension() < tensionToNotTP)
+        if (monster.gameObject.activeSelf)
         {
             //monster.transform.position = new Vector3(spot.position.x,monster.transform.position.y,spot.position.z);
+            monster.agent.enabled = false;
             monster.transform.position = spot.position;
             monster.transform.forward = spot.forward;
+            monster.agent.enabled = true;
         }
         if(numTimes != 99)
         {
