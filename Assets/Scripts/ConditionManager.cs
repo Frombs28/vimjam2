@@ -11,15 +11,22 @@ public class ConditionManager : MonoBehaviour
     public Image fadeOut;
     public string winScene;
     public string loseScene;
+    public GameObject virtualCam;
 
     private MusicManager mm;
     private RadioManager rm;
+
+    private void Awake()
+    {
+        //virtualCam.SetActive(false);
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         mm = FindObjectOfType<MusicManager>();
         rm = FindObjectOfType<RadioManager>();
+        StartCoroutine(WaitToActivateCam());
     }
 
     // Update is called once per frame
@@ -62,5 +69,11 @@ public class ConditionManager : MonoBehaviour
         }
         // Load Win scene
         SceneManager.LoadScene(winScene);
+    }
+
+    IEnumerator WaitToActivateCam()
+    {
+        yield return new WaitForSeconds(1f);
+        virtualCam.SetActive(true);
     }
 }
