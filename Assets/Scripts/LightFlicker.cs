@@ -68,7 +68,6 @@ public class LightFlicker : MonoBehaviour
             //trueLight.enabled = false;
             float origianlIn = trueLight.intensity;
             trueLight.intensity = 0;
-            Debug.Log("Off!");
             yield return new WaitForSeconds(Random.Range(minNumberOfSecondsBetweenFlicks, maxNumberOfSecondsBetweenFlicks));
             if (!enabled)
             {
@@ -80,7 +79,6 @@ public class LightFlicker : MonoBehaviour
             }
             //trueLight.enabled = true;
             trueLight.intensity = origianlIn;
-            Debug.Log("On!");
             yield return new WaitForSeconds(Random.Range(minNumberOfSecondsBetweenFlicks, maxNumberOfSecondsBetweenFlicks));
         }
         if (loop && enabled)

@@ -26,12 +26,10 @@ public class FinalTeleport : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Hit the pool!");
         if (!finished && other.tag == "Player")
         {
             finalDoor.Close();
             otherDoor.Close();
-            Debug.Log("Now shmoving!");
             cc.enabled = false;
             other.gameObject.transform.position = location.transform.position;
             cc.enabled = true;
