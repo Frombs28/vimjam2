@@ -136,6 +136,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - Alpha: 1
     - AlphaOffset: 0
     - Intensity: 2
     - MaxOverlap: 20

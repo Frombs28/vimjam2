@@ -23,6 +23,7 @@ public class MonsterScript : MonoBehaviour
     private GameObject invisibleMesh;
     private GameObject exitParticles;
     private ParticleSystem ps;
+    public GameObject auraFade;
 
 
     private int tension;
@@ -221,6 +222,9 @@ public class MonsterScript : MonoBehaviour
         // Poof
         invisibleMesh.transform.position = new Vector3(transform.position.x, 0.5f, transform.position.z);
         invisibleMesh.transform.rotation = transform.rotation;
+        auraFade.transform.position = transform.position;
+        auraFade.transform.rotation = transform.rotation;
+        auraFade.GetComponent<SetActiveAndFade>().FadeThenTurnOff();
         ps.Play();
         //Teleport
         Vector3 newPos = teleportLocations[index].position;
