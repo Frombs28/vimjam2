@@ -138,7 +138,10 @@ public class MonsterScript : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(transform.position, (player.transform.position - transform.position), out hit, Mathf.Infinity, mask))
             {
-                dealDamage = true;
+                if(hit.transform.gameObject.tag == "Player")
+                {
+                    dealDamage = true;
+                }
             }
         }
 
