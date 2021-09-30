@@ -20,7 +20,9 @@ public class MonsterScript : MonoBehaviour
     public LightFlicker flashLightFlicker;
     public List<Transform> teleportLocations;
     public LayerMask mask;
-    public GameObject exitParticles;
+    private GameObject invisibleMesh;
+    private GameObject exitParticles;
+    private ParticleSystem ps;
 
 
     private int tension;
@@ -36,6 +38,9 @@ public class MonsterScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        invisibleMesh = GameObject.Find("InvisibleMesh");
+        exitParticles = GameObject.Find("EnemySeen");
+        ps = exitParticles.GetComponent<ParticleSystem>();
         mm = FindObjectOfType<MusicManager>();
         tension = 0;
         if(tensionDistances.Count - 1 != maxTension)
@@ -214,7 +219,9 @@ public class MonsterScript : MonoBehaviour
             index = Random.Range(0, teleportLocations.Count);
         }
         // Poof
-        Instantiate(exitParticles, new Vector3(transform.position.x, transform.position.y + 0.87f, transform.position.z), transform.rotation);
+        invisibleMesh.transform.position = new Vector3(transform.position.x, 0.5f, transform.position.z);
+        invisibleMesh.transform.rotation = transform.rotation;
+        ps.Play();
         //Teleport
         Vector3 newPos = teleportLocations[index].position;
         transform.position = new Vector3(newPos.x, transform.position.y, newPos.z);
