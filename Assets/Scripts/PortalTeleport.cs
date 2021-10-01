@@ -29,7 +29,7 @@ public class PortalTeleport : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        Debug.Log(parentTransform.localEulerAngles.y);
         if (playerIsHere)
         {
             Vector3 portalToPlayer = new Vector3(player.position.x, transform.position.y, player.position.z) - new Vector3(transform.position.x, transform.position.y, transform.position.z);
@@ -38,6 +38,10 @@ public class PortalTeleport : MonoBehaviour
             {
                 // Teleport
                 float rotDif = Vector3.Angle(sender.forward, parentTransform.forward);
+                if(rotDif < 0.0f)
+                {
+                    rotDif += 360.0f;
+                }
 
                 cc.enabled = false;
                 player.transform.parent = sender;
@@ -51,12 +55,21 @@ public class PortalTeleport : MonoBehaviour
                 player.parent = null;
                 virtualCam.parent = null;
                 parentTransform.position = player.position;
-                parentTransform.forward = receiver.forward;
+                if(parentTransform.localEulerAngles.y > 181.0f)
+                {
+                    Debug.Log("Spin bby");
+                    parentTransform.forward = -receiver.forward;
+                }
+                else
+                {
+                    parentTransform.forward = receiver.forward;
+                }
+                
                 cam.parent = parentTransform;
                 player.parent = parentTransform;
                 virtualCam.parent = parentTransform;
                 parentTransform.Rotate(Vector3.up, rotDif);
-                
+
                 playerIsHere = false;
                 primed = false;
                 StartCoroutine(WaitToEnable());

@@ -10,12 +10,15 @@ public class FinalTeleport : MonoBehaviour
     public CharacterController cc;
 
     private bool finished = false;
-    private GameObject monster;
+    private MonsterScript monster;
+
+    public SphereCollider hurtbox;
+    public GameObject lightDetector;
 
     // Start is called before the first frame update
     void Start()
     {
-        monster = FindObjectOfType<MonsterScript>().gameObject;
+        monster = FindObjectOfType<MonsterScript>();
     }
 
     // Update is called once per frame
@@ -34,9 +37,10 @@ public class FinalTeleport : MonoBehaviour
             other.gameObject.transform.position = location.transform.position;
             cc.enabled = true;
             finished = true;
-            //otherDoor.locked = true;
             finalDoor.portalCamera = null;
-            monster.SetActive(false);
+            hurtbox.enabled = true;
+            lightDetector.SetActive(true);
+            monster.InLight();
             gameObject.SetActive(false);
         }
     }

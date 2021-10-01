@@ -18,6 +18,7 @@ public class DoorScript : MonoBehaviour
     public bool canBePortal = false;
     public bool forwardPortal = true;
     public PortalCam portalCamera;
+    public bool staircase = false;
 
     private Transform currentPlayerTransform;
     private bool primedToClose = false;
@@ -110,6 +111,10 @@ public class DoorScript : MonoBehaviour
         if (linkedToDoor)
         {
             //otherLinkedDoor.OpenDoor(dir);
+            if (staircase)
+            {
+                otherLinkedDoor.OpenDoor(dir);
+            }
             linkedDir = dir;
         }
         FMODUnity.RuntimeManager.PlayOneShot(openDoorNoise, transform.position);
