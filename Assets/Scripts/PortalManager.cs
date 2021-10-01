@@ -50,11 +50,22 @@ public class PortalManager : MonoBehaviour
                 door.TeleporterActive();
             }
         }
-        else if(numTasksDone < 15)
+        else if(numTasksDone >= 10 && numTasksDone < 15)
         {
             // 66% chance
             float percent = Random.Range(1, 101);
             if (percent <= highPercent)
+            {
+                // Create portal
+                allDoorTeleporters[index].SetActive(true);
+                door.TeleporterActive();
+            }
+        }
+        else
+        {
+            // 80% chance
+            float percent = Random.Range(1, 101);
+            if (percent <= 80)
             {
                 // Create portal
                 allDoorTeleporters[index].SetActive(true);
