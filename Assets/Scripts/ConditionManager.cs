@@ -27,6 +27,7 @@ public class ConditionManager : MonoBehaviour
         mm = FindObjectOfType<MusicManager>();
         rm = FindObjectOfType<RadioManager>();
         StartCoroutine(WaitToActivateCam());
+        player.canMove = false;
     }
 
     // Update is called once per frame
@@ -75,5 +76,6 @@ public class ConditionManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         virtualCam.SetActive(true);
+        player.canMove = true;
     }
 }

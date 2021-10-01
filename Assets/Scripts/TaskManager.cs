@@ -233,7 +233,7 @@ public class TaskManager : MonoBehaviour
                 Invoke("PlaySubtitle", 3f);
                 break;
             case 22:
-                subtitleBox.text = "sould be in the janitor's closet in the back of the room";
+                subtitleBox.text = "should be in the janitor's closet in the back of the room";
                 currentVoiceLine++;
                 Invoke("PlaySubtitle", 3f);
                 break;
