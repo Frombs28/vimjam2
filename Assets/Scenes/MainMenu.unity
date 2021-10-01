@@ -2820,6 +2820,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5292636704059106422, guid: 604fde9ff05d1b040b0a5e8ed3a55e64, type: 3}
+      propertyPath: m_Text
+      value: MOUSE SENSITIVITY
+      objectReference: {fileID: 0}
     - target: {fileID: 7889961138141802981, guid: 604fde9ff05d1b040b0a5e8ed3a55e64, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
