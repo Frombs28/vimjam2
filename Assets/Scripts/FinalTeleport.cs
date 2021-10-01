@@ -34,7 +34,7 @@ public class FinalTeleport : MonoBehaviour
             other.gameObject.transform.position = location.transform.position;
             cc.enabled = true;
             finished = true;
-            otherDoor.locked = true;
+            //otherDoor.locked = true;
             finalDoor.portalCamera = null;
             monster.SetActive(false);
             gameObject.SetActive(false);
