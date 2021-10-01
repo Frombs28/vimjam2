@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SetActiveAndFade : MonoBehaviour
 {
+    public float speed = 0.02f;
+
     Material m;
 
     // Start is called before the first frame update
@@ -30,7 +32,7 @@ public class SetActiveAndFade : MonoBehaviour
     {
         while (m.GetFloat("Alpha") > 0)
         {
-            float t = m.GetFloat("Alpha") - 0.01f;
+            float t = m.GetFloat("Alpha") - speed;
             m.SetFloat("Alpha", t);
             yield return null;
         }
